@@ -3,470 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="SteerIn is a native Android app for vehicle garage management, maintenance tracking, GPS trip logging, and cloud backup.">
-  <title>SteerIn — Smart Vehicle Management</title>
+  <title>SteerIn — Private Vehicle Management for Cars &amp; Motorcycles</title>
+  <meta name="description" content="SteerIn is a private Android vehicle management app for tracking maintenance, service history, trips, workshops, and vehicle health with local-first storage and optional encrypted backup.">
+  <meta property="og:title" content="SteerIn — Your Private Vehicle Command Center">
+  <meta property="og:description" content="Manage cars and motorcycles, track service history, log trips, discover workshops, and protect your vehicle data with SteerIn.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://steerin.app">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SteerIn — Private Vehicle Management">
+  <meta name="twitter:description" content="Manage cars and motorcycles, track maintenance, log trips, and protect your vehicle data — all private and local-first.">
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    [data-theme="dark"] {
-      --bg: #000000;
-      --bg-elevated: #0a0a0a;
-      --bg-card: rgba(255, 255, 255, 0.02);
-      --border: rgba(255, 255, 255, 0.06);
-      --border-hover: rgba(255, 255, 255, 0.1);
-      --text: #ffffff;
-      --text-secondary: #71717a;
-      --text-tertiary: #3f3f46;
-      --nav-bg: rgba(0,0,0,0.6);
-      --mobile-nav-bg: rgba(0,0,0,0.95);
-      --orb-opacity: 1;
-      --noise-opacity: 0.015;
-      --card-hover: rgba(255,255,255,0.03);
-      --btn-ghost-hover: rgba(255,255,255,0.03);
-      --feature-card-before: rgba(255,255,255,0.1);
-      --stat-bg: var(--bg);
-      --toc-num-bg: var(--bg-elevated);
-    }
-
-    [data-theme="light"] {
-      --bg: #fafafa;
-      --bg-elevated: #f4f4f5;
-      --bg-card: rgba(0, 0, 0, 0.02);
-      --border: rgba(0, 0, 0, 0.08);
-      --border-hover: rgba(0, 0, 0, 0.15);
-      --text: #09090b;
-      --text-secondary: #52525b;
-      --text-tertiary: #a1a1aa;
-      --nav-bg: rgba(250,250,250,0.8);
-      --mobile-nav-bg: rgba(250,250,250,0.97);
-      --orb-opacity: 0.5;
-      --noise-opacity: 0;
-      --card-hover: rgba(0,0,0,0.02);
-      --btn-ghost-hover: rgba(0,0,0,0.04);
-      --feature-card-before: rgba(0,0,0,0.08);
-      --stat-bg: var(--bg);
-      --toc-num-bg: var(--bg-elevated);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    .noise {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      opacity: var(--noise-opacity);
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 128px;
-      transition: opacity 0.3s;
-    }
-
-    .orb {
-      position: fixed; border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0;
-      opacity: var(--orb-opacity);
-      transition: opacity 0.3s;
-    }
-    .orb--1 { width: 600px; height: 600px; top: -200px; left: -150px; background: radial-gradient(circle, rgba(34,197,94,0.12) 0%, transparent 70%); }
-    .orb--2 { width: 500px; height: 500px; bottom: -150px; right: -100px; background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%); }
-    .orb--3 { width: 400px; height: 400px; top: 40%; left: 50%; transform: translateX(-50%); background: radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 70%); }
-
-    .container {
-      position: relative; z-index: 1;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* NAV */
-    nav {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 0;
-      position: sticky; top: 0; z-index: 100;
-      background: var(--nav-bg);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border-bottom: 1px solid var(--border);
-      transition: background 0.3s, border-color 0.3s;
-    }
-    .nav-brand {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 18px; font-weight: 800; letter-spacing: -0.3px;
-      color: var(--text); text-decoration: none;
-    }
-    .nav-logo {
-      width: 32px; height: 32px;
-      object-fit: contain;
-    }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-links a {
-      color: var(--text-secondary); text-decoration: none; font-size: 13px;
-      font-weight: 500; transition: color 0.2s; letter-spacing: 0.01em;
-    }
-    .nav-links a:hover { color: var(--text); }
-
-    /* Theme toggle */
-    .theme-toggle {
-      width: 36px; height: 36px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--bg-card);
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: all 0.2s;
-      color: var(--text-secondary);
-    }
-    .theme-toggle:hover {
-      border-color: var(--border-hover);
-      color: var(--text);
-    }
-    .theme-toggle svg {
-      width: 18px; height: 18px;
-    }
-    .theme-toggle .icon-moon,
-    .theme-toggle .icon-sun { display: none; }
-    [data-theme="dark"] .theme-toggle .icon-moon { display: block; }
-    [data-theme="light"] .theme-toggle .icon-sun { display: block; }
-
-    /* Mobile menu */
-    .nav-toggle {
-      display: none;
-      background: none; border: none; cursor: pointer;
-      padding: 8px;
-    }
-    .nav-toggle span {
-      display: block; width: 20px; height: 1.5px;
-      background: var(--text); margin: 5px 0;
-      transition: all 0.3s;
-    }
-
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 120px 0 80px;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.15);
-      border-radius: 100px; padding: 5px 14px 5px 6px;
-      font-size: 12px; font-weight: 600; color: #22c55e;
-      margin-bottom: 32px; letter-spacing: 0.02em;
-    }
-    .hero-badge-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 8px rgba(34,197,94,0.5);
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.85); } }
-
-    .hero h1 {
-      font-size: clamp(44px, 8vw, 80px);
-      font-weight: 900; letter-spacing: -3px;
-      line-height: 0.95;
-      margin-bottom: 24px;
-    }
-    .hero h1 .accent {
-      background: linear-gradient(135deg, #22c55e 0%, #4ade80 50%, #22d3ee 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero p {
-      font-size: 17px; color: var(--text-secondary); max-width: 520px;
-      margin: 0 auto 40px; line-height: 1.7; font-weight: 400;
-    }
-    .hero-actions {
-      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
-    }
-
-    /* BUTTONS */
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 24px; border-radius: 10px;
-      font-size: 13px; font-weight: 600; text-decoration: none;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border: none;
-      font-family: inherit; letter-spacing: 0.01em;
-    }
-    .btn--primary {
-      background: #22c55e;
-      color: #000;
-      box-shadow: 0 0 0 1px rgba(34,197,94,0.3), 0 4px 20px rgba(34,197,94,0.2);
-    }
-    .btn--primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 0 1px rgba(34,197,94,0.4), 0 8px 30px rgba(34,197,94,0.3);
-    }
-    .btn--ghost {
-      background: transparent;
-      color: var(--text-secondary);
-      border: 1px solid var(--border);
-    }
-    .btn--ghost:hover {
-      color: var(--text);
-      border-color: var(--border-hover);
-      background: var(--btn-ghost-hover);
-    }
-
-    /* STATS */
-    .stats {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 100px;
-    }
-    .stat {
-      background: var(--stat-bg);
-      padding: 32px 24px;
-      text-align: center;
-    }
-    .stat-value {
-      font-size: 24px; font-weight: 800; color: var(--text);
-      letter-spacing: -0.5px; margin-bottom: 4px;
-    }
-    .stat-label {
-      font-size: 12px; color: var(--text-tertiary); font-weight: 500;
-      letter-spacing: 0.03em; text-transform: uppercase;
-    }
-
-    /* SECTION HEADER */
-    .section-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .section-label {
-      font-size: 12px; font-weight: 600; color: #22c55e;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      margin-bottom: 12px;
-    }
-    .section-header h2 {
-      font-size: 32px; font-weight: 800; letter-spacing: -1px;
-      margin-bottom: 12px;
-    }
-    .section-header p {
-      color: var(--text-secondary); font-size: 15px; max-width: 460px; margin: 0 auto;
-    }
-
-    /* FEATURES */
-    .features { padding: 40px 0 100px; }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .feature-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-    .feature-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--feature-card-before), transparent);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .feature-card:hover {
-      border-color: var(--border-hover);
-      background: var(--card-hover);
-      transform: translateY(-2px);
-    }
-    .feature-card:hover::before { opacity: 1; }
-
-    .feature-icon {
-      width: 40px; height: 40px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px; margin-bottom: 16px;
-      border: 1px solid var(--border);
-    }
-    .feature-icon--green { background: rgba(34,197,94,0.08); }
-    .feature-icon--blue { background: rgba(59,130,246,0.08); }
-    .feature-icon--purple { background: rgba(139,92,246,0.08); }
-    .feature-icon--orange { background: rgba(249,115,22,0.08); }
-    .feature-icon--pink { background: rgba(236,72,153,0.08); }
-    .feature-icon--cyan { background: rgba(6,182,212,0.08); }
-
-    .feature-card h3 {
-      font-size: 15px; font-weight: 700; color: var(--text);
-      margin-bottom: 8px; letter-spacing: -0.2px;
-    }
-    .feature-card p {
-      font-size: 13px; color: var(--text-secondary); line-height: 1.6;
-    }
-
-    /* TRUST */
-    .trust {
-      padding: 40px 0 100px;
-    }
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-    .trust-item {
-      text-align: center;
-      padding: 32px 20px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      transition: all 0.3s;
-    }
-    .trust-item:hover {
-      border-color: var(--border-hover);
-      background: var(--card-hover);
-    }
-    .trust-icon {
-      font-size: 24px; margin-bottom: 14px;
-      width: 48px; height: 48px;
-      display: inline-flex; align-items: center; justify-content: center;
-      border-radius: 12px;
-      background: rgba(34,197,94,0.08);
-      border: 1px solid rgba(34,197,94,0.15);
-    }
-    .trust-item h4 {
-      font-size: 14px; font-weight: 700; color: var(--text);
-      margin-bottom: 6px;
-    }
-    .trust-item p {
-      font-size: 12px; color: var(--text-tertiary); line-height: 1.5;
-    }
-
-    /* CTA */
-    .cta {
-      padding: 40px 0 120px;
-    }
-    .cta-card {
-      background: linear-gradient(180deg, rgba(34,197,94,0.04) 0%, rgba(34,197,94,0.01) 100%);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 64px 48px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-card::before {
-      content: '';
-      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 200px; height: 1px;
-      background: linear-gradient(90deg, transparent, #22c55e, transparent);
-      opacity: 0.5;
-    }
-    .cta h2 {
-      font-size: 28px; font-weight: 800; letter-spacing: -0.5px;
-      margin-bottom: 12px;
-    }
-    .cta p { color: var(--text-secondary); margin-bottom: 32px; font-size: 15px; }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 0;
-    }
-    .footer-inner {
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .footer-copy { font-size: 12px; color: var(--text-tertiary); }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a {
-      font-size: 12px; color: var(--text-secondary); text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--text); }
-
-    /* Fade-in animation */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
-      .trust-grid { grid-template-columns: repeat(2, 1fr); }
-      .stats { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 640px) {
-      .container { padding: 0 16px; }
-
-      .nav-toggle { display: block; }
-      .nav-links {
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: var(--mobile-nav-bg);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 32px;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s;
-      }
-      .nav-links.active {
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .nav-links a {
-        font-size: 20px;
-        font-weight: 600;
-      }
-      .nav-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-      .nav-toggle.active span:nth-child(2) {
-        opacity: 0;
-      }
-      .nav-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-      }
-
-      .hero { padding: 80px 0 40px; }
-      .hero h1 { letter-spacing: -2px; font-size: 40px; }
-      .hero p { font-size: 15px; }
-
-      .features-grid { grid-template-columns: 1fr; }
-      .trust-grid { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: 1fr; }
-
-      .cta-card { padding: 40px 24px; }
-      .cta h2 { font-size: 24px; }
-
-      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
-
-      .section-header h2 { font-size: 28px; }
-    }
-
-    @media (max-width: 400px) {
-      .hero h1 { font-size: 32px; letter-spacing: -1.5px; }
-      .btn { padding: 10px 20px; font-size: 12px; }
-      .hero-actions { flex-direction: column; align-items: center; }
-      .hero-actions .btn { width: 100%; justify-content: center; }
-    }
-  </style>
+  <link rel="stylesheet" href="/src/style.css">
 </head>
 <body>
   <div class="noise"></div>
@@ -474,7 +24,25 @@
   <div class="orb orb--2"></div>
   <div class="orb orb--3"></div>
 
+  <!-- SVG Sprite -->
+  <svg style="display:none">
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 17h14M5 17a2 2 0 0 1-2-2v-4l2.5-5A2 2 0 0 1 7.5 5h9a2 2 0 0 1 2 2l2.5 5v4a2 2 0 0 1-2 2M5 17a2 2 0 1 0 4 0M19 17a2 2 0 1 0-4 0"/><circle cx="7" cy="15" r="1"/><circle cx="17" cy="15" r="1"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><line x1="12" y1="11" x2="16" y2="11"/><line x1="12" y1="16" x2="16" y2="16"/><line x1="8" y1="11" x2="8" y2="11"/><line x1="8" y1="16" x2="8" y2="16"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-xcircle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+  </svg>
+
   <div class="container">
+    <!-- ===== NAVBAR ===== -->
     <nav>
       <a href="/" class="nav-brand">
         <img src="logo.png" alt="SteerIn" class="nav-logo">
@@ -482,184 +50,550 @@
       </a>
       <div class="nav-links">
         <a href="#features">Features</a>
-        <a href="./privacy-policy/">Privacy</a>
+        <a href="#how-it-works">How it Works</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#faq">FAQ</a>
+        <a href="#early-access" class="nav-cta">Join Early Access</a>
         <button class="theme-toggle" aria-label="Toggle theme">
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
         <button class="nav-toggle" aria-label="Menu">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </button>
       </div>
     </nav>
 
+    <!-- ===== HERO ===== -->
     <section class="hero">
-      <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
-        Release Candidate
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Android Release Candidate
+        </div>
+        <h1>Your private vehicle<br><span class="gradient">command center.</span></h1>
+        <p>SteerIn helps you manage cars and motorcycles, track maintenance, log trips, discover workshops, and protect your vehicle history — with local-first storage, optional cloud sync, and no trackers.</p>
+        <div class="hero-actions">
+          <a href="#early-access" class="btn btn--primary">
+            Join Early Access
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#features" class="btn btn--ghost">Explore Features</a>
+        </div>
+
+        <!-- Waitlist Form -->
+        <form class="hero-form" data-form novalidate>
+          <input type="email" class="form-input" placeholder="Enter your email" required autocomplete="email">
+          <button type="submit" class="btn btn--primary form-btn">Get Early Access</button>
+          <div class="form-error"></div>
+          <div class="form-success"></div>
+        </form>
+        <p class="form-note">No spam. Unsubscribe anytime. 📬</p>
+
+        <div class="hero-trust">
+          <span>Local-first</span>
+          <span class="dot"></span>
+          <span>Encrypted backup</span>
+          <span class="dot"></span>
+          <span>No ads</span>
+          <span class="dot"></span>
+          <span>No trackers</span>
+        </div>
       </div>
-      <h1>Smart Vehicle<br><span class="accent">Management</span></h1>
-      <p>A native Android app that helps you manage your garage, track maintenance, log GPS trips, discover workshops, and keep everything backed up.</p>
-      <div class="hero-actions">
-        <a href="./privacy-policy/" class="btn btn--primary">Read Privacy Policy</a>
-        <a href="mailto:sudutkamar.co@gmail.com" class="btn btn--ghost">Contact Support</a>
+
+      <!-- Phone Mockup -->
+      <div class="hero-visual" role="img" aria-label="SteerIn app dashboard showing vehicle garage with Honda Civic, Yamaha NMAX, and Toyota Avanza">
+        <div class="phone">
+          <div class="phone-punch"></div>
+          <div class="phone-st-bar">
+            <div class="phone-st-left"><span class="phone-st-time">9:41</span></div>
+            <div class="phone-st-right">
+              <div class="phone-st-signal"><span></span><span></span><span></span><span></span></div>
+              <span class="phone-st-wifi">⌔</span>
+              <div class="phone-st-batt">
+                <div class="phone-st-batt-inner"><div class="phone-st-batt-fill"></div></div>
+                <span>92%</span>
+              </div>
+            </div>
+          </div>
+          <div class="phone-app">
+            <div class="ph-head">
+              <span class="ph-head-text">SteerIn</span>
+              <span class="ph-head-badge">Garage</span>
+            </div>
+            <span class="ph-sub">3 vehicles · 2 reminders</span>
+            <div class="ph-card">
+              <div class="ph-card-top">
+                <div class="ph-card-left">
+                  <div class="ph-avatar ph-avatar--blue">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M5 17h14M5 17a2 2 0 0 1-2-2v-4l2.5-5A2 2 0 0 1 7.5 5h9a2 2 0 0 1 2 2l2.5 5v4a2 2 0 0 1-2 2M5 17a2 2 0 1 0 4 0M19 17a2 2 0 1 0-4 0"/><circle cx="7" cy="15" r="1"/><circle cx="17" cy="15" r="1"/></svg>
+                  </div>
+                  <div><div class="ph-name">Honda Civic</div><div class="ph-detail">Sedan · 2021 · 45,230 km</div></div>
+                </div>
+                <div class="ph-score ph-score--good">92%</div>
+              </div>
+              <div class="ph-bar"><div class="ph-bar-fill ph-bar-fill--green" style="width:92%"></div></div>
+            </div>
+            <div class="ph-card">
+              <div class="ph-card-top">
+                <div class="ph-card-left">
+                  <div class="ph-avatar ph-avatar--red">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><path d="M5 17h14M5 17a2 2 0 0 1-2-2v-4l2.5-5A2 2 0 0 1 7.5 5h9a2 2 0 0 1 2 2l2.5 5v4a2 2 0 0 1-2 2M5 17a2 2 0 1 0 4 0M19 17a2 2 0 1 0-4 0"/></svg>
+                  </div>
+                  <div><div class="ph-name">Yamaha NMAX</div><div class="ph-detail">Scooter · 2023 · 12,800 km</div></div>
+                </div>
+                <div class="ph-score ph-score--good">87%</div>
+              </div>
+              <div class="ph-bar"><div class="ph-bar-fill ph-bar-fill--green" style="width:87%"></div></div>
+            </div>
+            <div class="ph-card">
+              <div class="ph-card-top">
+                <div class="ph-card-left">
+                  <div class="ph-avatar ph-avatar--gray">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><path d="M5 17h14M5 17a2 2 0 0 1-2-2v-4l2.5-5A2 2 0 0 1 7.5 5h9a2 2 0 0 1 2 2l2.5 5v4a2 2 0 0 1-2 2M5 17a2 2 0 1 0 4 0M19 17a2 2 0 1 0-4 0"/></svg>
+                  </div>
+                  <div><div class="ph-name">Toyota Avanza</div><div class="ph-detail">MPV · 2019 · 78,100 km</div></div>
+                </div>
+                <div class="ph-score ph-score--ok">76%</div>
+              </div>
+              <div class="ph-bar"><div class="ph-bar-fill ph-bar-fill--amber" style="width:76%"></div></div>
+            </div>
+            <div class="ph-reminder">
+              <div class="ph-rem-icon"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+              <div class="ph-rem-text"><strong>Oil change due</strong> — Honda Civic<br>Every 5,000 km · 230 km overdue</div>
+            </div>
+            <div class="ph-reminder">
+              <div class="ph-rem-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <div class="ph-rem-text"><strong>Brake check</strong> — Toyota Avanza<br>Next service in 1,200 km</div>
+            </div>
+            <div class="ph-fab">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </div>
+          <div class="ph-nav">
+            <div class="ph-nav-item active"><svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 0 0 1 1h3m10-11l2 2m-2-2v10a1 1 0 0 1-1 1h-3m-6 0a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1m-6 0h6"/></svg><span class="ph-nav-label">Home</span></div>
+            <div class="ph-nav-item"><svg viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg><span class="ph-nav-label">Health</span></div>
+            <div class="ph-nav-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg><span class="ph-nav-label">Trips</span></div>
+            <div class="ph-nav-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="ph-nav-label">Nearby</span></div>
+            <div class="ph-nav-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="ph-nav-label">Settings</span></div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="stats fade-up">
-      <div class="stat">
-        <div class="stat-value">100%</div>
-        <div class="stat-label">Local-first storage</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">AES</div>
-        <div class="stat-label">Encrypted backups</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">Zero</div>
-        <div class="stat-label">Ads or trackers</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">24/7</div>
-        <div class="stat-label">GPS trip tracking</div>
+    <!-- ===== TRUST BAR ===== -->
+    <section class="trust-bar">
+      <div class="trust-grid">
+        <div class="trust-card fade-up">
+          <div class="trust-card-icon"><svg><use href="#i-phone"/></svg></div>
+          <h4>Local-first by default</h4>
+          <p>All your data stays on your device. No accounts required to use the core app.</p>
+        </div>
+        <div class="trust-card fade-up">
+          <div class="trust-card-icon"><svg><use href="#i-cloud"/></svg></div>
+          <h4>Optional cloud sync</h4>
+          <p>Backup to the cloud only when you choose. It is never automatic or mandatory.</p>
+        </div>
+        <div class="trust-card fade-up">
+          <div class="trust-card-icon"><svg><use href="#i-lock"/></svg></div>
+          <h4>AES encrypted backups</h4>
+          <p>Backups are encrypted with strong cryptography before leaving your device.</p>
+        </div>
+        <div class="trust-card fade-up">
+          <div class="trust-card-icon"><svg><use href="#i-xcircle"/></svg></div>
+          <h4>Zero ads or trackers</h4>
+          <p>No advertising, no analytics SDKs, no third-party tracking. Ever.</p>
+        </div>
       </div>
     </section>
 
+    <!-- ===== PROBLEM ===== -->
+    <section class="problem" id="problem">
+      <div class="section-header fade-up">
+        <div class="section-badge">The Problem</div>
+        <h2>Vehicle ownership gets messy fast.</h2>
+        <p>Service notes get buried in chats. Oil changes are easy to forget. Trip history disappears. Workshop decisions are often rushed.</p>
+      </div>
+      <div class="problem-grid">
+        <div class="problem-list">
+          <div class="problem-item fade-up">
+            <div class="problem-icon"><svg><use href="#i-clipboard"/></svg></div>
+            <div class="problem-text">
+              <h4>Scattered service records</h4>
+              <p>Receipts, notes, and WhatsApp messages spread everywhere with no structure.</p>
+            </div>
+          </div>
+          <div class="problem-item fade-up">
+            <div class="problem-icon"><svg><use href="#i-bell"/></svg></div>
+            <div class="problem-text">
+              <h4>Forgotten maintenance</h4>
+              <p>Oil changes, tire rotations, and brake checks are easy to miss without reminders.</p>
+            </div>
+          </div>
+          <div class="problem-item fade-up">
+            <div class="problem-icon"><svg><use href="#i-pin"/></svg></div>
+            <div class="problem-text">
+              <h4>Lost trip history</h4>
+              <p>Routes, distances, and travel records disappear once the trip is done.</p>
+            </div>
+          </div>
+          <div class="problem-item fade-up">
+            <div class="problem-icon"><svg><use href="#i-wrench"/></svg></div>
+            <div class="problem-text">
+              <h4>Uncertain workshop decisions</h4>
+              <p>Finding a reliable workshop nearby should not be a guessing game.</p>
+            </div>
+          </div>
+          <div class="problem-item fade-up">
+            <div class="problem-icon"><svg><use href="#i-car"/></svg></div>
+            <div class="problem-text">
+              <h4>Multiple vehicles, one headache</h4>
+              <p>Managing two or more vehicles means double the records and double the stress.</p>
+            </div>
+          </div>
+        </div>
+        <div class="problem-right fade-up">
+          <div class="problem-stat">
+            <div class="problem-stat-num">3</div>
+            <div class="problem-stat-label">vehicles per average household in Indonesia</div>
+          </div>
+          <div class="problem-quote">
+            "SteerIn brings everything into one <strong>private, structured, and reliable</strong> vehicle hub."
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
     <section class="features" id="features">
       <div class="section-header fade-up">
-        <div class="section-label">Features</div>
-        <h2>Everything you need</h2>
-        <p>Powerful features designed to keep your vehicles in perfect condition.</p>
+        <div class="section-badge">Features</div>
+        <h2>Everything your vehicle needs,<br>in one app.</h2>
+        <p>Built for daily commuters, car and motorcycle owners, families with multiple vehicles, and anyone who wants complete vehicle records.</p>
       </div>
       <div class="features-grid">
         <div class="feature-card fade-up">
-          <div class="feature-icon feature-icon--green">&#128663;</div>
+          <div class="feature-icon fi-green"><svg><use href="#i-car"/></svg></div>
           <h3>Multi-Vehicle Garage</h3>
-          <p>Manage multiple vehicles from a single dashboard. Add new or used vehicles with guided onboarding and quick search.</p>
+          <p>Manage cars and motorcycles in one place, complete with profile, mileage, plate number, and ownership details.</p>
         </div>
         <div class="feature-card fade-up">
-          <div class="feature-icon feature-icon--blue">&#128202;</div>
-          <h3>Health Tracking</h3>
-          <p>Monitor component wear with mileage-based maintenance status and color-coded health indicators at a glance.</p>
+          <div class="feature-icon fi-blue"><svg><use href="#i-activity"/></svg></div>
+          <h3>Vehicle Health Tracking</h3>
+          <p>Spot potential issues earlier by tracking component condition, usage, and mileage-based wear indicators.</p>
         </div>
         <div class="feature-card fade-up">
-          <div class="feature-icon feature-icon--purple">&#128221;</div>
+          <div class="feature-icon fi-purple"><svg><use href="#i-bell"/></svg></div>
+          <h3>Maintenance Reminder</h3>
+          <p>Get reminded before oil changes, tire checks, brake service, or other recurring maintenance becomes overdue.</p>
+        </div>
+        <div class="feature-card fade-up">
+          <div class="feature-icon fi-amber"><svg><use href="#i-clipboard"/></svg></div>
           <h3>Service History</h3>
-          <p>Log every service, set reminders, and plan upcoming maintenance bookings with complete records and costs.</p>
+          <p>Keep every repair, part replacement, and workshop visit organized for future reference or resale value.</p>
         </div>
         <div class="feature-card fade-up">
-          <div class="feature-icon feature-icon--orange">&#128205;</div>
+          <div class="feature-icon fi-pink"><svg><use href="#i-pin"/></svg></div>
           <h3>GPS Trip Logging</h3>
-          <p>Track active trips with real-time route data. Foreground service keeps tracking alive even in the background.</p>
+          <p>Record your trips, distance, routes, and travel history while keeping location data under your control.</p>
         </div>
         <div class="feature-card fade-up">
-          <div class="feature-icon feature-icon--pink">&#127919;</div>
+          <div class="feature-icon fi-cyan"><svg><use href="#i-wrench"/></svg></div>
           <h3>Workshop Discovery</h3>
-          <p>Find nearby workshops on an interactive map. View locations, navigate, or book services directly from the app.</p>
+          <p>Find nearby workshops and make better decisions when your vehicle needs professional attention.</p>
         </div>
         <div class="feature-card fade-up">
-          <div class="feature-icon feature-icon--cyan">&#9729;</div>
-          <h3>Cloud Sync</h3>
-          <p>Backup to local files or sync to Supabase cloud. Resolve conflicts, restore data, or delete backups anytime.</p>
+          <div class="feature-icon fi-orange"><svg><use href="#i-cloud"/></svg></div>
+          <h3>Cloud Sync &amp; Backup</h3>
+          <p>Backup your vehicle records securely and restore them when switching devices — optional, never forced.</p>
+        </div>
+        <div class="feature-card fade-up">
+          <div class="feature-icon fi-emerald"><svg><use href="#i-shield"/></svg></div>
+          <h3>Privacy Control</h3>
+          <p>No ads, no trackers, and no hidden data collection. Your vehicle data belongs to you, period.</p>
         </div>
       </div>
     </section>
 
-    <section class="trust">
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="how-it-works" id="how-it-works">
       <div class="section-header fade-up">
-        <div class="section-label">Security</div>
-        <h2>Built with trust in mind</h2>
-        <p>Your data stays yours. We take privacy and security seriously.</p>
+        <div class="section-badge">How It Works</div>
+        <h2>Start managing your vehicle<br>in minutes.</h2>
+        <p>Get started in a few simple steps with no account required.</p>
       </div>
-      <div class="trust-grid">
-        <div class="trust-item fade-up">
-          <div class="trust-icon">&#128274;</div>
-          <h4>Local-First</h4>
-          <p>All data stored on your device by default. Cloud sync is optional.</p>
+      <div class="steps-grid">
+        <div class="step-card fade-up">
+          <div class="step-num">1</div>
+          <h4>Add your vehicle</h4>
+          <p>Create a profile for your car or motorcycle with brand, model, year, and plate.</p>
         </div>
-        <div class="trust-item fade-up">
-          <div class="trust-icon">&#128272;</div>
-          <h4>Encrypted</h4>
-          <p>Backups encrypted with PBKDF2-SHA256 for maximum security.</p>
+        <div class="step-card fade-up">
+          <div class="step-num">2</div>
+          <h4>Track condition</h4>
+          <p>Monitor mileage, component health, and maintenance status at a glance.</p>
         </div>
-        <div class="trust-item fade-up">
-          <div class="trust-icon">&#128683;</div>
-          <h4>No Ads</h4>
-          <p>No advertising, no trackers, no selling your data. Ever.</p>
+        <div class="step-card fade-up">
+          <div class="step-num">3</div>
+          <h4>Log service history</h4>
+          <p>Save every repair, service, part replacement, and workshop visit with cost and date.</p>
         </div>
-        <div class="trust-item fade-up">
-          <div class="trust-icon">&#128100;</div>
-          <h4>User Control</h4>
-          <p>Export, delete, or sync your data. Full control at all times.</p>
+        <div class="step-card fade-up">
+          <div class="step-num">4</div>
+          <h4>Record trips</h4>
+          <p>Track distance, routes, and travel activity with full user control over location data.</p>
+        </div>
+        <div class="step-card fade-up">
+          <div class="step-num">5</div>
+          <h4>Find workshops</h4>
+          <p>Discover nearby workshops and choose the right service provider for your vehicle.</p>
+        </div>
+        <div class="step-card fade-up">
+          <div class="step-num">6</div>
+          <h4>Backup securely</h4>
+          <p>Keep your records safe with encrypted backup and optional cloud sync for peace of mind.</p>
         </div>
       </div>
     </section>
 
-    <section class="cta">
-      <div class="cta-card fade-up">
-        <h2>Ready to take control?</h2>
-        <p>SteerIn keeps your vehicle data secure, organized, and always accessible.</p>
-        <div class="hero-actions">
-          <a href="./privacy-policy/" class="btn btn--primary">Read Privacy Policy</a>
+    <!-- ===== PRIVACY & SECURITY ===== -->
+    <section class="privacy" id="privacy">
+      <div class="section-header fade-up">
+        <div class="section-badge">Privacy &amp; Security</div>
+        <h2>Built for privacy from day one.</h2>
+      </div>
+      <p class="privacy-intro fade-up">
+        Your vehicle records, service history, and trip data are personal. <strong>SteerIn is designed around user control</strong>, local-first storage, optional encrypted backup, and zero advertising trackers.
+      </p>
+      <div class="privacy-grid">
+        <div class="privacy-card fade-up">
+          <div class="privacy-card-icon"><svg><use href="#i-phone"/></svg></div>
+          <h4>Local data first</h4>
+          <p>All data is stored on your device by default. No remote servers involved.</p>
+        </div>
+        <div class="privacy-card fade-up">
+          <div class="privacy-card-icon"><svg><use href="#i-cloud"/></svg></div>
+          <h4>Optional cloud sync</h4>
+          <p>Sync to the cloud only when you decide. It is never automatic or forced.</p>
+        </div>
+        <div class="privacy-card fade-up">
+          <div class="privacy-card-icon"><svg><use href="#i-lock"/></svg></div>
+          <h4>Encrypted backup</h4>
+          <p>Backups are protected with strong encryption before leaving your device.</p>
+        </div>
+        <div class="privacy-card fade-up">
+          <div class="privacy-card-icon"><svg><use href="#i-pin"/></svg></div>
+          <h4>User-controlled GPS</h4>
+          <p>Trip logging only runs when you start it. Location data stays under your control.</p>
+        </div>
+        <div class="privacy-card fade-up">
+          <div class="privacy-card-icon"><svg><use href="#i-download"/></svg></div>
+          <h4>Export &amp; delete control</h4>
+          <p>Export your data, delete local records, or clear cloud backups anytime.</p>
+        </div>
+        <div class="privacy-card fade-up">
+          <div class="privacy-card-icon"><svg><use href="#i-xcircle"/></svg></div>
+          <h4>No ads or trackers</h4>
+          <p>No advertising SDKs, no analytics, no third-party tracking. Clean and private.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== APP PREVIEW ===== -->
+    <section class="app-preview">
+      <div class="section-header fade-up">
+        <div class="section-badge">Preview</div>
+        <h2>See SteerIn in action.</h2>
+        <p>Real app screens showing how SteerIn helps you stay on top of your vehicle life.</p>
+      </div>
+      <div class="preview-grid">
+        <div class="preview-card fade-up">
+          <div class="preview-head">
+            <div class="pv-icon"><svg><use href="#i-car"/></svg></div>
+            <h4>Garage Dashboard</h4>
+          </div>
+          <div class="preview-body">
+            <div class="pv-row"><span class="pv-label">Honda Civic</span><span class="pv-green">92%</span></div>
+            <div class="pv-row"><span class="pv-label">Yamaha NMAX</span><span class="pv-green">87%</span></div>
+            <div class="pv-row"><span class="pv-label">Toyota Avanza</span><span class="pv-amber">76%</span></div>
+          </div>
+        </div>
+        <div class="preview-card fade-up">
+          <div class="preview-head">
+            <div class="pv-icon"><svg><use href="#i-activity"/></svg></div>
+            <h4>Vehicle Health</h4>
+          </div>
+          <div class="preview-body">
+            <div class="pv-row"><span class="pv-label">Engine</span><span class="pv-green">Good</span></div>
+            <div class="pv-row"><span class="pv-label">Brakes</span><span class="pv-amber">Due soon</span></div>
+            <div class="pv-row"><span class="pv-label">Tires</span><span class="pv-green">OK</span></div>
+            <div class="pv-row"><span class="pv-label">Battery</span><span class="pv-green">Good</span></div>
+          </div>
+        </div>
+        <div class="preview-card fade-up">
+          <div class="preview-head">
+            <div class="pv-icon"><svg><use href="#i-wrench"/></svg></div>
+            <h4>Maintenance Log</h4>
+          </div>
+          <div class="preview-body">
+            <div class="pv-row"><span class="pv-label">Oil Change</span><span class="pv-value">5,000 km</span></div>
+            <div class="pv-row"><span class="pv-label">Tire Rotation</span><span class="pv-value">10,000 km</span></div>
+            <div class="pv-row"><span class="pv-label">Brake Check</span><span class="pv-value">Every 15,000 km</span></div>
+            <div class="pv-row"><span class="pv-label">Last Service</span><span class="pv-value">2 Apr 2026</span></div>
+          </div>
+        </div>
+        <div class="preview-card fade-up">
+          <div class="preview-head">
+            <div class="pv-icon"><svg><use href="#i-pin"/></svg></div>
+            <h4>Trip History</h4>
+          </div>
+          <div class="preview-body">
+            <div class="pv-row"><span class="pv-label">Today</span><span class="pv-value">24 km</span></div>
+            <div class="pv-row"><span class="pv-label">This Week</span><span class="pv-value">156 km</span></div>
+            <div class="pv-row"><span class="pv-label">This Month</span><span class="pv-value">842 km</span></div>
+            <div class="pv-row"><span class="pv-label">Total Tracked</span><span class="pv-value">3,210 km</span></div>
+          </div>
+        </div>
+        <div class="preview-card fade-up">
+          <div class="preview-head">
+            <div class="pv-icon"><svg><use href="#i-globe"/></svg></div>
+            <h4>Workshop Map</h4>
+          </div>
+          <div class="preview-body">
+            <div class="pv-row"><span class="pv-label">AutoPro Bengkel</span><span class="pv-value">0.8 km</span></div>
+            <div class="pv-row"><span class="pv-label">Mandiri Motor</span><span class="pv-value">1.2 km</span></div>
+            <div class="pv-row"><span class="pv-label">SpeedFix Garage</span><span class="pv-value">2.5 km</span></div>
+            <div class="pv-row"><span class="pv-label">Avg. Rating</span><span class="pv-value">4.5 ⭐</span></div>
+          </div>
+        </div>
+        <div class="preview-card fade-up">
+          <div class="preview-head">
+            <div class="pv-icon"><svg><use href="#i-cloud"/></svg></div>
+            <h4>Cloud Backup</h4>
+          </div>
+          <div class="preview-body">
+            <div class="pv-row"><span class="pv-label">Last Backup</span><span class="pv-value">20 May 2026</span></div>
+            <div class="pv-row"><span class="pv-label">Encrypted</span><span class="pv-green">Yes</span></div>
+            <div class="pv-row"><span class="pv-label">Storage Used</span><span class="pv-value">2.4 MB</span></div>
+            <div class="pv-row"><span class="pv-label">Auto Backup</span><span class="pv-value">Off</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== AVAILABILITY ===== -->
+    <section class="availability" id="early-access">
+      <div class="avail-card fade-up">
+        <div class="section-badge">Availability</div>
+        <h2>Built native for Android.</h2>
+        <p>SteerIn is currently in release candidate testing before public launch. Join early access to try the app, give feedback, and help shape the final release.</p>
+        <div class="avail-badges">
+          <span class="avail-badge"><span class="check">✓</span> Native Android app</span>
+          <span class="avail-badge"><span class="check">✓</span> No account required</span>
+          <span class="avail-badge"><span class="check">✓</span> Release Candidate</span>
+        </div>
+        <div class="hero-actions" style="justify-content:center">
+          <a href="mailto:sudutkamar.co@gmail.com?subject=Join%20SteerIn%20Early%20Access" class="btn btn--primary">Join Early Access</a>
+          <a href="#faq" class="btn btn--ghost">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq" id="faq">
+      <div class="section-header fade-up">
+        <div class="section-badge">FAQ</div>
+        <h2>Frequently asked questions.</h2>
+        <p>Common questions about SteerIn, privacy, and availability.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item fade-up">
+          <button class="faq-q" aria-expanded="false">Is SteerIn available on Android?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p>Yes, SteerIn is built as a native Android app targeting modern Android versions.</p></div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-q" aria-expanded="false">Is SteerIn free?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p>Pricing and release details will be announced closer to public launch. The early access version will be available at no cost.</p></div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-q" aria-expanded="false">Does SteerIn track my location all the time?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p>No. Trip logging only runs when you start it. Location data remains under user control at all times.</p></div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-q" aria-expanded="false">Is cloud sync required?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p>No. SteerIn is usable entirely local-first with cloud sync as an optional feature. No account needed.</p></div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-q" aria-expanded="false">Can I backup my vehicle data?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p>Yes. SteerIn supports secure encrypted backups so your records are not lost when changing devices.</p></div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-q" aria-expanded="false">Does SteerIn show ads?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p>No. Zero ads, zero trackers, zero analytics SDKs. Your data is yours.</p></div>
+        </div>
+        <div class="faq-item fade-up">
+          <button class="faq-q" aria-expanded="false">Can I manage both cars and motorcycles?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p>Yes. SteerIn is designed for both cars and motorcycles in a single dashboard.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FINAL CTA ===== -->
+    <section class="final-cta">
+      <div class="final-card fade-up">
+        <h2>Take control of your vehicle history.</h2>
+        <p>From maintenance to trips, from service records to workshop discovery — SteerIn keeps your vehicle life organized, useful, and private.</p>
+
+        <!-- Waitlist Form -->
+        <form data-form novalidate style="max-width:440px;margin:0 auto 20px">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <input type="email" class="form-input" placeholder="Enter your email" required autocomplete="email" style="min-width:200px;flex:1">
+            <button type="submit" class="btn btn--primary form-btn">Get Early Access</button>
+          </div>
+          <div class="form-error"></div>
+          <div class="form-success"></div>
+        </form>
+
+        <div class="hero-actions" style="justify-content:center">
           <a href="mailto:sudutkamar.co@gmail.com" class="btn btn--ghost">Contact Support</a>
         </div>
       </div>
     </section>
 
+    <!-- ===== FOOTER ===== -->
     <footer>
-      <div class="footer-inner">
-        <div class="footer-copy">&copy; 2026 SteerIn. All rights reserved.</div>
-        <div class="footer-links">
-          <a href="./privacy-policy/">Privacy Policy</a>
-          <a href="mailto:sudutkamar.co@gmail.com">Support</a>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="nav-brand">
+            <img src="logo.png" alt="SteerIn" class="nav-logo">
+            SteerIn
+          </a>
+          <p>Private vehicle management for cars and motorcycles. Built for Android with local-first storage, optional cloud sync, and zero trackers.</p>
         </div>
+        <div class="footer-col">
+          <h5>Product</h5>
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How it Works</a>
+          <a href="#early-access">Early Access</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <a href="./privacy-policy/">Privacy Policy</a>
+        </div>
+        <div class="footer-col">
+          <h5>Support</h5>
+          <a href="mailto:sudutkamar.co@gmail.com">Contact Support</a>
+          <a href="mailto:sudutkamar.co@gmail.com?subject=Bug%20Report">Report a Bug</a>
+          <a href="mailto:sudutkamar.co@gmail.com?subject=Feature%20Request">Request Feature</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2026 SteerIn. All rights reserved. Built for Android.</div>
       </div>
     </footer>
   </div>
 
-  <script>
-    // Theme toggle
-    const themeToggle = document.querySelector('.theme-toggle');
-    const html = document.documentElement;
-    const stored = localStorage.getItem('steerin-theme');
-    if (stored) html.setAttribute('data-theme', stored);
-
-    themeToggle.addEventListener('click', () => {
-      const current = html.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('steerin-theme', next);
-    });
-
-    // Mobile menu toggle
-    const toggle = document.querySelector('.nav-toggle');
-    const links = document.querySelector('.nav-links');
-
-    toggle.addEventListener('click', () => {
-      toggle.classList.toggle('active');
-      links.classList.toggle('active');
-    });
-
-    links.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        toggle.classList.remove('active');
-        links.classList.remove('active');
-      });
-    });
-
-    // Fade-in animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  </script>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>
