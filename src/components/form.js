@@ -1,7 +1,18 @@
+function sanitize(str) {
+  if (!str) return '';
+  const el = document.createElement('div');
+  el.textContent = str;
+  return el.innerHTML;
+}
+
 export function initForms() {
   document.querySelectorAll('[data-form]').forEach(form => {
     form.addEventListener('submit', async e => {
       e.preventDefault();
+
+      // --- Honeypot check ---
+      const honeypot = form.querySelector('.honeypot');
+      if (honeypot && honeypot.value.trim() !== '') return;
 
       const input = form.querySelector('.form-input');
       const success = form.querySelector('.form-success');
@@ -15,6 +26,7 @@ export function initForms() {
       input.disabled = true;
       if (btn) btn.disabled = true;
       if (error) error.classList.remove('visible');
+      if (success) success.classList.remove('visible');
 
       try {
         const res = await fetch('/api/subscribe', {
@@ -28,13 +40,13 @@ export function initForms() {
         if (res.ok && data.success) {
           if (success) {
             success.classList.add('visible');
-            success.textContent = data.message || "✓ You're on the list! We'll notify you when SteerIn launches.";
+            success.innerHTML = sanitize(data.message || "✓ You're on the list! We'll notify you when SteerIn launches.");
           }
           if (input) input.style.display = 'none';
           if (btn) btn.style.display = 'none';
         } else {
           if (error) {
-            error.textContent = data.error || 'Something went wrong. Try again.';
+            error.innerHTML = sanitize(data.error || 'Something went wrong. Try again.');
             error.classList.add('visible');
           }
           input.disabled = false;

@@ -20,6 +20,8 @@
 </head>
 <body>
   <div class="noise"></div>
+  <div id="cursor-glow" aria-hidden="true"></div>
+  <div id="three-canvas" aria-hidden="true"></div>
   <div class="orb orb--1"></div>
   <div class="orb orb--2"></div>
   <div class="orb orb--3"></div>
@@ -84,6 +86,7 @@
         <!-- Waitlist Form -->
         <form class="hero-form" data-form novalidate>
           <input type="email" class="form-input" placeholder="Enter your email" required autocomplete="email">
+          <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button type="submit" class="btn btn--primary form-btn">Get Early Access</button>
           <div class="form-error"></div>
           <div class="form-success"></div>
@@ -254,7 +257,7 @@
         </div>
         <div class="problem-right fade-up">
           <div class="problem-stat">
-            <div class="problem-stat-num">3</div>
+            <div class="problem-stat-num" data-target="3">0</div>
             <div class="problem-stat-label">vehicles per average household in Indonesia</div>
           </div>
           <div class="problem-quote">
@@ -545,9 +548,10 @@
         <p>From maintenance to trips, from service records to workshop discovery — SteerIn keeps your vehicle life organized, useful, and private.</p>
 
         <!-- Waitlist Form -->
-        <form data-form novalidate style="max-width:440px;margin:0 auto 20px">
+        <form data-form novalidate style="max-width:440px;margin:0 auto 20px;position:relative">
           <div style="display:flex;gap:8px;flex-wrap:wrap">
             <input type="email" class="form-input" placeholder="Enter your email" required autocomplete="email" style="min-width:200px;flex:1">
+            <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
             <button type="submit" class="btn btn--primary form-btn">Get Early Access</button>
           </div>
           <div class="form-error"></div>

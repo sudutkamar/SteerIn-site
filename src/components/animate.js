@@ -1,9 +1,9 @@
 export function initAnimations() {
   const observer = new IntersectionObserver(
     entries => {
-      entries.forEach((entry, i) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 50);
+          entry.target.classList.add('visible');
           observer.unobserve(entry.target);
         }
       });

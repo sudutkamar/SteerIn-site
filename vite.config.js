@@ -5,5 +5,12 @@ export default defineConfig({
     outDir: 'dist',
     cssMinify: true,
     minify: 'esbuild',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          three: ['three'],
+        },
+      },
+    },
   },
 });
