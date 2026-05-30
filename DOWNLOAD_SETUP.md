@@ -124,9 +124,10 @@ Consider adding:
 ## Troubleshooting
 
 ### Download Not Working
-- Check if files exist in `downloads/` directory
-- Verify file permissions
-- Check browser console for errors
+1. **Check file location:** Ensure APK is in `public/downloads/`
+2. **Rebuild project:** Run `npm run build` after adding files
+3. **Check browser console:** Look for CORS or network errors
+4. **Verify Content-Type:** Should be `application/vnd.android.package-archive`
 
 ### SHA-256 Mismatch
 - Regenerate the checksum file
@@ -137,6 +138,15 @@ Consider adding:
 - Some mobile browsers may handle APK downloads differently
 - Users may need to enable "Install from Unknown Sources"
 - Consider adding installation instructions
+
+### Content-Type Issues
+**For Development (Vite):**
+- Content-Type is set automatically via Vite plugin in `vite.config.js`
+- Restart dev server after changes
+
+**For Production (Netlify):**
+- Content-Type is set via `_headers` file in `public/`
+- Headers are automatically applied to `/downloads/*.apk`
 
 ## Contact
 

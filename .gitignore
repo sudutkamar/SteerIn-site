@@ -1,4 +1,32 @@
+# Dependencies
 node_modules
+
+# Build output
 dist
+
+# OS files
 .DS_Store
+Thumbs.db
+
+# Environment files
 *.local
+.env
+.env.*
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+
+# Large files (APK)
+public/downloads/*.apk
+public/downloads/*.apk.sha256
+*.apk
+
+# Logs
+*.log
+npm-debug.log*
+
+# Optional: .opencode folder
+.opencode
