@@ -99,10 +99,14 @@ export const handler = async (event) => {
       return { statusCode: 400, headers, body: JSON.stringify({ error: 'Please enter a valid email address.' }) };
     }
 
-    // --- Persist (uncomment when Netlify Blob is ready) ---
-    // const { connect } = await import('@netlify/blobs');
-    // const store = connect({ name: 'subscribers' });
-    // await store.set(email.toLowerCase(), JSON.stringify({ email: email.toLowerCase(), ts: new Date().toISOString() }));
+    // --- Persist to Netlify Blob ---
+    try {
+      const { connect } = await import('@netlify/blobs');
+      const store = connect({ name: 'subscribers' });
+      await store.set(email.toLowerCase(), JSON.stringify({ email: email.toLowerCase(), ts: new Date().toISOString() }));
+    } catch (blobErr) {
+      console.warn('[Subscribe] Blob storage unavailable, logging only:', blobErr.message);
+    }
 
     console.log('[Subscribe]', email.toLowerCase(), new Date().toISOString());
 

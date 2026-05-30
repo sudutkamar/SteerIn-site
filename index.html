@@ -12,13 +12,30 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SteerIn — Private Vehicle Management">
   <meta name="twitter:description" content="Manage cars and motorcycles, track maintenance, log trips, and protect your vehicle data — all private and local-first.">
-  <link rel="icon" type="image/png" href="logo.png">
+  <meta property="og:image" content="https://steerin.app/logo.png">
+  <link rel="canonical" href="https://steerin.app/">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="apple-touch-icon" href="/logo.png">
+  <link rel="manifest" href="/manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "SteerIn",
+    "operatingSystem": "Android",
+    "applicationCategory": "VehicleManagementApplication",
+    "description": "Private vehicle management for cars and motorcycles. Track maintenance, service history, trips, and workshops with local-first storage.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "url": "https://steerin.app"
+  }
+  </script>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to main content</a>
   <div class="noise"></div>
   <div id="cursor-glow" aria-hidden="true"></div>
   <div id="three-canvas" aria-hidden="true"></div>
@@ -43,7 +60,7 @@
     <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
   </svg>
 
-  <div class="container">
+  <div class="container" id="main">
     <!-- ===== NAVBAR ===== -->
     <nav>
       <a href="/" class="nav-brand">
@@ -55,12 +72,12 @@
         <a href="#how-it-works">How it Works</a>
         <a href="#privacy">Privacy</a>
         <a href="#faq">FAQ</a>
-        <a href="#early-access" class="nav-cta">Join Early Access</a>
+        <a href="#download" class="nav-cta">Download</a>
         <button class="theme-toggle" aria-label="Toggle theme">
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
-        <button class="nav-toggle" aria-label="Menu">
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -76,16 +93,17 @@
         <h1>Your private vehicle<br><span class="gradient">command center.</span></h1>
         <p>SteerIn helps you manage cars and motorcycles, track maintenance, log trips, discover workshops, and protect your vehicle history — with local-first storage, optional cloud sync, and no trackers.</p>
         <div class="hero-actions">
-          <a href="#early-access" class="btn btn--primary">
-            Join Early Access
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <a href="#download" class="btn btn--primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><use href="#i-download"/></svg>
+            Download for Android
           </a>
           <a href="#features" class="btn btn--ghost">Explore Features</a>
         </div>
 
         <!-- Waitlist Form -->
         <form class="hero-form" data-form novalidate>
-          <input type="email" class="form-input" placeholder="Enter your email" required autocomplete="email">
+          <label for="hero-email" class="sr-only">Email address</label>
+          <input type="email" id="hero-email" class="form-input" placeholder="Enter your email" required autocomplete="email" aria-label="Email address">
           <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button type="submit" class="btn btn--primary form-btn">Get Early Access</button>
           <div class="form-error"></div>
@@ -484,20 +502,49 @@
       </div>
     </section>
 
-    <!-- ===== AVAILABILITY ===== -->
-    <section class="availability" id="early-access">
-      <div class="avail-card fade-up">
-        <div class="section-badge">Availability</div>
-        <h2>Built native for Android.</h2>
-        <p>SteerIn is currently in release candidate testing before public launch. Join early access to try the app, give feedback, and help shape the final release.</p>
-        <div class="avail-badges">
-          <span class="avail-badge"><span class="check">✓</span> Native Android app</span>
-          <span class="avail-badge"><span class="check">✓</span> No account required</span>
-          <span class="avail-badge"><span class="check">✓</span> Release Candidate</span>
+    <!-- ===== DOWNLOAD ===== -->
+    <section class="download" id="download">
+      <div class="download-card fade-up">
+        <div class="section-badge">Download</div>
+        <h2>Get SteerIn for Android.</h2>
+        <p>Download the latest version of SteerIn and start managing your vehicles today. Free, no account required, and privacy-focused.</p>
+        
+        <div class="download-info">
+          <div class="download-version">
+            <span class="download-label">Version</span>
+            <span class="download-value">2.0.0-rc.1</span>
+          </div>
+          <div class="download-size">
+            <span class="download-label">Size</span>
+            <span class="download-value">~15 MB</span>
+          </div>
+          <div class="download-req">
+            <span class="download-label">Requires</span>
+            <span class="download-value">Android 8.0+</span>
+          </div>
         </div>
-        <div class="hero-actions" style="justify-content:center">
-          <a href="mailto:sudutkamar.co@gmail.com?subject=Join%20SteerIn%20Early%20Access" class="btn btn--primary">Join Early Access</a>
-          <a href="#faq" class="btn btn--ghost">Learn More</a>
+
+        <div class="download-badges">
+          <span class="download-badge"><span class="check">✓</span> Native Android app</span>
+          <span class="download-badge"><span class="check">✓</span> No account required</span>
+          <span class="download-badge"><span class="check">✓</span> Release Candidate</span>
+          <span class="download-badge"><span class="check">✓</span> Privacy-focused</span>
+        </div>
+
+        <div class="download-buttons">
+          <a href="/downloads/steerin-latest.apk" class="btn btn--primary btn--download" download>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><use href="#i-download"/></svg>
+            Download APK
+          </a>
+          <a href="/downloads/steerin-latest.apk.sha256" class="btn btn--ghost btn--verify" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-shield"/></svg>
+            Verify SHA-256
+          </a>
+        </div>
+
+        <div class="download-note">
+          <p>By downloading, you agree to our <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms/">Terms of Service</a>.</p>
+          <p class="download-troubleshoot">Having trouble? <a href="mailto:sudutkamar.co@gmail.com?subject=Download%20Issue">Contact Support</a></p>
         </div>
       </div>
     </section>
@@ -550,7 +597,8 @@
         <!-- Waitlist Form -->
         <form data-form novalidate style="max-width:440px;margin:0 auto 20px;position:relative">
           <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <input type="email" class="form-input" placeholder="Enter your email" required autocomplete="email" style="min-width:200px;flex:1">
+            <label for="cta-email" class="sr-only">Email address</label>
+            <input type="email" id="cta-email" class="form-input" placeholder="Enter your email" required autocomplete="email" aria-label="Email address" style="min-width:200px;flex:1">
             <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
             <button type="submit" class="btn btn--primary form-btn">Get Early Access</button>
           </div>
@@ -578,12 +626,13 @@
           <h5>Product</h5>
           <a href="#features">Features</a>
           <a href="#how-it-works">How it Works</a>
-          <a href="#early-access">Early Access</a>
+          <a href="#download">Download</a>
           <a href="#faq">FAQ</a>
         </div>
         <div class="footer-col">
           <h5>Legal</h5>
           <a href="./privacy-policy/">Privacy Policy</a>
+          <a href="./terms/">Terms of Service</a>
         </div>
         <div class="footer-col">
           <h5>Support</h5>

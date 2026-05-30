@@ -26,11 +26,21 @@ const WHEEL_TUBE = 0.055;
 
 export async function init3DScene() {
   if (window.innerWidth < 900) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const container = document.getElementById('three-canvas');
   if (!container || container.dataset.initialized) return;
+
+  // WebGL support check
+  try {
+    const testCanvas = document.createElement('canvas');
+    const gl = testCanvas.getContext('webgl') || testCanvas.getContext('experimental-webgl');
+    if (!gl) return;
+  } catch (e) { return; }
+
   container.dataset.initialized = '1';
 
-  THREE = await import('three');
+  try {
+    THREE = await import('three');
 
   /* ---- Scene ---- */
   scene = new THREE.Scene();
@@ -81,7 +91,20 @@ export async function init3DScene() {
   document.addEventListener('mousemove', onMouse, { passive: true });
   window.addEventListener('resize', onResize, { passive: true });
 
+  // Pause animation when tab is hidden
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (animId) cancelAnimationFrame(animId);
+      animId = null;
+    } else if (!animId) {
+      animate();
+    }
+  });
+
   animate();
+  } catch (e) {
+    console.warn('3D scene initialization failed:', e);
+  }
 }
 
 /* ───────────────────────────────────────────────

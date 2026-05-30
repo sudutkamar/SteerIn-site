@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Privacy Policy for SteerIn — how we collect, use, and protect your data.">
   <title>Privacy Policy — SteerIn</title>
+  <meta property="og:title" content="Privacy Policy — SteerIn">
+  <meta property="og:description" content="How SteerIn collects, uses, and protects your vehicle data.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://steerin.app/privacy-policy/">
+  <meta property="og:image" content="https://steerin.app/logo.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Privacy Policy — SteerIn">
+  <meta name="twitter:description" content="How SteerIn collects, uses, and protects your vehicle data.">
+  <link rel="canonical" href="https://steerin.app/privacy-policy/">
   <link rel="icon" type="image/png" href="../logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -325,7 +334,30 @@
       transform: translateY(0);
     }
 
+    /* Motion & Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      .orb { animation: none !important; }
+      .fade-up { transition: none !important; opacity: 1 !important; transform: none !important; }
+    }
+    html { -webkit-tap-highlight-color: transparent; }
+
+    /* Safe area for notched phones */
+    @supports (padding: env(safe-area-inset-left)) {
+      .container {
+        padding-left: max(24px, env(safe-area-inset-left));
+        padding-right: max(24px, env(safe-area-inset-right));
+      }
+      footer { padding-bottom: env(safe-area-inset-bottom); }
+    }
+
     /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .theme-toggle { width: 40px; height: 40px; }
+      .nav-links a { padding: 8px 4px; }
+      .toc-list { grid-template-columns: 1fr; }
+      .orb { display: none; }
+    }
+
     @media (max-width: 640px) {
       .container { padding: 0 16px; }
 
@@ -350,6 +382,7 @@
       .nav-links a {
         font-size: 20px;
         font-weight: 600;
+        padding: 12px 24px;
       }
       .nav-toggle.active span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
@@ -363,14 +396,20 @@
 
       .page-header { padding: 40px 0 32px; }
       .policy-section { padding: 24px; }
-      .toc-list { grid-template-columns: 1fr; }
+      .theme-toggle { width: 44px; height: 44px; }
+      .orb { display: none; }
+      .noise { display: none; }
 
       .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
     }
 
     @media (max-width: 400px) {
+      .container { padding: 0 12px; }
       .page-header h1 { font-size: 28px; letter-spacing: -1px; }
       .meta-row { flex-direction: column; gap: 8px; }
+      .policy-section { padding: 20px 16px; }
+      .highlight-box { padding: 16px; }
+      .toc { padding: 20px 0; }
     }
   </style>
 </head>
@@ -522,6 +561,7 @@
         <div class="footer-copy">&copy; 2026 SteerIn. All rights reserved.</div>
         <div class="footer-links">
           <a href="../">Home</a>
+          <a href="../terms/">Terms of Service</a>
           <a href="mailto:sudutkamar.co@gmail.com">Support</a>
         </div>
       </div>
@@ -547,8 +587,19 @@
     const links = document.querySelector('.nav-links');
 
     toggle.addEventListener('click', () => {
+      const isActive = links.classList.toggle('active');
       toggle.classList.toggle('active');
-      links.classList.toggle('active');
+      toggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+      document.body.style.overflow = isActive ? 'hidden' : '';
+    });
+
+    links.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.classList.remove('active');
+        links.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
     });
 
     links.querySelectorAll('a').forEach(link => {

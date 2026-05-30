@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "checksum": "node -e \"const crypto = require('crypto'); const fs = require('fs'); const file = process.argv[1]; const hash = crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex'); fs.writeFileSync(file + '.sha256', hash + '  ' + require('path').basename(file)); console.log('✓ Checksum generated: ' + file + '.sha256');\"",
+    "deploy:check": "npm run build && echo '✓ Build successful. Ready to deploy.'"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.0.0"
   },
   "devDependencies": {
     "three": "^0.172.0",

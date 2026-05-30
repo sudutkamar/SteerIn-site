@@ -6,6 +6,7 @@ export function initNav() {
   toggle.addEventListener('click', () => {
     const isActive = links.classList.toggle('active');
     toggle.classList.toggle('active');
+    toggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
     document.body.style.overflow = isActive ? 'hidden' : '';
   });
 
@@ -13,6 +14,7 @@ export function initNav() {
     link.addEventListener('click', () => {
       links.classList.remove('active');
       toggle.classList.remove('active');
+      toggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     });
   });
