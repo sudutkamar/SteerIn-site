@@ -10,6 +10,7 @@ export default defineConfig({
     build: {
       cssMinify: true,
       minify: 'esbuild',
+      chunkSizeWarningLimit: 800,
     },
   },
 });
