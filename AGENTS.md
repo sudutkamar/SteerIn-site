@@ -7,7 +7,7 @@
 ### Key Information
 - **Project Name:** steerin-site
 - **Version:** 2.0.0
-- **Type:** Static Landing Page (SPA-like with vanilla JS)
+- **Type:** Static Astro landing page with vanilla JS islands
 - **Hosting:** Netlify (static + serverless functions)
 - **Live URL:** https://steerin.app
 - **Repository:** GitLab
@@ -19,8 +19,8 @@
 ### Core Technologies
 | Technology | Purpose | Version |
 |------------|---------|---------|
-| **Vite** | Build tool & dev server | ^6.3.0 |
-| **Vanilla JavaScript** | Frontend logic (no framework) | ES2022+ |
+| **Astro** | Static site framework & build system | ^6.4.2 |
+| **Vanilla JavaScript** | Client-side islands/behavior | ES2022+ |
 | **Three.js** | 3D WebGL scene (car animation) | ^0.172.0 |
 | **CSS3** | Styling (custom properties, animations) | - |
 | **Netlify** | Hosting, serverless functions, redirects | - |
@@ -36,7 +36,7 @@
 
 ```
 steerin-site/
-├── index.html                  # Main HTML file (single-page)
+├── astro.config.mjs            # Astro static build config
 ├── package.json                # Project config & dependencies
 ├── vite.config.js              # Vite build configuration
 ├── netlify.toml                # Netlify deployment config
@@ -50,8 +50,10 @@ steerin-site/
 │       └── index.html          # Privacy policy page
 │
 ├── src/                        # Source code
-│   ├── main.js                 # Entry point — initializes all components
-│   ├── style.css               # Global styles (32KB+)
+│   ├── pages/
+│   │   └── index.astro         # Main landing page
+│   ├── main.js                 # Client entry — initializes all components
+│   ├── style.css               # Global styles
 │   └── components/             # Modular JS components
 │       ├── animate.js          # Intersection Observer fade-up animations
 │       ├── canvas3d.js         # Three.js 3D car scene (code-split)
@@ -422,13 +424,13 @@ When working on this project:
 
 ### Commands Reference
 ```bash
-npm run dev      # Start development server
+npm run dev      # Start Astro development server
 npm run build    # Production build
 npm run preview  # Preview production build
 ```
 
 ### File Edit Priorities
-1. `index.html` — Content changes
+1. `src/pages/index.astro` — Content changes
 2. `src/style.css` — Styling changes
 3. `src/components/*.js` — Behavior changes
 4. `netlify/functions/subscribe.mjs` — API changes
@@ -437,5 +439,5 @@ npm run preview  # Preview production build
 
 ---
 
-*Last updated: 2026-05-30*
+*Last updated: 2026-06-02*
 *Generated for pi coding agent*

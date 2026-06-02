@@ -1,3 +1,6 @@
+---
+import '../style.css';
+---
 <!doctype html>
 <html lang="en" data-theme="dark">
 <head>
@@ -20,7 +23,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/src/style.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -69,6 +71,7 @@
       </a>
       <div class="nav-links">
         <a href="#features">Features</a>
+        <a href="#advantage">Why SteerIn</a>
         <a href="#how-it-works">How it Works</a>
         <a href="#privacy">Privacy</a>
         <a href="#faq">FAQ</a>
@@ -88,16 +91,16 @@
       <div class="hero-content">
         <div class="hero-badge">
           <span class="hero-badge-dot"></span>
-          Android Release Candidate
+          Built for Indonesian cars & motorcycles
         </div>
-        <h1>Your private vehicle<br><span class="gradient">command center.</span></h1>
-        <p>SteerIn helps you manage cars and motorcycles, track maintenance, log trips, discover workshops, and protect your vehicle history — with local-first storage, optional cloud sync, and no trackers.</p>
+        <h1>Own every service,<br><span class="gradient">trip, and reminder.</span></h1>
+        <p>SteerIn turns scattered receipts, missed oil changes, workshop guesses, and multi-vehicle chaos into one premium Android garage — private by default, useful every day, and ready for cars, motorcycles, and EVs.</p>
         <div class="hero-actions">
           <a href="#download" class="btn btn--primary">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><use href="#i-download"/></svg>
             Download for Android
           </a>
-          <a href="#features" class="btn btn--ghost">Explore Features</a>
+          <a href="#advantage" class="btn btn--ghost">Why it beats basic apps</a>
         </div>
 
         <!-- Waitlist Form -->
@@ -114,11 +117,11 @@
         <div class="hero-trust">
           <span>Local-first</span>
           <span class="dot"></span>
-          <span>Encrypted backup</span>
+          <span>Cars + motorcycles + EVs</span>
           <span class="dot"></span>
-          <span>No ads</span>
+          <span>GPS trips</span>
           <span class="dot"></span>
-          <span>No trackers</span>
+          <span>No ads or trackers</span>
         </div>
       </div>
 
@@ -333,6 +336,58 @@
           <h3>Privacy Control</h3>
           <p>No ads, no trackers, and no hidden data collection. Your vehicle data belongs to you, period.</p>
         </div>
+        <div class="feature-card fade-up">
+          <div class="feature-icon fi-blue"><svg><use href="#i-activity"/></svg></div>
+          <h3>Smart Diagnostics</h3>
+          <p>Use guided symptom checks, risk levels, safe actions, and mechanic-ready notes before issues get worse.</p>
+        </div>
+        <div class="feature-card fade-up">
+          <div class="feature-icon fi-amber"><svg><use href="#i-clipboard"/></svg></div>
+          <h3>OCR Receipts &amp; Odometer</h3>
+          <p>Scan service receipts or odometer readings to reduce manual typing and keep records cleaner.</p>
+        </div>
+        <div class="feature-card fade-up">
+          <div class="feature-icon fi-purple"><svg><use href="#i-bell"/></svg></div>
+          <h3>Weekly Reports &amp; Widgets</h3>
+          <p>Review vehicle health trends, reminders, trip activity, and home-screen widget snapshots.</p>
+        </div>
+        <div class="feature-card fade-up">
+          <div class="feature-icon fi-cyan"><svg><use href="#i-car"/></svg></div>
+          <h3>Vehicle Comparison</h3>
+          <p>Compare vehicles in your garage using health, odometer, trips, fuel, and service-cost context.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COMPETITIVE ADVANTAGE ===== -->
+    <section class="advantage" id="advantage">
+      <div class="section-header fade-up">
+        <div class="section-badge">Why SteerIn</div>
+        <h2>Not just another reminder app.</h2>
+        <p>Most vehicle apps stop at logs, expenses, or simple reminders. SteerIn combines maintenance intelligence, trip context, privacy, and ownership workflows in one Android experience.</p>
+      </div>
+      <div class="advantage-grid">
+        <div class="advantage-card advantage-card--hero fade-up">
+          <span class="advantage-kicker">SteerIn advantage</span>
+          <h3>One private garage for the full vehicle lifecycle.</h3>
+          <p>From onboarding a used vehicle, tracking component health, scanning records, booking service, logging trips, comparing vehicles, and backing up data — SteerIn keeps the ownership story connected.</p>
+          <div class="advantage-pills">
+            <span>Maintenance health</span><span>GPS trips</span><span>Workshop maps</span><span>Cloud backup</span>
+          </div>
+        </div>
+        <div class="advantage-list fade-up">
+          <div class="advantage-row"><strong>Local-first privacy</strong><span>Unlike cloud-only apps, core usage works without an account and data stays on-device by default.</span></div>
+          <div class="advantage-row"><strong>Cars, motorcycles, EVs</strong><span>One dashboard for mixed garages, not separate workflows for each vehicle type.</span></div>
+          <div class="advantage-row"><strong>Component health, not just dates</strong><span>Reminders use mileage and part condition so maintenance feels proactive, not generic.</span></div>
+          <div class="advantage-row"><strong>Trip + workshop context</strong><span>GPS trip logging and nearby workshop discovery sit beside maintenance history.</span></div>
+          <div class="advantage-row"><strong>Premium native UX</strong><span>Native Android, glassmorphism UI, custom onboarding, widgets, weekly reports, and privacy controls.</span></div>
+        </div>
+      </div>
+      <div class="competitor-strip fade-up" aria-label="SteerIn comparison with typical competitors">
+        <div><span>Typical apps</span><strong>Logs only</strong></div>
+        <div><span>Typical apps</span><strong>Cloud required</strong></div>
+        <div><span>Typical apps</span><strong>Car-only focus</strong></div>
+        <div class="winner"><span>SteerIn</span><strong>Full private garage OS</strong></div>
       </div>
     </section>
 
@@ -647,6 +702,6 @@
     </footer>
   </div>
 
-  <script type="module" src="/src/main.js"></script>
+  <script>import '../main.js';</script>
 </body>
 </html>

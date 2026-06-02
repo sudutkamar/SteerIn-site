@@ -30,3 +30,6 @@ npm-debug.log*
 
 # Optional: .opencode folder
 .opencode
+
+# Astro generated
+.astro
