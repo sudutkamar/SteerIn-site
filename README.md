@@ -4,8 +4,8 @@
 
 SteerIn adalah aplikasi Android untuk mengelola mobil dan motor — dari perawatan berkala, riwayat servis, pelacakan perjalanan, hingga penemuan bengkel terdekat. Semua data tersimpan lokal di perangkatmu.
 
-[![Download](https://img.shields.io/badge/Download-APK-green?style=for-the-badge&logo=android)](https://steerin.app)
-[![Privacy](https://img.shields.io/badge/Privacy-First-blue?style=for-the-badge&logo=shield)](https://steerin.app/privacy-policy)
+[![Download](https://img.shields.io/badge/Download-APK-green?style=for-the-badge&logo=android)](https://steerin-site.vercel.app)
+[![Privacy](https://img.shields.io/badge/Privacy-First-blue?style=for-the-badge&logo=shield)](https://steerin-site.vercel.app/privacy-policy)
 
 ---
 
@@ -62,7 +62,7 @@ SteerIn dibangun dengan prinsip **privacy-first**:
 - **🔐 Biometric Lock** — Kunci aplikasi dengan sidik jari atau face unlock
 - **📤 Ekspor Data** — Ekspor semua data kapan saja dalam format standar
 
-Baca [Kebijakan Privasi](https://steerin.app/privacy-policy) lengkap.
+Baca [Kebijakan Privasi](https://steerin-site.vercel.app/privacy-policy) lengkap.
 
 ---
 
@@ -73,41 +73,26 @@ SteerIn tersedia untuk Android.
 ### Early Access
 Daftar untuk mendapatkan notifikasi saat SteerIn resmi diluncurkan:
 
-👉 **[steerin.app](https://steerin.app)**
-
----
-
-## 🛠️ Tech Stack (Aplikasi)
-
-| Technology | Purpose |
-|------------|---------|
-| **Kotlin** | Bahasa utama Android |
-| **Jetpack Compose** | UI toolkit modern |
-| **Room Database** | Local database |
-| **Koin** | Dependency Injection |
-| **ML Kit** | Odometer OCR |
-| **Google Maps** | Workshop maps & GPS tracking |
-| **Supabase** | Cloud sync (opsional) |
-| **Midtrans** | Payment gateway (premium) |
+👉 **[steerin-site.vercel.app](https://steerin-site.vercel.app)**
 
 ---
 
 ## 📸 Preview
 
-Kunjungi [steerin.app](https://steerin.app) untuk melihat preview aplikasi dan fitur lengkapnya.
+Kunjungi [steerin-site.vercel.app](https://steerin-site.vercel.app) untuk melihat preview aplikasi dan fitur lengkapnya.
 
 ---
 
 ## 📋 Changelog
 
-Lihat riwayat lengkap perkembangan SteerIn di halaman [Changelog](https://steerin.app/changelog).
+Lihat riwayat lengkap perkembangan SteerIn di halaman [Changelog](https://steerin-site.vercel.app/changelog).
 
 ---
 
 ## 📧 Kontak
 
 - **Email:** sudutkamar.co@gmail.com
-- **Website:** [steerin.app](https://steerin.app)
+- **Website:** [steerin-site.vercel.app](https://steerin-site.vercel.app)
 
 ---
 
