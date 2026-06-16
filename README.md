@@ -4,7 +4,7 @@ Landing page website for **SteerIn** — a private Android vehicle management ap
 
 ## 🌐 Live Site
 
-**steerin-site.vercel.app**
+**https://steerin-site.vercel.app**
 
 ## 📋 Overview
 
