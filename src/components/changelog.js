@@ -46,21 +46,23 @@ function markAsSeen() {
 }
 
 function initNavBadge() {
-  const navLink = document.querySelector('.nav-changelog');
-  if (!navLink) return;
+  const navLinks = document.querySelectorAll('.nav-changelog');
+  if (!navLinks.length) return;
 
-  // Check if latest entry is recent
   const latestEntry = document.querySelector('.changelog-entry--latest');
   const dateAttr = latestEntry?.querySelector('.changelog-date')?.getAttribute('datetime');
 
-  if (dateAttr && isRecent(dateAttr) && hasUnseenUpdate()) {
-    navLink.classList.add('has-new');
+  if (latestEntry) {
+    markAsSeen();
+  } else if (dateAttr && isRecent(dateAttr) && hasUnseenUpdate()) {
+    navLinks.forEach(link => link.classList.add('has-new'));
   }
 
-  // Mark as seen when clicked
-  navLink.addEventListener('click', () => {
-    markAsSeen();
-    navLink.classList.remove('has-new');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      markAsSeen();
+      navLinks.forEach(item => item.classList.remove('has-new'));
+    });
   });
 }
 

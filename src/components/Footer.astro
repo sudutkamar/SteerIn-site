@@ -1,0 +1,37 @@
+---
+const { homePrefix = '', i18n = false } = Astro.props;
+const p = homePrefix;
+---
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="/" class="nav-brand">
+        <img src="/logo.png" alt="SteerIn" class="nav-logo">
+        SteerIn
+      </a>
+      <p data-i18n={i18n ? 'footer.brand.p' : undefined}>Garasi digital privat untuk mobil dan motor. Dibuat untuk Android dengan local-first storage, cloud sync opsional, dan tanpa tracker.</p>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n={i18n ? 'footer.product' : undefined}>Produk</h5>
+      <a href={`${p}#features`} data-i18n={i18n ? 'nav.features' : undefined}>Fitur</a>
+      <a href={`${p}#how-it-works`} data-i18n={i18n ? 'nav.how' : undefined}>Cara Kerja</a>
+      <a href={`${p}#download`} data-i18n={i18n ? 'nav.download' : undefined}>Download</a>
+      <a href={`${p}#faq`} data-i18n={i18n ? 'nav.faq' : undefined}>FAQ</a>
+      <a href="/changelog">Changelog</a>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n={i18n ? 'footer.legal' : undefined}>Legal</h5>
+      <a href="/privacy-policy/" data-i18n={i18n ? 'footer.privacy' : undefined}>Privacy Policy</a>
+      <a href="/terms/" data-i18n={i18n ? 'footer.terms' : undefined}>Terms of Service</a>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n={i18n ? 'footer.support' : undefined}>Support</h5>
+      <a href="mailto:sudutkamar.co@gmail.com" data-i18n={i18n ? 'footer.contact' : undefined}>Hubungi Support</a>
+      <a href="mailto:sudutkamar.co@gmail.com?subject=Bug%20Report" data-i18n={i18n ? 'footer.bug' : undefined}>Laporkan Bug</a>
+      <a href="mailto:sudutkamar.co@gmail.com?subject=Feature%20Request" data-i18n={i18n ? 'footer.feature' : undefined}>Request Fitur</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">&copy; 2026 SteerIn. <span data-i18n={i18n ? 'footer.copy' : undefined}>All rights reserved. Dibuat untuk Android.</span></div>
+  </div>
+</footer>

@@ -1,28 +1,29 @@
 ---
-import '../style.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import MobileSidebar from '../components/MobileSidebar.astro';
+
+const mobileLinks = [
+  { href: '#features', label: 'Fitur', i18n: 'nav.features', icon: 'car' },
+  { href: '#advantage', label: 'Kenapa SteerIn', i18n: 'nav.advantage', icon: 'shield' },
+  { href: '#how-it-works', label: 'Cara Kerja', i18n: 'nav.how', icon: 'activity' },
+  { href: '#privacy', label: 'Privasi', i18n: 'nav.privacy', icon: 'lock' },
+  { href: '#faq', label: 'FAQ', i18n: 'nav.faq', icon: 'help' },
+  { href: '/changelog', label: 'Changelog', icon: 'clipboard', class: 'nav-changelog' },
+];
+
+const navLinks = [
+  { href: '#features', label: 'Fitur', i18n: 'nav.features' },
+  { href: '#advantage', label: 'Kenapa SteerIn', i18n: 'nav.advantage' },
+  { href: '#how-it-works', label: 'Cara Kerja', i18n: 'nav.how' },
+  { href: '#privacy', label: 'Privasi', i18n: 'nav.privacy' },
+  { href: '#faq', label: 'FAQ', i18n: 'nav.faq' },
+  { href: '/changelog', label: 'Changelog', class: 'nav-changelog' },
+];
 ---
-<!doctype html>
-<html lang="id" data-theme="dark">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SteerIn — Garasi Digital Privat untuk Mobil &amp; Motor</title>
-  <meta name="description" content="SteerIn adalah aplikasi Android privat untuk mengelola mobil dan motor, pengingat servis, riwayat perawatan, trip GPS, bengkel terdekat, dan kesehatan kendaraan dengan penyimpanan local-first.">
-  <meta property="og:title" content="SteerIn — Garasi Digital Privat Kamu">
-  <meta property="og:description" content="Kelola mobil dan motor, pantau servis, catat perjalanan, temukan bengkel, dan lindungi data kendaraan dengan SteerIn.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://steerin.app">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SteerIn — Garasi Digital Privat">
-  <meta name="twitter:description" content="Kelola mobil dan motor, pantau servis, catat trip, dan lindungi data kendaraan secara privat dan local-first.">
-  <meta property="og:image" content="https://steerin.app/logo.png">
-  <link rel="canonical" href="https://steerin.app/">
-  <link rel="icon" type="image/png" href="/logo.png">
-  <link rel="apple-touch-icon" href="/logo.png">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<BaseLayout showCursor={true} showThree={true} orbs={3}>
+  <Fragment slot="head">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -35,15 +36,7 @@ import '../style.css';
     "url": "https://steerin.app"
   }
   </script>
-</head>
-<body>
-  <a href="#main" class="skip-link" data-i18n="skip">Lewati ke konten utama</a>
-  <div class="noise"></div>
-  <div id="cursor-glow" aria-hidden="true"></div>
-  <div id="three-canvas" aria-hidden="true"></div>
-  <div class="orb orb--1"></div>
-  <div class="orb orb--2"></div>
-  <div class="orb orb--3"></div>
+  </Fragment>
 
   <!-- SVG Sprite -->
   <svg style="display:none">
@@ -64,40 +57,7 @@ import '../style.css';
 
   <div class="container" id="main">
     <!-- ===== NAVBAR ===== -->
-    <nav>
-      <a href="/" class="nav-brand">
-        <img src="logo.png" alt="SteerIn" class="nav-logo">
-        SteerIn
-      </a>
-      <div class="nav-links">
-        <a href="#features" data-i18n="nav.features">Fitur</a>
-        <a href="#advantage" data-i18n="nav.advantage">Kenapa SteerIn</a>
-        <a href="#how-it-works" data-i18n="nav.how">Cara Kerja</a>
-        <a href="#privacy" data-i18n="nav.privacy">Privasi</a>
-        <a href="#faq" data-i18n="nav.faq">FAQ</a>
-        <a href="/changelog" class="nav-changelog">Changelog</a>
-        <a href="#download" class="nav-cta" data-i18n="nav.download">Download</a>
-        <div class="lang-switch" role="listbox" aria-label="Language">
-          <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false">
-            <span class="lang-current">🇮🇩 ID</span>
-            <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="lang-dropdown">
-            <button class="lang-option active" data-lang="id" role="option">🇮🇩 <span>Indonesia</span></button>
-            <button class="lang-option" data-lang="en" role="option">🇬🇧 <span>English</span></button>
-          </div>
-        </div>
-      </div>
-      <div class="nav-controls">
-        <button class="theme-toggle" aria-label="Toggle theme">
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        </button>
-        <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </nav>
+    <Navbar links={navLinks} ctaHref="#download" showLanguage={true} />
 
     <!-- ===== HERO ===== -->
     <section class="hero">
@@ -203,16 +163,13 @@ import '../style.css';
               <div class="ph-rem-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
               <div class="ph-rem-text"><strong>Brake check</strong> — Toyota Avanza<br>Next service in 1,200 km</div>
             </div>
-            <div class="ph-fab">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </div>
           </div>
           <div class="ph-nav">
-            <div class="ph-nav-item active"><svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 0 0 1 1h3m10-11l2 2m-2-2v10a1 1 0 0 1-1 1h-3m-6 0a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1m-6 0h6"/></svg><span class="ph-nav-label">Home</span></div>
-            <div class="ph-nav-item"><svg viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg><span class="ph-nav-label">Health</span></div>
-            <div class="ph-nav-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg><span class="ph-nav-label">Trips</span></div>
-            <div class="ph-nav-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="ph-nav-label">Nearby</span></div>
-            <div class="ph-nav-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="ph-nav-label">Settings</span></div>
+            <div class="ph-nav-item active"><svg viewBox="0 0 24 24"><path d="M5 17h14M5 17a2 2 0 0 1-2-2v-4l2.5-5A2 2 0 0 1 7.5 5h9a2 2 0 0 1 2 2l2.5 5v4a2 2 0 0 1-2 2M5 17a2 2 0 1 0 4 0M19 17a2 2 0 1 0-4 0"/><circle cx="7" cy="15" r="1"/><circle cx="17" cy="15" r="1"/></svg><span class="ph-nav-label">Garage</span></div>
+            <div class="ph-nav-item"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 3 3 9 9 9"/><path d="M12 7v5l3 2"/></svg><span class="ph-nav-label">History</span></div>
+            <div class="ph-nav-item ph-nav-add"><svg viewBox="0 0 24 24"><line x1="12" y1="7" x2="12" y2="17"/><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="ph-nav-label sr-only">Add</span></div>
+            <div class="ph-nav-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="ph-nav-label">Maps</span></div>
+            <div class="ph-nav-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 8.6 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 8.6a1.65 1.65 0 0 0-.33-1.82l-.06-.06A2 2 0 0 1 7.04 3.9l.06.06A1.65 1.65 0 0 0 8.6 4.6 1.65 1.65 0 0 0 10 3.09V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 8.6a1.65 1.65 0 0 0 1.51 1.4H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="ph-nav-label">Settings</span></div>
           </div>
         </div>
       </div>
@@ -683,8 +640,8 @@ import '../style.css';
     <section class="faq" id="faq">
       <div class="section-header fade-up">
         <div class="section-badge">FAQ</div>
-        <h2>Pertanyaan yang sering muncul.</h2>
-        <p>Jawaban singkat tentang APK, privasi, GPS, akun, dan rencana rilis SteerIn.</p>
+        <h2 data-i18n="faq.h2">Pertanyaan yang sering muncul.</h2>
+        <p data-i18n="faq.p">Jawaban singkat tentang APK, privasi, GPS, akun, dan rencana rilis SteerIn.</p>
       </div>
       <div class="faq-list">
         <div class="faq-item fade-up">
@@ -743,46 +700,18 @@ import '../style.css';
     </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer>
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="/" class="nav-brand">
-            <img src="logo.png" alt="SteerIn" class="nav-logo">
-            SteerIn
-          </a>
-          <p data-i18n="footer.brand.p">Garasi digital privat untuk mobil dan motor. Dibuat untuk Android dengan local-first storage, cloud sync opsional, dan tanpa tracker.</p>
-        </div>
-        <div class="footer-col">
-          <h5 data-i18n="footer.product">Produk</h5>
-          <a href="#features" data-i18n="nav.features">Fitur</a>
-          <a href="#how-it-works" data-i18n="nav.how">Cara Kerja</a>
-          <a href="#download" data-i18n="nav.download">Download</a>
-          <a href="#faq" data-i18n="nav.faq">FAQ</a>
-          <a href="/changelog">Changelog</a>
-        </div>
-        <div class="footer-col">
-          <h5 data-i18n="footer.legal">Legal</h5>
-          <a href="./privacy-policy/" data-i18n="footer.privacy">Privacy Policy</a>
-          <a href="./terms/" data-i18n="footer.terms">Terms of Service</a>
-        </div>
-        <div class="footer-col">
-          <h5 data-i18n="footer.support">Support</h5>
-          <a href="mailto:sudutkamar.co@gmail.com" data-i18n="footer.contact">Hubungi Support</a>
-          <a href="mailto:sudutkamar.co@gmail.com?subject=Bug%20Report" data-i18n="footer.bug">Laporkan Bug</a>
-          <a href="mailto:sudutkamar.co@gmail.com?subject=Feature%20Request" data-i18n="footer.feature">Request Fitur</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="footer-copy">&copy; 2026 SteerIn. <span data-i18n="footer.copy">All rights reserved. Dibuat untuk Android.</span></div>
-      </div>
-    </footer>
+    <Footer i18n={true} />
   </div>
+
+  <MobileSidebar
+    links={mobileLinks}
+    showLanguage={true}
+    description="Akses cepat ke fitur, privasi, FAQ, dan update terbaru SteerIn."
+    descriptionI18n="sidebar.home.desc"
+  />
 
   <div class="mobile-sticky-cta" aria-label="Download SteerIn">
     <span data-i18n="sticky.text">Siap rapikan riwayat kendaraan?</span>
     <a href="#download" data-i18n="sticky.btn">Download APK</a>
   </div>
-
-  <script>import '../main.js';</script>
-</body>
-</html>
+</BaseLayout>

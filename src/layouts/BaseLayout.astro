@@ -1,0 +1,50 @@
+---
+import '../style.css';
+
+const {
+  title = 'SteerIn — Garasi Digital Privat untuk Mobil & Motor',
+  description = 'SteerIn adalah aplikasi Android privat untuk mengelola mobil dan motor, pengingat servis, riwayat perawatan, trip GPS, bengkel terdekat, dan kesehatan kendaraan dengan penyimpanan local-first.',
+  canonical = 'https://steerin.app/',
+  ogTitle = title,
+  ogDescription = description,
+  ogImage = 'https://steerin.app/logo.png',
+  showCursor = false,
+  showThree = false,
+  orbs = 2,
+  bodyClass = '',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta property="og:title" content={ogTitle}>
+  <meta property="og:description" content={ogDescription}>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={canonical}>
+  <meta property="og:image" content={ogImage}>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={ogTitle}>
+  <meta name="twitter:description" content={ogDescription}>
+  <link rel="canonical" href={canonical}>
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="apple-touch-icon" href="/logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <slot name="head" />
+</head>
+<body class={bodyClass}>
+  <a href="#main" class="skip-link" data-i18n="skip">Lewati ke konten utama</a>
+  <div class="noise"></div>
+  {showCursor && <div id="cursor-glow" aria-hidden="true"></div>}
+  {showThree && <div id="three-canvas" aria-hidden="true"></div>}
+  {Array.from({ length: orbs }).map((_, i) => <div class={`orb orb--${i + 1}`}></div>)}
+  <slot />
+  <script>import '../main.js';</script>
+</body>
+</html>

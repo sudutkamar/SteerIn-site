@@ -305,6 +305,14 @@ const translations = {
     'sticky.text': 'Siap rapikan riwayat kendaraan?',
     'sticky.btn': 'Download APK',
 
+    // Sidebar
+    'sidebar.pill.privacy': 'Privat',
+    'sidebar.pill.local': 'Local-first',
+    'sidebar.pill.android': 'Android',
+    'sidebar.nav': 'Navigasi',
+    'sidebar.theme': 'Tema',
+    'sidebar.home.desc': 'Akses cepat ke fitur, privasi, FAQ, dan update terbaru SteerIn.',
+
     // Footer
     'footer.brand.p': 'Garasi digital privat untuk mobil dan motor. Dibuat untuk Android dengan local-first storage, cloud sync opsional, dan tanpa tracker.',
     'footer.product': 'Produk',
@@ -619,6 +627,14 @@ const translations = {
     'sticky.text': 'Ready to organize your vehicle records?',
     'sticky.btn': 'Download APK',
 
+    // Sidebar
+    'sidebar.pill.privacy': 'Private',
+    'sidebar.pill.local': 'Local-first',
+    'sidebar.pill.android': 'Android',
+    'sidebar.nav': 'Navigation',
+    'sidebar.theme': 'Theme',
+    'sidebar.home.desc': 'Quick access to features, privacy, FAQ, and the latest SteerIn updates.',
+
     // Footer
     'footer.brand.p': 'Private digital garage for cars and motorcycles. Built for Android with local-first storage, optional cloud sync, and no trackers.',
     'footer.product': 'Product',
@@ -687,18 +703,16 @@ function applyTranslations(lang) {
   // Update lang attribute on <html>
   document.documentElement.lang = lang;
 
-  // Update lang switch UI
-  const switcher = document.querySelector('.lang-switch');
-  if (switcher) {
+  // Update all language switch UIs (desktop + sidebar)
+  document.querySelectorAll('.lang-switch').forEach(switcher => {
     const current = switcher.querySelector('.lang-current');
     if (current) {
       current.textContent = lang === 'id' ? '🇮🇩 ID' : '🇬🇧 EN';
     }
-    // Update active state on options
     switcher.querySelectorAll('.lang-option').forEach(opt => {
       opt.classList.toggle('active', opt.dataset.lang === lang);
     });
-  }
+  });
 }
 
 /**
@@ -715,36 +729,49 @@ export function initLang() {
   const currentLang = getCurrentLang();
   applyTranslations(currentLang);
 
-  const switcher = document.querySelector('.lang-switch');
-  if (!switcher) return;
+  const switchers = document.querySelectorAll('.lang-switch');
+  if (!switchers.length) return;
 
-  const btn = switcher.querySelector('.lang-btn');
-  const dropdown = switcher.querySelector('.lang-dropdown');
+  switchers.forEach(switcher => {
+    const btn = switcher.querySelector('.lang-btn');
+    const dropdown = switcher.querySelector('.lang-dropdown');
 
-  // Toggle dropdown
-  btn?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    switcher.classList.toggle('open');
+    btn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      switchers.forEach(item => {
+        if (item !== switcher) item.classList.remove('open');
+      });
+      const isOpen = switcher.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    dropdown?.addEventListener('click', (e) => {
+      const option = e.target.closest('.lang-option');
+      if (!option) return;
+      const lang = option.dataset.lang;
+      if (!lang) return;
+      localStorage.setItem(STORAGE_KEY, lang);
+      applyTranslations(lang);
+      switchers.forEach(item => {
+        item.classList.remove('open');
+        item.querySelector('.lang-btn')?.setAttribute('aria-expanded', 'false');
+      });
+    });
   });
 
-  // Select language
-  dropdown?.addEventListener('click', (e) => {
-    const option = e.target.closest('.lang-option');
-    if (!option) return;
-    const lang = option.dataset.lang;
-    if (!lang) return;
-    localStorage.setItem(STORAGE_KEY, lang);
-    applyTranslations(lang);
-    switcher.classList.remove('open');
-  });
-
-  // Close on outside click
   document.addEventListener('click', () => {
-    switcher.classList.remove('open');
+    switchers.forEach(item => {
+      item.classList.remove('open');
+      item.querySelector('.lang-btn')?.setAttribute('aria-expanded', 'false');
+    });
   });
 
-  // Close on Escape
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') switcher.classList.remove('open');
+    if (e.key === 'Escape') {
+      switchers.forEach(item => {
+        item.classList.remove('open');
+        item.querySelector('.lang-btn')?.setAttribute('aria-expanded', 'false');
+      });
+    }
   });
 }

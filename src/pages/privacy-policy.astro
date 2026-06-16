@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import MobileSidebar from '../components/MobileSidebar.astro';
+
+const navLinks = [
+  { href: '/', label: 'Beranda' },
+  { href: '/#features', label: 'Fitur' },
+  { href: '/#faq', label: 'FAQ' },
+  { href: '/changelog', label: 'Changelog', class: 'nav-changelog' },
+];
+
+const mobileLinks = [
+  { href: '/', label: 'Beranda', icon: 'home' },
+  { href: '/#features', label: 'Fitur', icon: 'car' },
+  { href: '/#faq', label: 'FAQ', icon: 'help' },
+  { href: '/changelog', label: 'Changelog', icon: 'clipboard', class: 'nav-changelog' },
+];
+---
+
+<BaseLayout
+  title="Privacy Policy — SteerIn"
+  description="Privacy Policy SteerIn: data kendaraan local-first, cloud sync opsional, izin lokasi, kamera, notifikasi, dan kontrol pengguna."
+  canonical="https://steerin.app/privacy-policy/"
+  ogTitle="Privacy Policy — SteerIn"
+  ogDescription="Cara SteerIn mengumpulkan, memakai, menyimpan, dan melindungi data kendaraan pengguna."
+  orbs={2}
+  bodyClass="policy-page"
+>
+  <div class="container" id="main">
+    <Navbar links={navLinks} ctaHref="/#download" ctaI18n={undefined} />
+
+    <header class="policy-hero">
+      <a href="/" class="changelog-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Kembali ke Beranda
+      </a>
+      <h1>Privacy Policy</h1>
+      <p>SteerIn helps users manage vehicle maintenance, trip tracking, and workshop records. We believe in complete transparency about how your data is collected, used, and protected.</p>
+      <div class="policy-meta">
+        <span>Last updated: May 2026</span>
+        <span>App version: Release Candidate</span>
+      </div>
+    </header>
+
+    <section class="policy-highlight fade-up">
+      <div class="policy-highlight-icon">🔒</div>
+      <p><strong>Your privacy matters.</strong> SteerIn is designed with a local-first approach. Your data stays on your device unless you explicitly choose to enable cloud sync.</p>
+    </section>
+
+    <nav class="policy-toc fade-up" aria-label="Table of contents">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#data-collected">Data Collected</a></li>
+        <li><a href="#data-usage">How Data Is Used</a></li>
+        <li><a href="#location">Location Usage</a></li>
+        <li><a href="#camera">Camera Usage</a></li>
+        <li><a href="#notifications">Notifications</a></li>
+        <li><a href="#storage">Data Storage</a></li>
+        <li><a href="#sharing">Data Sharing</a></li>
+        <li><a href="#control">User Control</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </nav>
+
+    <main class="policy-content">
+      <section class="policy-section fade-up" id="data-collected"><h2>📄 Data Collected</h2><ul><li>Vehicle profile data entered by the user.</li><li>Maintenance history, notifications, expense records, and trip summaries created inside the app.</li><li>Location data only while GPS trip tracking is actively used by the user.</li><li>Camera input only when the user scans an odometer or adds vehicle media.</li></ul></section>
+      <section class="policy-section fade-up" id="data-usage"><h2>⚙️ How Data Is Used</h2><ul><li>To show vehicle health, maintenance reminders, trip summaries, and local history.</li><li>To support optional cloud authentication, backup, and sync flows when Supabase is configured by the app operator.</li><li>To improve reliability through local logging of recoverable app errors and optional remote crash telemetry when configured.</li></ul></section>
+      <section class="policy-section fade-up" id="location"><h2>📍 Location Usage</h2><ul><li>Foreground location is used only during active trip tracking.</li><li>Background location permission may be requested only after the user starts GPS tracking and chooses to keep trip tracking reliable while the app is not visible.</li><li>Background location is not used for ads, analytics, or passive monitoring.</li><li>Trip tracking can be stopped by the user at any time.</li></ul></section>
+      <section class="policy-section fade-up" id="camera"><h2>📷 Camera Usage</h2><ul><li>Camera permission is used only for odometer scanning and optional vehicle image capture.</li></ul></section>
+      <section class="policy-section fade-up" id="notifications"><h2>🔔 Notifications</h2><ul><li>Notifications are used for maintenance reminders, system updates, and active trip tracking.</li><li>Weekly Reports are optional and can also remain available only inside the app without email delivery.</li></ul></section>
+      <section class="policy-section fade-up" id="storage"><h2>🗃️ Data Storage</h2><ul><li>Core app data is stored locally on the device using Room and DataStore.</li><li>Backup and restore are user-initiated and stored in files chosen by the user.</li><li>If cloud backup is enabled, account identifiers and garage backup payloads are stored through Supabase.</li><li>If Weekly Reports are enabled, report preferences and in-app report history may also be stored locally and may sync to configured backend infrastructure for optional delivery features.</li></ul></section>
+      <section class="policy-section fade-up" id="sharing"><h2>🔗 Data Sharing</h2><ul><li>SteerIn does not intentionally sell personal data.</li><li>Data is only sent to configured third-party services required for app functionality, such as Supabase, Google location/maps services, Logo.dev, and an optional crash diagnostics provider if enabled.</li><li>Optional weekly report emails may use a transactional email provider. These emails contain summary data only and do not include raw GPS route coordinates.</li></ul></section>
+      <section class="policy-section fade-up" id="control"><h2>🔐 User Control</h2><ul><li>Users can edit or delete vehicles and maintenance data.</li><li>Users can clear all local data from the app.</li><li>Users can export and restore local backup files.</li><li>Users can sign out of cloud sync at any time.</li><li>Users can delete the current cloud backup from Settings without deleting local device data.</li><li>Users can disable Weekly Reports at any time from Settings.</li><li>Cloud account deletion support should still be requested through the app operator until self-service account deletion is shipped.</li></ul></section>
+      <section class="policy-section fade-up" id="contact"><h2>✉️ Contact</h2><ul><li>Support email: <a href="mailto:sudutkamar.co@gmail.com">sudutkamar.co@gmail.com</a></li></ul></section>
+    </main>
+
+    <Footer homePrefix="/" />
+  </div>
+
+  <MobileSidebar links={mobileLinks} ctaHref="/#download" ctaLabel="Download" ctaI18n={undefined} eyebrow="Privacy" description="Baca kebijakan privasi atau kembali ke bagian utama SteerIn." />
+</BaseLayout>
