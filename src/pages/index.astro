@@ -6,7 +6,7 @@ import MobileSidebar from '../components/MobileSidebar.astro';
 
 const mobileLinks = [
   { href: '#features', label: 'Fitur', i18n: 'nav.features', icon: 'car' },
-  { href: '#advantage', label: 'Kenapa SteerIn', i18n: 'nav.advantage', icon: 'shield' },
+  { href: '#download', label: 'Download', i18n: 'nav.download', icon: 'download' },
   { href: '#how-it-works', label: 'Cara Kerja', i18n: 'nav.how', icon: 'activity' },
   { href: '#privacy', label: 'Privasi', i18n: 'nav.privacy', icon: 'lock' },
   { href: '#faq', label: 'FAQ', i18n: 'nav.faq', icon: 'help' },
@@ -15,7 +15,7 @@ const mobileLinks = [
 
 const navLinks = [
   { href: '#features', label: 'Fitur', i18n: 'nav.features' },
-  { href: '#advantage', label: 'Kenapa SteerIn', i18n: 'nav.advantage' },
+  { href: '#download', label: 'Download', i18n: 'nav.download' },
   { href: '#how-it-works', label: 'Cara Kerja', i18n: 'nav.how' },
   { href: '#privacy', label: 'Privasi', i18n: 'nav.privacy' },
   { href: '#faq', label: 'FAQ', i18n: 'nav.faq' },
@@ -33,7 +33,7 @@ const navLinks = [
     "applicationCategory": "VehicleManagementApplication",
     "description": "Private vehicle management for cars and motorcycles. Track maintenance, service history, trips, and workshops with local-first storage.",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "url": "https://steerin.app"
+    "url": "https://steerin-site.vercel.app"
   }
   </script>
   </Fragment>
@@ -67,13 +67,13 @@ const navLinks = [
           <span data-i18n="hero.badge">Dibuat untuk pemilik mobil &amp; motor Indonesia</span>
         </div>
         <h1><span data-i18n="hero.h1.before">Ingat servis sebelum telat,</span><br><span class="gradient" data-i18n="hero.h1.gradient">rapikan semua riwayat kendaraan.</span></h1>
-        <p data-i18n="hero.p">SteerIn mengubah struk servis tercecer, oli yang lupa diganti, pilihan bengkel yang serba tebak-tebakan, dan banyak kendaraan yang sulit dipantau menjadi satu garasi digital premium — privat dari awal, berguna tiap hari, siap untuk mobil, motor, dan EV.</p>
+        <p data-i18n="hero.p">SteerIn membantu kamu mengelola servis, odometer, trip, bengkel, dan riwayat kendaraan dalam satu garasi digital yang rapi, privat, dan mudah dipakai.</p>
         <div class="hero-actions">
           <a href="#download" class="btn btn--primary">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><use href="#i-download"/></svg>
             <span data-i18n="hero.cta.download">Download APK Android</span>
           </a>
-          <a href="#advantage" class="btn btn--ghost" data-i18n="hero.cta.advantage">Lihat keunggulan</a>
+          <a href="#features" class="btn btn--ghost" data-i18n="hero.cta.advantage">Lihat fitur</a>
         </div>
 
         <!-- Waitlist Form -->
@@ -90,7 +90,7 @@ const navLinks = [
         <div class="hero-trust">
           <span data-i18n="hero.trust.1">Local-first</span>
           <span class="dot"></span>
-          <span data-i18n="hero.trust.2">Mobil + motor + EV</span>
+          <span data-i18n="hero.trust.2">Mobil + motor</span>
           <span class="dot"></span>
           <span data-i18n="hero.trust.3">GPS trips</span>
           <span class="dot"></span>
@@ -181,7 +181,7 @@ const navLinks = [
         <div class="trust-card fade-up">
           <div class="trust-card-icon"><svg><use href="#i-phone"/></svg></div>
           <h4 data-i18n="trust.1.title">Local-first by default</h4>
-          <p data-i18n="trust.1.p">Semua data tersimpan di perangkat kamu. Tidak butuh akun untuk menggunakan fitur utama.</p>
+          <p data-i18n="trust.1.p">Login diperlukan untuk mulai memakai app, sementara data kendaraan tetap diprioritaskan tersimpan lokal di perangkat.</p>
         </div>
         <div class="trust-card fade-up">
           <div class="trust-card-icon"><svg><use href="#i-cloud"/></svg></div>
@@ -329,44 +329,12 @@ const navLinks = [
       </div>
     </section>
 
-    <!-- ===== COMPETITIVE ADVANTAGE ===== -->
-    <section class="advantage" id="advantage">
-      <div class="section-header fade-up">
-        <div class="section-badge" data-i18n="advantage.badge">Kenapa SteerIn</div>
-        <h2 data-i18n="advantage.h2">Bukan sekadar app reminder biasa.</h2>
-        <p data-i18n="advantage.p">Banyak app kendaraan berhenti di catatan biaya atau reminder sederhana. SteerIn menyatukan maintenance intelligence, konteks trip, privasi, dan workflow kepemilikan dalam satu pengalaman Android.</p>
-      </div>
-      <div class="advantage-grid">
-        <div class="advantage-card advantage-card--hero fade-up">
-          <span class="advantage-kicker" data-i18n="advantage.kicker">Keunggulan SteerIn</span>
-          <h3 data-i18n="advantage.hero.h3">Satu garasi privat untuk seluruh siklus kendaraan.</h3>
-          <p data-i18n="advantage.hero.p">Dari onboarding kendaraan bekas, pantau kesehatan komponen, scan catatan, booking servis, logging trip, bandingkan kendaraan, sampai backup data — SteerIn menjaga seluruh cerita kepemilikan tetap terhubung.</p>
-          <div class="advantage-pills">
-            <span data-i18n="advantage.pill.1">Maintenance health</span><span data-i18n="advantage.pill.2">GPS trips</span><span data-i18n="advantage.pill.3">Workshop maps</span><span data-i18n="advantage.pill.4">Cloud backup</span>
-          </div>
-        </div>
-        <div class="advantage-list fade-up">
-          <div class="advantage-row"><strong data-i18n="advantage.row.1.title">Privasi local-first</strong><span data-i18n="advantage.row.1.p">Berbeda dari app cloud-only, penggunaan inti bisa tanpa akun dan data tetap di perangkat secara default.</span></div>
-          <div class="advantage-row"><strong data-i18n="advantage.row.2.title">Mobil, motor, EV</strong><span data-i18n="advantage.row.2.p">Satu dashboard untuk garasi campuran, bukan alur kerja terpisah untuk setiap tipe kendaraan.</span></div>
-          <div class="advantage-row"><strong data-i18n="advantage.row.3.title">Kesehatan komponen, bukan cuma tanggal</strong><span data-i18n="advantage.row.3.p">Pengingat memakai kilometer dan kondisi part sehingga perawatan terasa proaktif, bukan generik.</span></div>
-          <div class="advantage-row"><strong data-i18n="advantage.row.4.title">Konteks trip + bengkel</strong><span data-i18n="advantage.row.4.p">GPS trip logging dan penemuan bengkel terdekat ada di samping riwayat perawatan.</span></div>
-          <div class="advantage-row"><strong data-i18n="advantage.row.5.title">UX native premium</strong><span data-i18n="advantage.row.5.p">Android native, UI glassmorphism, onboarding kustom, widget, laporan mingguan, dan kontrol privasi.</span></div>
-        </div>
-      </div>
-      <div class="competitor-strip fade-up" aria-label="SteerIn comparison with typical competitors">
-        <div><span data-i18n="competitor.1.label">App biasa</span><strong data-i18n="competitor.1.strong">Catatan saja</strong></div>
-        <div><span data-i18n="competitor.2.label">App biasa</span><strong data-i18n="competitor.2.strong">Cloud wajib</strong></div>
-        <div><span data-i18n="competitor.3.label">App biasa</span><strong data-i18n="competitor.3.strong">Fokus mobil saja</strong></div>
-        <div class="winner"><span data-i18n="competitor.4.label">SteerIn</span><strong data-i18n="competitor.4.strong">Garasi digital privat lengkap</strong></div>
-      </div>
-    </section>
-
     <!-- ===== HOW IT WORKS ===== -->
     <section class="how-it-works" id="how-it-works">
       <div class="section-header fade-up">
         <div class="section-badge" data-i18n="how.badge">Cara Kerja</div>
         <h2 data-i18n-html="how.h2">Mulai rapikan kendaraan<br>dalam hitungan menit.</h2>
-        <p data-i18n="how.p">Mulai dengan beberapa langkah sederhana tanpa wajib akun.</p>
+        <p data-i18n="how.p">Mulai dengan login, tambah kendaraan, lalu rapikan riwayat servis dalam beberapa langkah.</p>
       </div>
       <div class="steps-grid">
         <div class="step-card fade-up">
@@ -488,92 +456,7 @@ const navLinks = [
             <div class="pv-row"><span class="pv-label" data-i18n="preview.3.label.4">Servis Terakhir</span><span class="pv-value">2 Apr 2026</span></div>
           </div>
         </div>
-        <div class="preview-card fade-up">
-          <div class="preview-head">
-            <div class="pv-icon"><svg><use href="#i-pin"/></svg></div>
-            <h4 data-i18n="preview.4.title">Riwayat Trip</h4>
-          </div>
-          <div class="preview-body">
-            <div class="pv-row"><span class="pv-label" data-i18n="preview.4.label.1">Hari Ini</span><span class="pv-value">24 km</span></div>
-            <div class="pv-row"><span class="pv-label" data-i18n="preview.4.label.2">Minggu Ini</span><span class="pv-value">156 km</span></div>
-            <div class="pv-row"><span class="pv-label" data-i18n="preview.4.label.3">Bulan Ini</span><span class="pv-value">842 km</span></div>
-            <div class="pv-row"><span class="pv-label" data-i18n="preview.4.label.4">Total Dilacak</span><span class="pv-value">3,210 km</span></div>
-          </div>
-        </div>
-        <div class="preview-card fade-up">
-          <div class="preview-head">
-            <div class="pv-icon"><svg><use href="#i-globe"/></svg></div>
-            <h4 data-i18n="preview.5.title">Peta Bengkel</h4>
-          </div>
-          <div class="preview-body">
-            <div class="pv-row"><span class="pv-label" data-i18n="preview.5.label.1">AutoPro Bengkel</span><span class="pv-value">0.8 km</span></div>
-            <div class="pv-row"><span class="pv-label" data-i18n="preview.5.label.2">Mandiri Motor</span><span class="pv-value">1.2 km</span></div>
-            <div class="pv-row"><span class="pv-label" data-i18n="preview.5.label.3">SpeedFix Garage</span><span class="pv-value">2.5 km</span></div>
-            <div class="pv-row"><span class="pv-label" data-i18n="preview.5.label.4">Rata-rata Rating</span><span class="pv-value">4.5 ⭐</span></div>
-          </div>
-        </div>
-        <div class="preview-card fade-up">
-          <div class="preview-head">
-            <div class="pv-icon"><svg><use href="#i-cloud"/></svg></div>
-            <h4 data-i18n="preview.6.title">Cloud Backup</h4>
-          </div>
-          <div class="preview-body">
-            <div class="pv-row"><span class="pv-label" data-i18n="preview.6.label.1">Backup Terakhir</span><span class="pv-value">20 Mei 2026</span></div>
-            <div class="pv-row"><span class="pv-label" data-i18n="preview.6.label.2">Terenkripsi</span><span class="pv-green" data-i18n="preview.6.value.2">Ya</span></div>
-            <div class="pv-row"><span class="pv-label" data-i18n="preview.6.label.3">Penyimpanan</span><span class="pv-value">2.4 MB</span></div>
-            <div class="pv-row"><span class="pv-label" data-i18n="preview.6.label.4">Auto Backup</span><span class="pv-value" data-i18n="preview.6.value.4">Mati</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ===== USE CASES ===== -->
-    <section class="use-cases" id="use-cases">
-      <div class="section-header fade-up">
-        <div class="section-badge" data-i18n="usecases.badge">Untuk Siapa</div>
-        <h2 data-i18n="usecases.h2">Dibuat untuk cara orang Indonesia merawat kendaraan.</h2>
-        <p data-i18n="usecases.p">Bukan cuma untuk satu tipe pengguna. SteerIn membantu pemilik motor harian, keluarga multi-kendaraan, pembeli mobil bekas, sampai pekerja yang sering perjalanan.</p>
-      </div>
-      <div class="use-case-grid">
-        <div class="use-case-card fade-up"><h3 data-i18n="usecases.1.title">Motor harian</h3><p data-i18n="usecases.1.p">Ingat oli, ban, rem, aki, dan servis berkala sebelum performa turun atau biaya membesar.</p></div>
-        <div class="use-case-card fade-up"><h3 data-i18n="usecases.2.title">Keluarga multi-kendaraan</h3><p data-i18n="usecases.2.p">Satu dashboard untuk mobil keluarga, motor harian, dan kendaraan cadangan tanpa catatan tercecer.</p></div>
-        <div class="use-case-card fade-up"><h3 data-i18n="usecases.3.title">Mobil bekas</h3><p data-i18n="usecases.3.p">Buat baseline komponen, simpan riwayat servis, dan pantau part yang perlu dicek ulang setelah pembelian.</p></div>
-        <div class="use-case-card fade-up"><h3 data-i18n="usecases.4.title">Driver & pekerja mobile</h3><p data-i18n="usecases.4.p">Catat jarak trip, aktivitas kendaraan, biaya servis, dan kondisi kendaraan untuk keputusan lebih rapi.</p></div>
-      </div>
-    </section>
-
-    <!-- ===== COMPARISON ===== -->
-    <section class="comparison" id="comparison">
-      <div class="section-header fade-up">
-        <div class="section-badge" data-i18n="comparison.badge">Perbandingan</div>
-        <h2 data-i18n="comparison.h2">Kenapa lebih menarik dari catatan manual atau app biasa?</h2>
-        <p data-i18n="comparison.p">SteerIn menggabungkan hal yang biasanya terpisah: reminder, health, trip, bengkel, OCR, backup, dan privasi.</p>
-      </div>
-      <div class="comparison-table fade-up" role="table" aria-label="Perbandingan SteerIn dengan alternatif lain">
-        <div class="comparison-row comparison-head" role="row"><div data-i18n="comparison.head.1">Kemampuan</div><div data-i18n="comparison.head.2">SteerIn</div><div data-i18n="comparison.head.3">App reminder biasa</div><div data-i18n="comparison.head.4">Spreadsheet</div><div data-i18n="comparison.head.5">Catatan manual</div></div>
-        <div class="comparison-row" role="row"><div data-i18n="comparison.row.1">Multi kendaraan</div><div class="yes">✓</div><div class="maybe" data-i18n="comparison.row.1.maybe">Sebagian</div><div class="maybe" data-i18n="comparison.row.1.maybe">Manual</div><div class="no" data-i18n="comparison.row.1.no">Sulit</div></div>
-        <div class="comparison-row" role="row"><div data-i18n="comparison.row.2">Health komponen berbasis km</div><div class="yes">✓</div><div class="maybe" data-i18n="comparison.row.2.maybe">Terbatas</div><div class="no" data-i18n="comparison.row.2.no.1">Tidak otomatis</div><div class="no" data-i18n="comparison.row.2.no.2">Tidak</div></div>
-        <div class="comparison-row" role="row"><div data-i18n="comparison.row.3">GPS trip logging</div><div class="yes">✓</div><div class="no" data-i18n="comparison.row.3.no">Jarang</div><div class="no" data-i18n="comparison.row.3.no.2">Tidak</div><div class="no" data-i18n="comparison.row.3.no.2">Tidak</div></div>
-        <div class="comparison-row" role="row"><div data-i18n="comparison.row.4">Workshop maps</div><div class="yes">✓</div><div class="no" data-i18n="comparison.row.4.no">Jarang</div><div class="no" data-i18n="comparison.row.3.no.2">Tidak</div><div class="no" data-i18n="comparison.row.3.no.2">Tidak</div></div>
-        <div class="comparison-row" role="row"><div data-i18n="comparison.row.5">OCR struk & odometer</div><div class="yes">✓</div><div class="no" data-i18n="comparison.row.5.no">Jarang</div><div class="no" data-i18n="comparison.row.3.no.2">Tidak</div><div class="no" data-i18n="comparison.row.3.no.2">Tidak</div></div>
-        <div class="comparison-row" role="row"><div data-i18n="comparison.row.6">Local-first privacy</div><div class="yes">✓</div><div class="maybe" data-i18n="comparison.row.6.maybe">Tergantung</div><div class="yes">✓</div><div class="yes">✓</div></div>
-        <div class="comparison-row" role="row"><div data-i18n="comparison.row.7">No ads / trackers</div><div class="yes">✓</div><div class="maybe" data-i18n="comparison.row.7.maybe">Tergantung</div><div class="yes">✓</div><div class="yes">✓</div></div>
-      </div>
-    </section>
-
-    <!-- ===== SAFE INSTALL ===== -->
-    <section class="safe-install" id="safe-install">
-      <div class="safe-card fade-up">
-        <div class="section-badge" data-i18n="safe.badge">Keamanan APK</div>
-        <h2 data-i18n="safe.h2">Install APK dengan aman.</h2>
-        <p data-i18n="safe.p">SteerIn sedang disiapkan untuk launch. Kalau kamu memakai APK early access, selalu download dari halaman resmi ini dan cocokkan checksum SHA-256.</p>
-        <div class="safe-steps">
-          <div><strong>1</strong><span data-i18n="safe.step.1">Download APK dari tombol resmi SteerIn.</span></div>
-          <div><strong>2</strong><span data-i18n="safe.step.2">Download file SHA-256 lalu cocokkan checksum bila perlu.</span></div>
-          <div><strong>3</strong><span data-i18n="safe.step.3">Izinkan install dari browser/file manager yang kamu pakai.</span></div>
-          <div><strong>4</strong><span data-i18n="safe.step.4">Buka SteerIn, cek izin lokasi/notifikasi hanya saat fitur terkait dipakai.</span></div>
-        </div>
-        <p class="safe-note" data-i18n="safe.note">Jangan install APK dari link tidak resmi. SteerIn tidak memakai iklan, tracker, atau upload data wajib.</p>
       </div>
     </section>
 
@@ -582,7 +465,7 @@ const navLinks = [
       <div class="download-card fade-up">
         <div class="section-badge" data-i18n="download.badge">Download</div>
         <h2 data-i18n="download.h2">Dapatkan SteerIn untuk Android.</h2>
-        <p data-i18n="download.p">Download versi terbaru SteerIn dan mulai kelola kendaraan hari ini. Gratis untuk early access, tanpa wajib akun, dan fokus privasi.</p>
+        <p data-i18n="download.p">Download APK early access dan mulai kelola kendaraanmu hari ini. Login diperlukan, privasi tetap jadi prioritas.</p>
         
         <div class="download-info">
           <div class="download-version">
@@ -601,7 +484,7 @@ const navLinks = [
 
         <div class="download-badges">
           <span class="download-badge"><span class="check">✓</span> <span data-i18n="download.badge.1">App native Android</span></span>
-          <span class="download-badge"><span class="check">✓</span> <span data-i18n="download.badge.2">Tanpa wajib akun</span></span>
+          <span class="download-badge"><span class="check">✓</span> <span data-i18n="download.badge.2">Login aman</span></span>
           <span class="download-badge"><span class="check">✓</span> <span data-i18n="download.badge.3">Release Candidate</span></span>
           <span class="download-badge"><span class="check">✓</span> <span data-i18n="download.badge.4">Fokus privasi</span></span>
         </div>
@@ -624,18 +507,6 @@ const navLinks = [
       </div>
     </section>
 
-    <!-- ===== EARLY TESTERS ===== -->
-    <section class="early-testers">
-      <div class="early-card fade-up">
-        <div>
-          <div class="section-badge" data-i18n="early.badge">Early Access</div>
-          <h2 data-i18n="early.h2">Dicari early tester yang benar-benar peduli kendaraan.</h2>
-          <p data-i18n="early.p">SteerIn tidak memakai review palsu. Feedback dari pengguna awal akan dipakai untuk menyempurnakan onboarding, reminder, maps, OCR, dan premium flow sebelum rilis publik penuh.</p>
-        </div>
-        <a href="#download" class="btn btn--primary" data-i18n="early.btn">Coba Sekarang</a>
-      </div>
-    </section>
-
     <!-- ===== FAQ ===== -->
     <section class="faq" id="faq">
       <div class="section-header fade-up">
@@ -650,7 +521,7 @@ const navLinks = [
         </div>
         <div class="faq-item fade-up">
           <button class="faq-q" aria-expanded="false" data-i18n="faq.2.q">Apakah SteerIn gratis?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-          <div class="faq-a"><p data-i18n="faq.2.a">Versi early access bisa dicoba tanpa biaya. Detail paket premium akan diumumkan mendekati rilis publik.</p></div>
+          <div class="faq-a"><p data-i18n="faq.2.a">Versi early access bisa dicoba tanpa biaya. Jika ada paket berbayar nanti, fitur inti tetap dijelaskan dengan transparan.</p></div>
         </div>
         <div class="faq-item fade-up">
           <button class="faq-q" aria-expanded="false" data-i18n="faq.3.q">Apakah lokasi dilacak terus-menerus?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
@@ -658,7 +529,7 @@ const navLinks = [
         </div>
         <div class="faq-item fade-up">
           <button class="faq-q" aria-expanded="false" data-i18n="faq.4.q">Apakah wajib login atau cloud sync?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-          <div class="faq-a"><p data-i18n="faq.4.a">Tidak. Core app bisa dipakai local-first. Cloud sync bersifat opsional untuk backup dan restore.</p></div>
+          <div class="faq-a"><p data-i18n="faq.4.a">Login wajib untuk memakai SteerIn. Cloud sync tetap opsional untuk backup dan restore.</p></div>
         </div>
         <div class="faq-item fade-up">
           <button class="faq-q" aria-expanded="false" data-i18n="faq.5.q">Apakah data servis saya diupload?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>

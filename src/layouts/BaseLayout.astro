@@ -30,8 +30,9 @@ const {
   <meta name="twitter:title" content={ogTitle}>
   <meta name="twitter:description" content={ogDescription}>
   <link rel="canonical" href={canonical}>
-  <link rel="icon" type="image/png" href="/logo.png">
-  <link rel="apple-touch-icon" href="/logo.png">
+  <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-48.png" sizes="48x48">
+  <link rel="apple-touch-icon" href="/favicon-180.png">
   <link rel="manifest" href="/manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,6 +40,20 @@ const {
   <slot name="head" />
 </head>
 <body class={bodyClass}>
+  <!-- Loading Screen — inline to avoid FOUC -->
+  <div id="loading-screen" aria-live="polite" aria-label="Memuat halaman">
+    <div class="loading-inner">
+      <div class="loading-logo-wrap">
+        <div class="loading-glow"></div>
+        <img src="/logo.png" alt="SteerIn" width="64" height="64" class="loading-logo" loading="eager" decoding="sync">
+      </div>
+      <span class="loading-brand">SteerIn</span>
+      <div class="loading-bar-track">
+        <div class="loading-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
   <a href="#main" class="skip-link" data-i18n="skip">Lewati ke konten utama</a>
   <div class="noise"></div>
   {showCursor && <div id="cursor-glow" aria-hidden="true"></div>}
