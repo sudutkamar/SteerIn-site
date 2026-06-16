@@ -4,9 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "node scripts/dev-lan.mjs",
+    "dev:lan": "node scripts/dev-lan.mjs",
+    "dev:5173": "node -e \"process.env.PORT='5173'; import('./scripts/dev-lan.mjs')\"",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "astro preview --host 0.0.0.0 --port 4321",
+    "preview:lan": "astro preview --host 0.0.0.0 --port 4321",
+    "firewall:dev": "powershell -ExecutionPolicy Bypass -File scripts/allow-dev-firewall.ps1",
+    "lan:info": "node scripts/lan-info.mjs 4321",
     "checksum": "node -e \"const crypto = require('crypto'); const fs = require('fs'); const file = process.argv[1]; const hash = crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex'); fs.writeFileSync(file + '.sha256', hash + '  ' + require('path').basename(file)); console.log('✓ Checksum generated: ' + file + '.sha256');\"",
     "deploy:check": "npm run build && echo '✓ Build successful. Ready to deploy.'"
   },
