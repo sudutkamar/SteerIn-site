@@ -3,7 +3,8 @@ export function initNav() {
   const sidebar = document.querySelector('.nav-sidebar');
   const overlay = document.querySelector('.nav-overlay');
   const closeBtn = document.querySelector('.sidebar-close');
-  if (!toggle || !sidebar) return;
+  const nav = document.querySelector('nav');
+  if (!toggle || !sidebar || !nav) return;
 
   const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
   let isAnimating = false;
@@ -12,6 +13,13 @@ export function initNav() {
 
   sidebar.setAttribute('aria-hidden', 'true');
   overlay?.setAttribute('aria-hidden', 'true');
+
+  function updateNavState() {
+    nav.classList.toggle('nav-scrolled', window.scrollY > 8);
+  }
+
+  updateNavState();
+  window.addEventListener('scroll', updateNavState, { passive: true });
 
   function getFocusable() {
     return [...sidebar.querySelectorAll(focusableSelector)].filter(el => el.offsetParent !== null);
@@ -100,6 +108,8 @@ export function initNav() {
       if (target) sectionObserver.observe(target);
     });
   }
+
+  window.addEventListener('resize', updateNavState, { passive: true });
 
   document.addEventListener('keydown', (e) => {
     if (!sidebar.classList.contains('active')) return;
