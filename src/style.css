@@ -305,20 +305,25 @@ body {
 /* ===== NAV ===== */
 nav {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 13px 18px;
-  position: sticky; top: 10px; z-index: 100;
+  padding: 13px 0;
+  position: sticky; top: 0; z-index: 100;
   width: 100%;
-  background: color-mix(in srgb, var(--nav-bg) 74%, transparent);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid color-mix(in srgb, var(--border) 36%, transparent);
-  border-radius: 999px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.14);
-  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  background: transparent;
+  backdrop-filter: blur(0) saturate(100%);
+  -webkit-backdrop-filter: blur(0) saturate(100%);
+  border: 1px solid transparent;
+  border-radius: 0;
+  box-shadow: none;
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s, padding 0.3s, top 0.3s, border-radius 0.3s;
 }
 nav.nav-scrolled {
+  top: 10px;
+  padding: 13px 18px;
   background: color-mix(in srgb, var(--nav-bg) 94%, transparent);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
   border-color: color-mix(in srgb, var(--border) 88%, transparent);
+  border-radius: 999px;
   box-shadow: 0 12px 34px rgba(0,0,0,0.26);
 }
 .nav-brand {
@@ -327,7 +332,7 @@ nav.nav-scrolled {
   color: var(--text); text-decoration: none;
 }
 .nav-logo { width: 30px; height: 30px; object-fit: contain; border-radius: 7px; }
-.nav-links { display: flex; align-items: center; gap: 18px; }
+.nav-links { display: flex; align-items: center; gap: 18px; margin-left: auto; }
 .nav-links a:not(.nav-cta) {
   color: var(--text-secondary); text-decoration: none; font-size: 13px;
   font-weight: 500; letter-spacing: -0.01em; transition: color 0.2s;
@@ -483,7 +488,7 @@ nav.nav-scrolled {
   display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   gap: 28px; align-items: center;
 }
-.hero-content { max-width: 800px; }
+.hero-content { max-width: 800px; margin-left: clamp(0px, 1.8vw, 24px); }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--green-dim); border: 1px solid var(--green-border);
@@ -1786,6 +1791,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
 
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; gap: 24px; text-align: center; width: 100%; margin: 0; padding: 56px 0 44px; }
+  .hero-content { margin-left: 0; }
   .hero-content { max-width: 100%; }
   .hero-actions { justify-content: center; }
   .hero-form { max-width: 100%; justify-content: center; }
@@ -1811,7 +1817,8 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
 
 @media (max-width: 640px) {
   .container { padding: 0 16px; }
-  nav { z-index: 950; top: 8px; padding: 10px 14px; border-radius: 22px; }
+  nav { z-index: 950; top: 0; padding: 10px 0; border-radius: 0; }
+  nav.nav-scrolled { top: 8px; padding: 10px 14px; border-radius: 22px; }
   .nav-brand { flex-shrink: 0; }
   .nav-links { display: none; }
   .nav-controls { flex-shrink: 0; }
