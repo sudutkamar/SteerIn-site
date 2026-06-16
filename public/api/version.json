@@ -2,7 +2,7 @@
   "latestVersion": 1,
   "latestVersionName": "1.0",
   "downloadUrl": "https://github.com/sudutkamar/SteerIn-site/releases/download/v1.0/steerin-latest.apk",
-  "changelog": "- Bug fixes and performance improvements\n- GPS trip tracking improvements\n- UI/UX enhancements",
+  "changelog": "Bug fixes and performance improvements\n- GPS trip tracking improvements\n- UI/UX enhancements",
   "forceUpdate": false,
   "minSdkVersion": 24,
   "releaseDate": "2026-06-16"
