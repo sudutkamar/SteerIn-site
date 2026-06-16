@@ -1,7 +1,7 @@
 {
-  "latestVersion": 2,
+  "latestVersion": 3,
   "latestVersionName": "1.1",
-  "downloadUrl": "https://steerin.app/downloads/steerin-latest.apk",
+  "downloadUrl": "https://utgfhfbdwuwhhprjicoe.supabase.co/storage/v1/object/public/app-releases/steerin-latest.apk",
   "changelog": "- Bug fixes and performance improvements\n- GPS trip tracking improvements\n- UI/UX enhancements",
   "forceUpdate": false,
   "minSdkVersion": 24,
