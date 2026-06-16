@@ -10,6 +10,7 @@ import { init3DScene } from './components/canvas3d.js';
 import { initChangelog } from './components/changelog.js';
 import { initLang } from './components/lang.js';
 import { initStickyCta } from './components/stickyCta.js';
+import { initSHA256 } from './components/sha256.js';
 
 function hideLoadingScreen() {
   const screen = document.getElementById('loading-screen');
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMouseGlow();
   initChangelog();
   initStickyCta();
+  initSHA256();
   // 3D scene loads asynchronously (code-split Three.js)
   init3DScene();
 
