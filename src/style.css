@@ -328,19 +328,19 @@ nav.nav-scrolled {
 }
 .nav-brand {
   display: flex; align-items: center; gap: 10px;
-  font-size: 18px; font-weight: 800; letter-spacing: -0.3px;
+  font-size: 22px; font-weight: 600; letter-spacing: -0.3px;
   color: var(--text); text-decoration: none;
 }
 .nav-logo { width: 30px; height: 30px; object-fit: contain; border-radius: 7px; }
 .nav-links { display: flex; align-items: center; gap: 18px; margin-left: auto; }
 .nav-links a:not(.nav-cta) {
-  color: var(--text-secondary); text-decoration: none; font-size: 13px;
-  font-weight: 500; letter-spacing: -0.01em; transition: color 0.2s;
+  color: var(--text-secondary); text-decoration: none; font-size: 16px;
+  font-weight: 600; letter-spacing: -0.01em; transition: color 0.2s;
 }
 .nav-links a:not(.nav-cta):hover { color: var(--text); }
 .nav-cta {
-  font-size: 13px; font-weight: 700;
-  padding: 9px 18px; border-radius: 999px;
+  font-size: 16px; font-weight: 800;
+  padding: 11px 22px; border-radius: 999px;
   background: var(--green); color: #000;
   text-decoration: none; transition: all 0.25s;
 }
@@ -353,11 +353,11 @@ nav.nav-scrolled {
 }
 .lang-btn {
   display: flex; align-items: center; gap: 6px;
-  padding: 7px 10px; border-radius: 999px;
+  padding: 9px 13px; border-radius: 999px;
   border: 1px solid var(--border); background: color-mix(in srgb, var(--bg-card) 82%, transparent);
   color: var(--text-secondary); cursor: pointer;
   transition: all 0.2s; font-family: inherit;
-  font-size: 12px; font-weight: 600;
+  font-size: 14px; font-weight: 650;
 }
 .lang-btn:hover { border-color: var(--border-hover); color: var(--text); background: var(--btn-ghost-hover); }
 .lang-chevron {
@@ -398,7 +398,7 @@ nav.nav-scrolled {
 }
 
 .theme-toggle {
-  width: 36px; height: 36px; border-radius: 999px;
+  width: 40px; height: 40px; border-radius: 999px;
   border: 1px solid var(--border); background: color-mix(in srgb, var(--bg-card) 82%, transparent);
   cursor: pointer; display: flex; align-items: center; justify-content: center;
   transition: all 0.2s; color: var(--text-secondary);
