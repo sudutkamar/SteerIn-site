@@ -29,7 +29,15 @@ public/downloads/*.apk.sha256
 npm-debug.log*
 
 # Optional: .opencode folder
-.opencode
+.opencode/
+.opencode/agents/
+
+# Agent/internal docs
+AGENTS.md
+HERMES_AGENT.md
+OFFLINE_SCALE.md
+DOWNLOAD_SETUP.md
+DOWNLOAD_FEATURE_SUMMARY.md
 
 # Astro generated
 .astro
