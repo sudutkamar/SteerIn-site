@@ -37,7 +37,7 @@ import '../style.css';
   </script>
 </head>
 <body>
-  <a href="#main" class="skip-link">Lewati ke konten utama</a>
+  <a href="#main" class="skip-link" data-i18n="skip">Lewati ke konten utama</a>
   <div class="noise"></div>
   <div id="cursor-glow" aria-hidden="true"></div>
   <div id="three-canvas" aria-hidden="true"></div>
@@ -70,12 +70,23 @@ import '../style.css';
         SteerIn
       </a>
       <div class="nav-links">
-        <a href="#features">Fitur</a>
-        <a href="#advantage">Kenapa SteerIn</a>
-        <a href="#how-it-works">Cara Kerja</a>
-        <a href="#privacy">Privasi</a>
-        <a href="#faq">FAQ</a>
-        <a href="#download" class="nav-cta">Download</a>
+        <a href="#features" data-i18n="nav.features">Fitur</a>
+        <a href="#advantage" data-i18n="nav.advantage">Kenapa SteerIn</a>
+        <a href="#how-it-works" data-i18n="nav.how">Cara Kerja</a>
+        <a href="#privacy" data-i18n="nav.privacy">Privasi</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="/changelog" class="nav-changelog">Changelog</a>
+        <a href="#download" class="nav-cta" data-i18n="nav.download">Download</a>
+        <div class="lang-switch" role="listbox" aria-label="Language">
+          <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false">
+            <span class="lang-current">🇮🇩 ID</span>
+            <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="lang-dropdown">
+            <button class="lang-option active" data-lang="id" role="option">🇮🇩 <span>Indonesia</span></button>
+            <button class="lang-option" data-lang="en" role="option">🇬🇧 <span>English</span></button>
+          </div>
+        </div>
         <button class="theme-toggle" aria-label="Toggle theme">
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -91,37 +102,37 @@ import '../style.css';
       <div class="hero-content">
         <div class="hero-badge">
           <span class="hero-badge-dot"></span>
-          Dibuat untuk pemilik mobil & motor Indonesia
+          <span data-i18n="hero.badge">Dibuat untuk pemilik mobil &amp; motor Indonesia</span>
         </div>
-        <h1>Ingat servis sebelum telat,<br><span class="gradient">rapikan semua riwayat kendaraan.</span></h1>
-        <p>SteerIn mengubah struk servis tercecer, oli yang lupa diganti, pilihan bengkel yang serba tebak-tebakan, dan banyak kendaraan yang sulit dipantau menjadi satu garasi digital premium — privat dari awal, berguna tiap hari, siap untuk mobil, motor, dan EV.</p>
+        <h1><span data-i18n="hero.h1.before">Ingat servis sebelum telat,</span><br><span class="gradient" data-i18n="hero.h1.gradient">rapikan semua riwayat kendaraan.</span></h1>
+        <p data-i18n="hero.p">SteerIn mengubah struk servis tercecer, oli yang lupa diganti, pilihan bengkel yang serba tebak-tebakan, dan banyak kendaraan yang sulit dipantau menjadi satu garasi digital premium — privat dari awal, berguna tiap hari, siap untuk mobil, motor, dan EV.</p>
         <div class="hero-actions">
           <a href="#download" class="btn btn--primary">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><use href="#i-download"/></svg>
-            Download APK Android
+            <span data-i18n="hero.cta.download">Download APK Android</span>
           </a>
-          <a href="#advantage" class="btn btn--ghost">Lihat keunggulan</a>
+          <a href="#advantage" class="btn btn--ghost" data-i18n="hero.cta.advantage">Lihat keunggulan</a>
         </div>
 
         <!-- Waitlist Form -->
         <form class="hero-form" data-form novalidate>
-          <label for="hero-email" class="sr-only">Alamat email</label>
-          <input type="email" id="hero-email" class="form-input" placeholder="Masukkan email kamu" required autocomplete="email" aria-label="Alamat email">
+          <label for="hero-email" class="sr-only" data-i18n="hero.form.placeholder">Alamat email</label>
+          <input type="email" id="hero-email" class="form-input" placeholder="Masukkan email kamu" required autocomplete="email" aria-label="Alamat email" data-i18n-placeholder="hero.form.placeholder">
           <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button type="submit" class="btn btn--primary form-btn">Ikut Early Access</button>
+          <button type="submit" class="btn btn--primary form-btn" data-i18n="hero.form.btn">Ikut Early Access</button>
           <div class="form-error"></div>
           <div class="form-success"></div>
         </form>
-        <p class="form-note">Tanpa spam. Bisa berhenti kapan saja. 📬</p>
+        <p class="form-note" data-i18n="hero.form.note">Tanpa spam. Bisa berhenti kapan saja. 📬</p>
 
         <div class="hero-trust">
-          <span>Local-first</span>
+          <span data-i18n="hero.trust.1">Local-first</span>
           <span class="dot"></span>
-          <span>Mobil + motor + EV</span>
+          <span data-i18n="hero.trust.2">Mobil + motor + EV</span>
           <span class="dot"></span>
-          <span>GPS trips</span>
+          <span data-i18n="hero.trust.3">GPS trips</span>
           <span class="dot"></span>
-          <span>Tanpa iklan/tracker</span>
+          <span data-i18n="hero.trust.4">Tanpa iklan/tracker</span>
         </div>
       </div>
 
@@ -210,23 +221,23 @@ import '../style.css';
       <div class="trust-grid">
         <div class="trust-card fade-up">
           <div class="trust-card-icon"><svg><use href="#i-phone"/></svg></div>
-          <h4>Local-first by default</h4>
-          <p>All your data stays on your device. No accounts required to use the core app.</p>
+          <h4 data-i18n="trust.1.title">Local-first by default</h4>
+          <p data-i18n="trust.1.p">Semua data tersimpan di perangkat kamu. Tidak butuh akun untuk menggunakan fitur utama.</p>
         </div>
         <div class="trust-card fade-up">
           <div class="trust-card-icon"><svg><use href="#i-cloud"/></svg></div>
-          <h4>Optional cloud sync</h4>
-          <p>Backup to the cloud only when you choose. It is never automatic or mandatory.</p>
+          <h4 data-i18n="trust.2.title">Cloud sync opsional</h4>
+          <p data-i18n="trust.2.p">Backup ke cloud hanya saat kamu pilih. Tidak pernah otomatis atau wajib.</p>
         </div>
         <div class="trust-card fade-up">
           <div class="trust-card-icon"><svg><use href="#i-lock"/></svg></div>
-          <h4>AES encrypted backups</h4>
-          <p>Backups are encrypted with strong cryptography before leaving your device.</p>
+          <h4 data-i18n="trust.3.title">Backup terenkripsi AES</h4>
+          <p data-i18n="trust.3.p">Backup dienkripsi dengan kriptografi kuat sebelum keluar dari perangkat kamu.</p>
         </div>
         <div class="trust-card fade-up">
           <div class="trust-card-icon"><svg><use href="#i-xcircle"/></svg></div>
-          <h4>Zero ads or trackers</h4>
-          <p>No advertising, no analytics SDKs, no third-party tracking. Ever.</p>
+          <h4 data-i18n="trust.4.title">Tanpa iklan atau tracker</h4>
+          <p data-i18n="trust.4.p">Tanpa iklan, tanpa SDK analitik, tanpa pelacakan pihak ketiga. Selamanya.</p>
         </div>
       </div>
     </section>
@@ -234,55 +245,55 @@ import '../style.css';
     <!-- ===== PROBLEM ===== -->
     <section class="problem" id="problem">
       <div class="section-header fade-up">
-        <div class="section-badge">The Problem</div>
-        <h2>Vehicle ownership gets messy fast.</h2>
-        <p>Service notes get buried in chats. Oil changes are easy to forget. Trip history disappears. Workshop decisions are often rushed.</p>
+        <div class="section-badge" data-i18n="problem.badge">Masalah</div>
+        <h2 data-i18n="problem.h2">Kepemilikan kendaraan cepat berantakan.</h2>
+        <p data-i18n="problem.p">Catatan servis tenggelam di chat. Oli mudah lupa diganti. Riwayat perjalanan hilang. Keputusan bengkel sering terburu-buru.</p>
       </div>
       <div class="problem-grid">
         <div class="problem-list">
           <div class="problem-item fade-up">
             <div class="problem-icon"><svg><use href="#i-clipboard"/></svg></div>
             <div class="problem-text">
-              <h4>Scattered service records</h4>
-              <p>Receipts, notes, and WhatsApp messages spread everywhere with no structure.</p>
+              <h4 data-i18n="problem.1.title">Catatan servis tercecer</h4>
+              <p data-i18n="problem.1.p">Struk, catatan, dan pesan WhatsApp tersebar tanpa struktur.</p>
             </div>
           </div>
           <div class="problem-item fade-up">
             <div class="problem-icon"><svg><use href="#i-bell"/></svg></div>
             <div class="problem-text">
-              <h4>Forgotten maintenance</h4>
-              <p>Oil changes, tire rotations, and brake checks are easy to miss without reminders.</p>
+              <h4 data-i18n="problem.2.title">Perawatan terlupa</h4>
+              <p data-i18n="problem.2.p">Ganti oli, rotasi ban, dan cek rem mudah terlewat tanpa pengingat.</p>
             </div>
           </div>
           <div class="problem-item fade-up">
             <div class="problem-icon"><svg><use href="#i-pin"/></svg></div>
             <div class="problem-text">
-              <h4>Lost trip history</h4>
-              <p>Routes, distances, and travel records disappear once the trip is done.</p>
+              <h4 data-i18n="problem.3.title">Riwayat trip hilang</h4>
+              <p data-i18n="problem.3.p">Rute, jarak, dan catatan perjalanan lenyap begitu trip selesai.</p>
             </div>
           </div>
           <div class="problem-item fade-up">
             <div class="problem-icon"><svg><use href="#i-wrench"/></svg></div>
             <div class="problem-text">
-              <h4>Uncertain workshop decisions</h4>
-              <p>Finding a reliable workshop nearby should not be a guessing game.</p>
+              <h4 data-i18n="problem.4.title">Keputusan bengkel tidak pasti</h4>
+              <p data-i18n="problem.4.p">Menemukan bengkel terpercaya seharusnya bukan tebak-tebakan.</p>
             </div>
           </div>
           <div class="problem-item fade-up">
             <div class="problem-icon"><svg><use href="#i-car"/></svg></div>
             <div class="problem-text">
-              <h4>Multiple vehicles, one headache</h4>
-              <p>Managing two or more vehicles means double the records and double the stress.</p>
+              <h4 data-i18n="problem.5.title">Banyak kendaraan, satu sakit kepala</h4>
+              <p data-i18n="problem.5.p">Mengelola dua kendaraan atau lebih berarti double catatan dan double stres.</p>
             </div>
           </div>
         </div>
         <div class="problem-right fade-up">
           <div class="problem-stat">
             <div class="problem-stat-num" data-target="3">0</div>
-            <div class="problem-stat-label">vehicles per average household in Indonesia</div>
+            <div class="problem-stat-label" data-i18n="problem.stat.label">kendaraan per rumah tangga rata-rata di Indonesia</div>
           </div>
-          <div class="problem-quote">
-            "SteerIn brings everything into one <strong>private, structured, and reliable</strong> vehicle hub."
+          <div class="problem-quote" data-i18n-html="problem.quote">
+            "SteerIn menggabungkan semuanya dalam satu <strong>hub kendaraan yang privat, terstruktur, dan terpercaya</strong>."
           </div>
         </div>
       </div>
@@ -291,70 +302,70 @@ import '../style.css';
     <!-- ===== FEATURES ===== -->
     <section class="features" id="features">
       <div class="section-header fade-up">
-        <div class="section-badge">Fitur</div>
-        <h2>Semua kebutuhan kendaraan,<br>dalam satu aplikasi.</h2>
-        <p>Dibuat untuk komuter harian, pemilik mobil dan motor, keluarga dengan banyak kendaraan, dan siapa pun yang ingin riwayat kendaraan lengkap.</p>
+        <div class="section-badge" data-i18n="features.badge">Fitur</div>
+        <h2 data-i18n-html="features.h2">Semua kebutuhan kendaraan,<br>dalam satu aplikasi.</h2>
+        <p data-i18n="features.p">Dibuat untuk komuter harian, pemilik mobil dan motor, keluarga dengan banyak kendaraan, dan siapa pun yang ingin riwayat kendaraan lengkap.</p>
       </div>
       <div class="features-grid">
         <div class="feature-card fade-up">
           <div class="feature-icon fi-green"><svg><use href="#i-car"/></svg></div>
-          <h3>Garasi Multi-Kendaraan</h3>
-          <p>Kelola mobil dan motor dalam satu tempat lengkap dengan profil, kilometer, nomor polisi, dan detail kepemilikan.</p>
+          <h3 data-i18n="features.1.title">Garasi Multi-Kendaraan</h3>
+          <p data-i18n="features.1.p">Kelola mobil dan motor dalam satu tempat lengkap dengan profil, kilometer, nomor polisi, dan detail kepemilikan.</p>
         </div>
         <div class="feature-card fade-up">
           <div class="feature-icon fi-blue"><svg><use href="#i-activity"/></svg></div>
-          <h3>Pantau Kesehatan Kendaraan</h3>
-          <p>Deteksi potensi masalah lebih awal lewat kondisi komponen, pemakaian, dan indikator berbasis kilometer.</p>
+          <h3 data-i18n="features.2.title">Pantau Kesehatan Kendaraan</h3>
+          <p data-i18n="features.2.p">Deteksi potensi masalah lebih awal lewat kondisi komponen, pemakaian, dan indikator berbasis kilometer.</p>
         </div>
         <div class="feature-card fade-up">
           <div class="feature-icon fi-purple"><svg><use href="#i-bell"/></svg></div>
-          <h3>Pengingat Servis</h3>
-          <p>Dapatkan pengingat sebelum oli, ban, rem, atau servis berkala lain telat dikerjakan.</p>
+          <h3 data-i18n="features.3.title">Pengingat Servis</h3>
+          <p data-i18n="features.3.p">Dapatkan pengingat sebelum oli, ban, rem, atau servis berkala lain telat dikerjakan.</p>
         </div>
         <div class="feature-card fade-up">
           <div class="feature-icon fi-amber"><svg><use href="#i-clipboard"/></svg></div>
-          <h3>Riwayat Servis</h3>
-          <p>Simpan setiap perbaikan, penggantian part, dan kunjungan bengkel untuk referensi dan nilai jual kembali.</p>
+          <h3 data-i18n="features.4.title">Riwayat Servis</h3>
+          <p data-i18n="features.4.p">Simpan setiap perbaikan, penggantian part, dan kunjungan bengkel untuk referensi dan nilai jual kembali.</p>
         </div>
         <div class="feature-card fade-up">
           <div class="feature-icon fi-pink"><svg><use href="#i-pin"/></svg></div>
-          <h3>Catatan Trip GPS</h3>
-          <p>Catat perjalanan, jarak, rute, dan riwayat mobilitas dengan data lokasi tetap dalam kontrol kamu.</p>
+          <h3 data-i18n="features.5.title">Catatan Trip GPS</h3>
+          <p data-i18n="features.5.p">Catat perjalanan, jarak, rute, dan riwayat mobilitas dengan data lokasi tetap dalam kontrol kamu.</p>
         </div>
         <div class="feature-card fade-up">
           <div class="feature-icon fi-cyan"><svg><use href="#i-wrench"/></svg></div>
-          <h3>Pencarian Bengkel</h3>
-          <p>Temukan bengkel terdekat dan ambil keputusan lebih baik saat kendaraan butuh penanganan profesional.</p>
+          <h3 data-i18n="features.6.title">Pencarian Bengkel</h3>
+          <p data-i18n="features.6.p">Temukan bengkel terdekat dan ambil keputusan lebih baik saat kendaraan butuh penanganan profesional.</p>
         </div>
         <div class="feature-card fade-up">
           <div class="feature-icon fi-orange"><svg><use href="#i-cloud"/></svg></div>
-          <h3>Cloud Sync &amp; Backup</h3>
-          <p>Backup your vehicle records securely and restore them when switching devices — optional, never forced.</p>
+          <h3 data-i18n="features.7.title">Cloud Sync &amp; Backup</h3>
+          <p data-i18n="features.7.p">Backup catatan kendaraan kamu dengan aman dan restore saat ganti perangkat — opsional, tidak pernah dipaksa.</p>
         </div>
         <div class="feature-card fade-up">
           <div class="feature-icon fi-emerald"><svg><use href="#i-shield"/></svg></div>
-          <h3>Kontrol Privasi</h3>
-          <p>Tanpa iklan, tanpa tracker, tanpa pengumpulan data tersembunyi. Data kendaraan tetap milik kamu.</p>
+          <h3 data-i18n="features.8.title">Kontrol Privasi</h3>
+          <p data-i18n="features.8.p">Tanpa iklan, tanpa tracker, tanpa pengumpulan data tersembunyi. Data kendaraan tetap milik kamu.</p>
         </div>
         <div class="feature-card fade-up">
           <div class="feature-icon fi-blue"><svg><use href="#i-activity"/></svg></div>
-          <h3>Diagnostik Pintar</h3>
-          <p>Gunakan cek gejala terpandu, level risiko, aksi aman, dan catatan siap bengkel sebelum masalah membesar.</p>
+          <h3 data-i18n="features.9.title">Diagnostik Pintar</h3>
+          <p data-i18n="features.9.p">Gunakan cek gejala terpandu, level risiko, aksi aman, dan catatan siap bengkel sebelum masalah membesar.</p>
         </div>
         <div class="feature-card fade-up">
           <div class="feature-icon fi-amber"><svg><use href="#i-clipboard"/></svg></div>
-          <h3>OCR Struk &amp; Odometer</h3>
-          <p>Scan struk servis atau odometer agar input lebih cepat dan catatan lebih rapi.</p>
+          <h3 data-i18n="features.10.title">OCR Struk &amp; Odometer</h3>
+          <p data-i18n="features.10.p">Scan struk servis atau odometer agar input lebih cepat dan catatan lebih rapi.</p>
         </div>
         <div class="feature-card fade-up">
           <div class="feature-icon fi-purple"><svg><use href="#i-bell"/></svg></div>
-          <h3>Laporan Mingguan &amp; Widget</h3>
-          <p>Lihat tren kesehatan kendaraan, reminder, aktivitas trip, dan ringkasan widget home screen.</p>
+          <h3 data-i18n="features.11.title">Laporan Mingguan &amp; Widget</h3>
+          <p data-i18n="features.11.p">Lihat tren kesehatan kendaraan, reminder, aktivitas trip, dan ringkasan widget home screen.</p>
         </div>
         <div class="feature-card fade-up">
           <div class="feature-icon fi-cyan"><svg><use href="#i-car"/></svg></div>
-          <h3>Bandingkan Kendaraan</h3>
-          <p>Bandingkan kendaraan di garasi memakai konteks health, odometer, trip, BBM, dan biaya servis.</p>
+          <h3 data-i18n="features.12.title">Bandingkan Kendaraan</h3>
+          <p data-i18n="features.12.p">Bandingkan kendaraan di garasi memakai konteks health, odometer, trip, BBM, dan biaya servis.</p>
         </div>
       </div>
     </section>
@@ -362,72 +373,72 @@ import '../style.css';
     <!-- ===== COMPETITIVE ADVANTAGE ===== -->
     <section class="advantage" id="advantage">
       <div class="section-header fade-up">
-        <div class="section-badge">Kenapa SteerIn</div>
-        <h2>Bukan sekadar app reminder biasa.</h2>
-        <p>Banyak app kendaraan berhenti di catatan biaya atau reminder sederhana. SteerIn menyatukan maintenance intelligence, konteks trip, privasi, dan workflow kepemilikan dalam satu pengalaman Android.</p>
+        <div class="section-badge" data-i18n="advantage.badge">Kenapa SteerIn</div>
+        <h2 data-i18n="advantage.h2">Bukan sekadar app reminder biasa.</h2>
+        <p data-i18n="advantage.p">Banyak app kendaraan berhenti di catatan biaya atau reminder sederhana. SteerIn menyatukan maintenance intelligence, konteks trip, privasi, dan workflow kepemilikan dalam satu pengalaman Android.</p>
       </div>
       <div class="advantage-grid">
         <div class="advantage-card advantage-card--hero fade-up">
-          <span class="advantage-kicker">Keunggulan SteerIn</span>
-          <h3>Satu garasi privat untuk seluruh siklus kendaraan.</h3>
-          <p>Dari onboarding kendaraan bekas, pantau kesehatan komponen, scan catatan, booking servis, logging trip, bandingkan kendaraan, sampai backup data — SteerIn menjaga seluruh cerita kepemilikan tetap terhubung.</p>
+          <span class="advantage-kicker" data-i18n="advantage.kicker">Keunggulan SteerIn</span>
+          <h3 data-i18n="advantage.hero.h3">Satu garasi privat untuk seluruh siklus kendaraan.</h3>
+          <p data-i18n="advantage.hero.p">Dari onboarding kendaraan bekas, pantau kesehatan komponen, scan catatan, booking servis, logging trip, bandingkan kendaraan, sampai backup data — SteerIn menjaga seluruh cerita kepemilikan tetap terhubung.</p>
           <div class="advantage-pills">
-            <span>Maintenance health</span><span>GPS trips</span><span>Workshop maps</span><span>Cloud backup</span>
+            <span data-i18n="advantage.pill.1">Maintenance health</span><span data-i18n="advantage.pill.2">GPS trips</span><span data-i18n="advantage.pill.3">Workshop maps</span><span data-i18n="advantage.pill.4">Cloud backup</span>
           </div>
         </div>
         <div class="advantage-list fade-up">
-          <div class="advantage-row"><strong>Local-first privacy</strong><span>Unlike cloud-only apps, core usage works without an account and data stays on-device by default.</span></div>
-          <div class="advantage-row"><strong>Cars, motorcycles, EVs</strong><span>One dashboard for mixed garages, not separate workflows for each vehicle type.</span></div>
-          <div class="advantage-row"><strong>Component health, not just dates</strong><span>Reminders use mileage and part condition so maintenance feels proactive, not generic.</span></div>
-          <div class="advantage-row"><strong>Trip + workshop context</strong><span>GPS trip logging and nearby workshop discovery sit beside maintenance history.</span></div>
-          <div class="advantage-row"><strong>Premium native UX</strong><span>Native Android, glassmorphism UI, custom onboarding, widgets, weekly reports, and privacy controls.</span></div>
+          <div class="advantage-row"><strong data-i18n="advantage.row.1.title">Privasi local-first</strong><span data-i18n="advantage.row.1.p">Berbeda dari app cloud-only, penggunaan inti bisa tanpa akun dan data tetap di perangkat secara default.</span></div>
+          <div class="advantage-row"><strong data-i18n="advantage.row.2.title">Mobil, motor, EV</strong><span data-i18n="advantage.row.2.p">Satu dashboard untuk garasi campuran, bukan alur kerja terpisah untuk setiap tipe kendaraan.</span></div>
+          <div class="advantage-row"><strong data-i18n="advantage.row.3.title">Kesehatan komponen, bukan cuma tanggal</strong><span data-i18n="advantage.row.3.p">Pengingat memakai kilometer dan kondisi part sehingga perawatan terasa proaktif, bukan generik.</span></div>
+          <div class="advantage-row"><strong data-i18n="advantage.row.4.title">Konteks trip + bengkel</strong><span data-i18n="advantage.row.4.p">GPS trip logging dan penemuan bengkel terdekat ada di samping riwayat perawatan.</span></div>
+          <div class="advantage-row"><strong data-i18n="advantage.row.5.title">UX native premium</strong><span data-i18n="advantage.row.5.p">Android native, UI glassmorphism, onboarding kustom, widget, laporan mingguan, dan kontrol privasi.</span></div>
         </div>
       </div>
       <div class="competitor-strip fade-up" aria-label="SteerIn comparison with typical competitors">
-        <div><span>App biasa</span><strong>Catatan saja</strong></div>
-        <div><span>App biasa</span><strong>Cloud wajib</strong></div>
-        <div><span>App biasa</span><strong>Fokus mobil saja</strong></div>
-        <div class="winner"><span>SteerIn</span><strong>Garasi digital privat lengkap</strong></div>
+        <div><span data-i18n="competitor.1.label">App biasa</span><strong data-i18n="competitor.1.strong">Catatan saja</strong></div>
+        <div><span data-i18n="competitor.2.label">App biasa</span><strong data-i18n="competitor.2.strong">Cloud wajib</strong></div>
+        <div><span data-i18n="competitor.3.label">App biasa</span><strong data-i18n="competitor.3.strong">Fokus mobil saja</strong></div>
+        <div class="winner"><span data-i18n="competitor.4.label">SteerIn</span><strong data-i18n="competitor.4.strong">Garasi digital privat lengkap</strong></div>
       </div>
     </section>
 
     <!-- ===== HOW IT WORKS ===== -->
     <section class="how-it-works" id="how-it-works">
       <div class="section-header fade-up">
-        <div class="section-badge">Cara Kerja</div>
-        <h2>Mulai rapikan kendaraan<br>dalam hitungan menit.</h2>
-        <p>Mulai dengan beberapa langkah sederhana tanpa wajib akun.</p>
+        <div class="section-badge" data-i18n="how.badge">Cara Kerja</div>
+        <h2 data-i18n-html="how.h2">Mulai rapikan kendaraan<br>dalam hitungan menit.</h2>
+        <p data-i18n="how.p">Mulai dengan beberapa langkah sederhana tanpa wajib akun.</p>
       </div>
       <div class="steps-grid">
         <div class="step-card fade-up">
           <div class="step-num">1</div>
-          <h4>Add your vehicle</h4>
-          <p>Create a profile for your car or motorcycle with brand, model, year, and plate.</p>
+          <h4 data-i18n="how.1.title">Tambah kendaraanmu</h4>
+          <p data-i18n="how.1.p">Buat profil untuk mobil atau motormu dengan merek, model, tahun, dan plat nomor.</p>
         </div>
         <div class="step-card fade-up">
           <div class="step-num">2</div>
-          <h4>Track condition</h4>
-          <p>Monitor mileage, component health, and maintenance status at a glance.</p>
+          <h4 data-i18n="how.2.title">Pantau kondisi</h4>
+          <p data-i18n="how.2.p">Cek kilometer, kesehatan komponen, dan status perawatan dalam sekali lihat.</p>
         </div>
         <div class="step-card fade-up">
           <div class="step-num">3</div>
-          <h4>Log service history</h4>
-          <p>Save every repair, service, part replacement, and workshop visit with cost and date.</p>
+          <h4 data-i18n="how.3.title">Catat riwayat servis</h4>
+          <p data-i18n="how.3.p">Simpan setiap perbaikan, servis, penggantian part, dan kunjungan bengkel beserta biaya dan tanggal.</p>
         </div>
         <div class="step-card fade-up">
           <div class="step-num">4</div>
-          <h4>Record trips</h4>
-          <p>Track distance, routes, and travel activity with full user control over location data.</p>
+          <h4 data-i18n="how.4.title">Rekam trip</h4>
+          <p data-i18n="how.4.p">Lacak jarak, rute, dan aktivitas perjalanan dengan kontrol penuh atas data lokasi.</p>
         </div>
         <div class="step-card fade-up">
           <div class="step-num">5</div>
-          <h4>Find workshops</h4>
-          <p>Discover nearby workshops and choose the right service provider for your vehicle.</p>
+          <h4 data-i18n="how.5.title">Temukan bengkel</h4>
+          <p data-i18n="how.5.p">Jelajahi bengkel terdekat dan pilih penyedia servis yang tepat untuk kendaraanmu.</p>
         </div>
         <div class="step-card fade-up">
           <div class="step-num">6</div>
-          <h4>Backup securely</h4>
-          <p>Keep your records safe with encrypted backup and optional cloud sync for peace of mind.</p>
+          <h4 data-i18n="how.6.title">Backup dengan aman</h4>
+          <p data-i18n="how.6.p">Jaga catatan tetap aman dengan backup terenkripsi dan cloud sync opsional untuk ketenangan pikiran.</p>
         </div>
       </div>
     </section>
@@ -435,42 +446,42 @@ import '../style.css';
     <!-- ===== PRIVACY & SECURITY ===== -->
     <section class="privacy" id="privacy">
       <div class="section-header fade-up">
-        <div class="section-badge">Privasi &amp; Security</div>
-        <h2>Dibangun untuk privasi sejak awal.</h2>
+        <div class="section-badge" data-i18n="privacy.badge">Privasi &amp; Keamanan</div>
+        <h2 data-i18n="privacy.h2">Dibangun untuk privasi sejak awal.</h2>
       </div>
-      <p class="privacy-intro fade-up">
-        Your vehicle records, service history, and trip data are personal. <strong>SteerIn is designed around user control</strong>, local-first storage, optional encrypted backup, and zero advertising trackers.
+      <p class="privacy-intro fade-up" data-i18n-html="privacy.intro">
+        Catatan kendaraan, riwayat servis, dan data trip kamu bersifat pribadi. <strong>SteerIn didesain dengan kontrol pengguna</strong>, penyimpanan local-first, backup terenkripsi opsional, dan tanpa tracker iklan.
       </p>
       <div class="privacy-grid">
         <div class="privacy-card fade-up">
           <div class="privacy-card-icon"><svg><use href="#i-phone"/></svg></div>
-          <h4>Local data first</h4>
-          <p>All data is stored on your device by default. No remote servers involved.</p>
+          <h4 data-i18n="privacy.1.title">Data lokal terlebih dahulu</h4>
+          <p data-i18n="privacy.1.p">Semua data tersimpan di perangkat kamu secara default. Tidak ada server remote yang terlibat.</p>
         </div>
         <div class="privacy-card fade-up">
           <div class="privacy-card-icon"><svg><use href="#i-cloud"/></svg></div>
-          <h4>Optional cloud sync</h4>
-          <p>Sync to the cloud only when you decide. It is never automatic or forced.</p>
+          <h4 data-i18n="privacy.2.title">Cloud sync opsional</h4>
+          <p data-i18n="privacy.2.p">Sinkronisasi ke cloud hanya saat kamu putuskan. Tidak pernah otomatis atau dipaksa.</p>
         </div>
         <div class="privacy-card fade-up">
           <div class="privacy-card-icon"><svg><use href="#i-lock"/></svg></div>
-          <h4>Encrypted backup</h4>
-          <p>Backups are protected with strong encryption before leaving your device.</p>
+          <h4 data-i18n="privacy.3.title">Backup terenkripsi</h4>
+          <p data-i18n="privacy.3.p">Backup dilindungi enkripsi kuat sebelum keluar dari perangkat kamu.</p>
         </div>
         <div class="privacy-card fade-up">
           <div class="privacy-card-icon"><svg><use href="#i-pin"/></svg></div>
-          <h4>User-controlled GPS</h4>
-          <p>Trip logging only runs when you start it. Location data stays under your control.</p>
+          <h4 data-i18n="privacy.4.title">GPS dikontrol pengguna</h4>
+          <p data-i18n="privacy.4.p">Trip logging hanya berjalan saat kamu memulainya. Data lokasi tetap dalam kendalimu.</p>
         </div>
         <div class="privacy-card fade-up">
           <div class="privacy-card-icon"><svg><use href="#i-download"/></svg></div>
-          <h4>Export &amp; delete control</h4>
-          <p>Export your data, delete local records, or clear cloud backups anytime.</p>
+          <h4 data-i18n="privacy.5.title">Ekspor & hapus data</h4>
+          <p data-i18n="privacy.5.p">Ekspor data kamu, hapus catatan lokal, atau bersihkan backup cloud kapan saja.</p>
         </div>
         <div class="privacy-card fade-up">
           <div class="privacy-card-icon"><svg><use href="#i-xcircle"/></svg></div>
-          <h4>Tanpa iklan/tracker</h4>
-          <p>No advertising SDKs, no analytics, no third-party tracking. Clean and private.</p>
+          <h4 data-i18n="privacy.6.title">Tanpa iklan/tracker</h4>
+          <p data-i18n="privacy.6.p">Tanpa SDK iklan, tanpa analitik, tanpa pelacakan pihak ketiga. Bersih dan privat.</p>
         </div>
       </div>
     </section>
@@ -478,80 +489,80 @@ import '../style.css';
     <!-- ===== APP PREVIEW ===== -->
     <section class="app-preview">
       <div class="section-header fade-up">
-        <div class="section-badge">Preview</div>
-        <h2>Lihat SteerIn bekerja.</h2>
-        <p>Real app screens showing how SteerIn helps you stay on top of your vehicle life.</p>
+        <div class="section-badge" data-i18n="preview.badge">Preview</div>
+        <h2 data-i18n="preview.h2">Lihat SteerIn bekerja.</h2>
+        <p data-i18n="preview.p">Layar app nyata yang menunjukkan bagaimana SteerIn membantu kamu mengelola kendaraan.</p>
       </div>
       <div class="preview-grid">
         <div class="preview-card fade-up">
           <div class="preview-head">
             <div class="pv-icon"><svg><use href="#i-car"/></svg></div>
-            <h4>Garage Dashboard</h4>
+            <h4 data-i18n="preview.1.title">Dashboard Garasi</h4>
           </div>
           <div class="preview-body">
-            <div class="pv-row"><span class="pv-label">Honda Civic</span><span class="pv-green">92%</span></div>
-            <div class="pv-row"><span class="pv-label">Yamaha NMAX</span><span class="pv-green">87%</span></div>
-            <div class="pv-row"><span class="pv-label">Toyota Avanza</span><span class="pv-amber">76%</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.1.label.1">Honda Civic</span><span class="pv-green">92%</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.1.label.2">Yamaha NMAX</span><span class="pv-green">87%</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.1.label.3">Toyota Avanza</span><span class="pv-amber">76%</span></div>
           </div>
         </div>
         <div class="preview-card fade-up">
           <div class="preview-head">
             <div class="pv-icon"><svg><use href="#i-activity"/></svg></div>
-            <h4>Vehicle Health</h4>
+            <h4 data-i18n="preview.2.title">Kesehatan Kendaraan</h4>
           </div>
           <div class="preview-body">
-            <div class="pv-row"><span class="pv-label">Engine</span><span class="pv-green">Good</span></div>
-            <div class="pv-row"><span class="pv-label">Brakes</span><span class="pv-amber">Due soon</span></div>
-            <div class="pv-row"><span class="pv-label">Tires</span><span class="pv-green">OK</span></div>
-            <div class="pv-row"><span class="pv-label">Battery</span><span class="pv-green">Good</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.2.label.1">Mesin</span><span class="pv-green" data-i18n="preview.2.value.1">Baik</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.2.label.2">Rem</span><span class="pv-amber" data-i18n="preview.2.value.2">Segera</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.2.label.3">Ban</span><span class="pv-green" data-i18n="preview.2.value.3">OK</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.2.label.4">Aki</span><span class="pv-green" data-i18n="preview.2.value.4">Baik</span></div>
           </div>
         </div>
         <div class="preview-card fade-up">
           <div class="preview-head">
             <div class="pv-icon"><svg><use href="#i-wrench"/></svg></div>
-            <h4>Maintenance Log</h4>
+            <h4 data-i18n="preview.3.title">Log Perawatan</h4>
           </div>
           <div class="preview-body">
-            <div class="pv-row"><span class="pv-label">Oil Change</span><span class="pv-value">5,000 km</span></div>
-            <div class="pv-row"><span class="pv-label">Tire Rotation</span><span class="pv-value">10,000 km</span></div>
-            <div class="pv-row"><span class="pv-label">Brake Check</span><span class="pv-value">Every 15,000 km</span></div>
-            <div class="pv-row"><span class="pv-label">Last Service</span><span class="pv-value">2 Apr 2026</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.3.label.1">Ganti Oli</span><span class="pv-value">5,000 km</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.3.label.2">Rotasi Ban</span><span class="pv-value">10,000 km</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.3.label.3">Cek Rem</span><span class="pv-value">Tiap 15,000 km</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.3.label.4">Servis Terakhir</span><span class="pv-value">2 Apr 2026</span></div>
           </div>
         </div>
         <div class="preview-card fade-up">
           <div class="preview-head">
             <div class="pv-icon"><svg><use href="#i-pin"/></svg></div>
-            <h4>Trip History</h4>
+            <h4 data-i18n="preview.4.title">Riwayat Trip</h4>
           </div>
           <div class="preview-body">
-            <div class="pv-row"><span class="pv-label">Today</span><span class="pv-value">24 km</span></div>
-            <div class="pv-row"><span class="pv-label">This Week</span><span class="pv-value">156 km</span></div>
-            <div class="pv-row"><span class="pv-label">This Month</span><span class="pv-value">842 km</span></div>
-            <div class="pv-row"><span class="pv-label">Total Tracked</span><span class="pv-value">3,210 km</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.4.label.1">Hari Ini</span><span class="pv-value">24 km</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.4.label.2">Minggu Ini</span><span class="pv-value">156 km</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.4.label.3">Bulan Ini</span><span class="pv-value">842 km</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.4.label.4">Total Dilacak</span><span class="pv-value">3,210 km</span></div>
           </div>
         </div>
         <div class="preview-card fade-up">
           <div class="preview-head">
             <div class="pv-icon"><svg><use href="#i-globe"/></svg></div>
-            <h4>Workshop Map</h4>
+            <h4 data-i18n="preview.5.title">Peta Bengkel</h4>
           </div>
           <div class="preview-body">
-            <div class="pv-row"><span class="pv-label">AutoPro Bengkel</span><span class="pv-value">0.8 km</span></div>
-            <div class="pv-row"><span class="pv-label">Mandiri Motor</span><span class="pv-value">1.2 km</span></div>
-            <div class="pv-row"><span class="pv-label">SpeedFix Garage</span><span class="pv-value">2.5 km</span></div>
-            <div class="pv-row"><span class="pv-label">Avg. Rating</span><span class="pv-value">4.5 ⭐</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.5.label.1">AutoPro Bengkel</span><span class="pv-value">0.8 km</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.5.label.2">Mandiri Motor</span><span class="pv-value">1.2 km</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.5.label.3">SpeedFix Garage</span><span class="pv-value">2.5 km</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.5.label.4">Rata-rata Rating</span><span class="pv-value">4.5 ⭐</span></div>
           </div>
         </div>
         <div class="preview-card fade-up">
           <div class="preview-head">
             <div class="pv-icon"><svg><use href="#i-cloud"/></svg></div>
-            <h4>Cloud Backup</h4>
+            <h4 data-i18n="preview.6.title">Cloud Backup</h4>
           </div>
           <div class="preview-body">
-            <div class="pv-row"><span class="pv-label">Last Backup</span><span class="pv-value">20 May 2026</span></div>
-            <div class="pv-row"><span class="pv-label">Encrypted</span><span class="pv-green">Yes</span></div>
-            <div class="pv-row"><span class="pv-label">Storage Used</span><span class="pv-value">2.4 MB</span></div>
-            <div class="pv-row"><span class="pv-label">Auto Backup</span><span class="pv-value">Off</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.6.label.1">Backup Terakhir</span><span class="pv-value">20 Mei 2026</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.6.label.2">Terenkripsi</span><span class="pv-green" data-i18n="preview.6.value.2">Ya</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.6.label.3">Penyimpanan</span><span class="pv-value">2.4 MB</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.6.label.4">Auto Backup</span><span class="pv-value" data-i18n="preview.6.value.4">Mati</span></div>
           </div>
         </div>
       </div>
@@ -560,96 +571,96 @@ import '../style.css';
     <!-- ===== USE CASES ===== -->
     <section class="use-cases" id="use-cases">
       <div class="section-header fade-up">
-        <div class="section-badge">Untuk Siapa</div>
-        <h2>Dibuat untuk cara orang Indonesia merawat kendaraan.</h2>
-        <p>Bukan cuma untuk satu tipe pengguna. SteerIn membantu pemilik motor harian, keluarga multi-kendaraan, pembeli mobil bekas, sampai pekerja yang sering perjalanan.</p>
+        <div class="section-badge" data-i18n="usecases.badge">Untuk Siapa</div>
+        <h2 data-i18n="usecases.h2">Dibuat untuk cara orang Indonesia merawat kendaraan.</h2>
+        <p data-i18n="usecases.p">Bukan cuma untuk satu tipe pengguna. SteerIn membantu pemilik motor harian, keluarga multi-kendaraan, pembeli mobil bekas, sampai pekerja yang sering perjalanan.</p>
       </div>
       <div class="use-case-grid">
-        <div class="use-case-card fade-up"><h3>Motor harian</h3><p>Ingat oli, ban, rem, aki, dan servis berkala sebelum performa turun atau biaya membesar.</p></div>
-        <div class="use-case-card fade-up"><h3>Keluarga multi-kendaraan</h3><p>Satu dashboard untuk mobil keluarga, motor harian, dan kendaraan cadangan tanpa catatan tercecer.</p></div>
-        <div class="use-case-card fade-up"><h3>Mobil bekas</h3><p>Buat baseline komponen, simpan riwayat servis, dan pantau part yang perlu dicek ulang setelah pembelian.</p></div>
-        <div class="use-case-card fade-up"><h3>Driver & pekerja mobile</h3><p>Catat jarak trip, aktivitas kendaraan, biaya servis, dan kondisi kendaraan untuk keputusan lebih rapi.</p></div>
+        <div class="use-case-card fade-up"><h3 data-i18n="usecases.1.title">Motor harian</h3><p data-i18n="usecases.1.p">Ingat oli, ban, rem, aki, dan servis berkala sebelum performa turun atau biaya membesar.</p></div>
+        <div class="use-case-card fade-up"><h3 data-i18n="usecases.2.title">Keluarga multi-kendaraan</h3><p data-i18n="usecases.2.p">Satu dashboard untuk mobil keluarga, motor harian, dan kendaraan cadangan tanpa catatan tercecer.</p></div>
+        <div class="use-case-card fade-up"><h3 data-i18n="usecases.3.title">Mobil bekas</h3><p data-i18n="usecases.3.p">Buat baseline komponen, simpan riwayat servis, dan pantau part yang perlu dicek ulang setelah pembelian.</p></div>
+        <div class="use-case-card fade-up"><h3 data-i18n="usecases.4.title">Driver & pekerja mobile</h3><p data-i18n="usecases.4.p">Catat jarak trip, aktivitas kendaraan, biaya servis, dan kondisi kendaraan untuk keputusan lebih rapi.</p></div>
       </div>
     </section>
 
     <!-- ===== COMPARISON ===== -->
     <section class="comparison" id="comparison">
       <div class="section-header fade-up">
-        <div class="section-badge">Perbandingan</div>
-        <h2>Kenapa lebih menarik dari catatan manual atau app biasa?</h2>
-        <p>SteerIn menggabungkan hal yang biasanya terpisah: reminder, health, trip, bengkel, OCR, backup, dan privasi.</p>
+        <div class="section-badge" data-i18n="comparison.badge">Perbandingan</div>
+        <h2 data-i18n="comparison.h2">Kenapa lebih menarik dari catatan manual atau app biasa?</h2>
+        <p data-i18n="comparison.p">SteerIn menggabungkan hal yang biasanya terpisah: reminder, health, trip, bengkel, OCR, backup, dan privasi.</p>
       </div>
       <div class="comparison-table fade-up" role="table" aria-label="Perbandingan SteerIn dengan alternatif lain">
-        <div class="comparison-row comparison-head" role="row"><div>Kemampuan</div><div>SteerIn</div><div>App reminder biasa</div><div>Spreadsheet</div><div>Catatan manual</div></div>
-        <div class="comparison-row" role="row"><div>Multi kendaraan</div><div class="yes">✓</div><div class="maybe">Sebagian</div><div class="maybe">Manual</div><div class="no">Sulit</div></div>
-        <div class="comparison-row" role="row"><div>Health komponen berbasis km</div><div class="yes">✓</div><div class="maybe">Terbatas</div><div class="no">Tidak otomatis</div><div class="no">Tidak</div></div>
-        <div class="comparison-row" role="row"><div>GPS trip logging</div><div class="yes">✓</div><div class="no">Jarang</div><div class="no">Tidak</div><div class="no">Tidak</div></div>
-        <div class="comparison-row" role="row"><div>Workshop maps</div><div class="yes">✓</div><div class="no">Jarang</div><div class="no">Tidak</div><div class="no">Tidak</div></div>
-        <div class="comparison-row" role="row"><div>OCR struk & odometer</div><div class="yes">✓</div><div class="no">Jarang</div><div class="no">Tidak</div><div class="no">Tidak</div></div>
-        <div class="comparison-row" role="row"><div>Local-first privacy</div><div class="yes">✓</div><div class="maybe">Tergantung</div><div class="yes">✓</div><div class="yes">✓</div></div>
-        <div class="comparison-row" role="row"><div>No ads / trackers</div><div class="yes">✓</div><div class="maybe">Tergantung</div><div class="yes">✓</div><div class="yes">✓</div></div>
+        <div class="comparison-row comparison-head" role="row"><div data-i18n="comparison.head.1">Kemampuan</div><div data-i18n="comparison.head.2">SteerIn</div><div data-i18n="comparison.head.3">App reminder biasa</div><div data-i18n="comparison.head.4">Spreadsheet</div><div data-i18n="comparison.head.5">Catatan manual</div></div>
+        <div class="comparison-row" role="row"><div data-i18n="comparison.row.1">Multi kendaraan</div><div class="yes">✓</div><div class="maybe" data-i18n="comparison.row.1.maybe">Sebagian</div><div class="maybe" data-i18n="comparison.row.1.maybe">Manual</div><div class="no" data-i18n="comparison.row.1.no">Sulit</div></div>
+        <div class="comparison-row" role="row"><div data-i18n="comparison.row.2">Health komponen berbasis km</div><div class="yes">✓</div><div class="maybe" data-i18n="comparison.row.2.maybe">Terbatas</div><div class="no" data-i18n="comparison.row.2.no.1">Tidak otomatis</div><div class="no" data-i18n="comparison.row.2.no.2">Tidak</div></div>
+        <div class="comparison-row" role="row"><div data-i18n="comparison.row.3">GPS trip logging</div><div class="yes">✓</div><div class="no" data-i18n="comparison.row.3.no">Jarang</div><div class="no" data-i18n="comparison.row.3.no.2">Tidak</div><div class="no" data-i18n="comparison.row.3.no.2">Tidak</div></div>
+        <div class="comparison-row" role="row"><div data-i18n="comparison.row.4">Workshop maps</div><div class="yes">✓</div><div class="no" data-i18n="comparison.row.4.no">Jarang</div><div class="no" data-i18n="comparison.row.3.no.2">Tidak</div><div class="no" data-i18n="comparison.row.3.no.2">Tidak</div></div>
+        <div class="comparison-row" role="row"><div data-i18n="comparison.row.5">OCR struk & odometer</div><div class="yes">✓</div><div class="no" data-i18n="comparison.row.5.no">Jarang</div><div class="no" data-i18n="comparison.row.3.no.2">Tidak</div><div class="no" data-i18n="comparison.row.3.no.2">Tidak</div></div>
+        <div class="comparison-row" role="row"><div data-i18n="comparison.row.6">Local-first privacy</div><div class="yes">✓</div><div class="maybe" data-i18n="comparison.row.6.maybe">Tergantung</div><div class="yes">✓</div><div class="yes">✓</div></div>
+        <div class="comparison-row" role="row"><div data-i18n="comparison.row.7">No ads / trackers</div><div class="yes">✓</div><div class="maybe" data-i18n="comparison.row.7.maybe">Tergantung</div><div class="yes">✓</div><div class="yes">✓</div></div>
       </div>
     </section>
 
     <!-- ===== SAFE INSTALL ===== -->
     <section class="safe-install" id="safe-install">
       <div class="safe-card fade-up">
-        <div class="section-badge">APK Safety</div>
-        <h2>Install APK dengan aman.</h2>
-        <p>SteerIn sedang disiapkan untuk launch. Kalau kamu memakai APK early access, selalu download dari halaman resmi ini dan cocokkan checksum SHA-256.</p>
+        <div class="section-badge" data-i18n="safe.badge">Keamanan APK</div>
+        <h2 data-i18n="safe.h2">Install APK dengan aman.</h2>
+        <p data-i18n="safe.p">SteerIn sedang disiapkan untuk launch. Kalau kamu memakai APK early access, selalu download dari halaman resmi ini dan cocokkan checksum SHA-256.</p>
         <div class="safe-steps">
-          <div><strong>1</strong><span>Download APK dari tombol resmi SteerIn.</span></div>
-          <div><strong>2</strong><span>Download file SHA-256 lalu cocokkan checksum bila perlu.</span></div>
-          <div><strong>3</strong><span>Izinkan install dari browser/file manager yang kamu pakai.</span></div>
-          <div><strong>4</strong><span>Buka SteerIn, cek izin lokasi/notifikasi hanya saat fitur terkait dipakai.</span></div>
+          <div><strong>1</strong><span data-i18n="safe.step.1">Download APK dari tombol resmi SteerIn.</span></div>
+          <div><strong>2</strong><span data-i18n="safe.step.2">Download file SHA-256 lalu cocokkan checksum bila perlu.</span></div>
+          <div><strong>3</strong><span data-i18n="safe.step.3">Izinkan install dari browser/file manager yang kamu pakai.</span></div>
+          <div><strong>4</strong><span data-i18n="safe.step.4">Buka SteerIn, cek izin lokasi/notifikasi hanya saat fitur terkait dipakai.</span></div>
         </div>
-        <p class="safe-note">Jangan install APK dari link tidak resmi. SteerIn tidak memakai iklan, tracker, atau upload data wajib.</p>
+        <p class="safe-note" data-i18n="safe.note">Jangan install APK dari link tidak resmi. SteerIn tidak memakai iklan, tracker, atau upload data wajib.</p>
       </div>
     </section>
 
     <!-- ===== DOWNLOAD ===== -->
     <section class="download" id="download">
       <div class="download-card fade-up">
-        <div class="section-badge">Download</div>
-        <h2>Dapatkan SteerIn untuk Android.</h2>
-        <p>Download versi terbaru SteerIn dan mulai kelola kendaraan hari ini. Gratis untuk early access, tanpa wajib akun, dan fokus privasi.</p>
+        <div class="section-badge" data-i18n="download.badge">Download</div>
+        <h2 data-i18n="download.h2">Dapatkan SteerIn untuk Android.</h2>
+        <p data-i18n="download.p">Download versi terbaru SteerIn dan mulai kelola kendaraan hari ini. Gratis untuk early access, tanpa wajib akun, dan fokus privasi.</p>
         
         <div class="download-info">
           <div class="download-version">
-            <span class="download-label">Versi</span>
-            <span class="download-value">2.0.0-rc.1</span>
+            <span class="download-label" data-i18n="download.version">Versi</span>
+            <span class="download-value">1.1</span>
           </div>
           <div class="download-size">
-            <span class="download-label">Ukuran</span>
-            <span class="download-value">~15 MB</span>
+            <span class="download-label" data-i18n="download.size">Ukuran</span>
+            <span class="download-value">~54 MB</span>
           </div>
           <div class="download-req">
-            <span class="download-label">Butuh</span>
+            <span class="download-label" data-i18n="download.req">Butuh</span>
             <span class="download-value">Android 8.0+</span>
           </div>
         </div>
 
         <div class="download-badges">
-          <span class="download-badge"><span class="check">✓</span> App native Android</span>
-          <span class="download-badge"><span class="check">✓</span> Tanpa wajib akun</span>
-          <span class="download-badge"><span class="check">✓</span> Release Candidate</span>
-          <span class="download-badge"><span class="check">✓</span> Fokus privasi</span>
+          <span class="download-badge"><span class="check">✓</span> <span data-i18n="download.badge.1">App native Android</span></span>
+          <span class="download-badge"><span class="check">✓</span> <span data-i18n="download.badge.2">Tanpa wajib akun</span></span>
+          <span class="download-badge"><span class="check">✓</span> <span data-i18n="download.badge.3">Release Candidate</span></span>
+          <span class="download-badge"><span class="check">✓</span> <span data-i18n="download.badge.4">Fokus privasi</span></span>
         </div>
 
         <div class="download-buttons">
           <a href="/downloads/steerin-latest.apk" class="btn btn--primary btn--download" download>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><use href="#i-download"/></svg>
-            Download APK
+            <span data-i18n="download.btn">Download APK</span>
           </a>
           <a href="/downloads/steerin-latest.apk.sha256" class="btn btn--ghost btn--verify" download>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-shield"/></svg>
-            Verifikasi SHA-256
+            <span data-i18n="download.verify">Verifikasi SHA-256</span>
           </a>
         </div>
 
         <div class="download-note">
-          <p>Dengan download APK, kamu menyetujui <a href="/privacy-policy/">Privacy Policy</a> dan <a href="/terms/">Terms of Service</a>.</p>
-          <p class="download-troubleshoot">Ada kendala? <a href="mailto:sudutkamar.co@gmail.com?subject=Download%20Issue">Hubungi Support</a></p>
+          <p><span data-i18n="download.terms">Dengan download APK, kamu menyetujui</span> <a href="/privacy-policy/">Privacy Policy</a> <span data-i18n="download.and">dan</span> <a href="/terms/">Terms of Service</a>.</p>
+          <p class="download-troubleshoot"><span data-i18n="download.troubleshoot">Ada kendala?</span> <a href="mailto:sudutkamar.co@gmail.com?subject=Download%20Issue" data-i18n="download.support">Hubungi Support</a></p>
         </div>
       </div>
     </section>
@@ -658,11 +669,11 @@ import '../style.css';
     <section class="early-testers">
       <div class="early-card fade-up">
         <div>
-          <div class="section-badge">Early Access</div>
-          <h2>Dicari early tester yang benar-benar peduli kendaraan.</h2>
-          <p>SteerIn tidak memakai review palsu. Feedback dari pengguna awal akan dipakai untuk menyempurnakan onboarding, reminder, maps, OCR, dan premium flow sebelum rilis publik penuh.</p>
+          <div class="section-badge" data-i18n="early.badge">Early Access</div>
+          <h2 data-i18n="early.h2">Dicari early tester yang benar-benar peduli kendaraan.</h2>
+          <p data-i18n="early.p">SteerIn tidak memakai review palsu. Feedback dari pengguna awal akan dipakai untuk menyempurnakan onboarding, reminder, maps, OCR, dan premium flow sebelum rilis publik penuh.</p>
         </div>
-        <a href="#download" class="btn btn--primary">Coba Sekarang</a>
+        <a href="#download" class="btn btn--primary" data-i18n="early.btn">Coba Sekarang</a>
       </div>
     </section>
 
@@ -675,32 +686,32 @@ import '../style.css';
       </div>
       <div class="faq-list">
         <div class="faq-item fade-up">
-          <button class="faq-q" aria-expanded="false">Apakah SteerIn tersedia di Android?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-          <div class="faq-a"><p>Ya. SteerIn dibuat sebagai aplikasi native Android untuk perangkat modern.</p></div>
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.1.q">Apakah SteerIn tersedia di Android?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p data-i18n="faq.1.a">Ya. SteerIn dibuat sebagai aplikasi native Android untuk perangkat modern.</p></div>
         </div>
         <div class="faq-item fade-up">
-          <button class="faq-q" aria-expanded="false">Apakah SteerIn gratis?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-          <div class="faq-a"><p>Versi early access bisa dicoba tanpa biaya. Detail paket premium akan diumumkan mendekati rilis publik.</p></div>
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.2.q">Apakah SteerIn gratis?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p data-i18n="faq.2.a">Versi early access bisa dicoba tanpa biaya. Detail paket premium akan diumumkan mendekati rilis publik.</p></div>
         </div>
         <div class="faq-item fade-up">
-          <button class="faq-q" aria-expanded="false">Apakah lokasi dilacak terus-menerus?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-          <div class="faq-a"><p>Tidak. GPS dipakai saat kamu menjalankan fitur trip tracking. Data lokasi tetap berada dalam kontrol pengguna.</p></div>
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.3.q">Apakah lokasi dilacak terus-menerus?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p data-i18n="faq.3.a">Tidak. GPS dipakai saat kamu menjalankan fitur trip tracking. Data lokasi tetap berada dalam kontrol pengguna.</p></div>
         </div>
         <div class="faq-item fade-up">
-          <button class="faq-q" aria-expanded="false">Apakah wajib login atau cloud sync?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-          <div class="faq-a"><p>Tidak. Core app bisa dipakai local-first. Cloud sync bersifat opsional untuk backup dan restore.</p></div>
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.4.q">Apakah wajib login atau cloud sync?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p data-i18n="faq.4.a">Tidak. Core app bisa dipakai local-first. Cloud sync bersifat opsional untuk backup dan restore.</p></div>
         </div>
         <div class="faq-item fade-up">
-          <button class="faq-q" aria-expanded="false">Apakah data servis saya diupload?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-          <div class="faq-a"><p>Tidak otomatis. Data tersimpan lokal secara default. Upload hanya terjadi saat kamu memilih fitur cloud backup/sync.</p></div>
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.5.q">Apakah data servis saya diupload?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p data-i18n="faq.5.a">Tidak otomatis. Data tersimpan lokal secara default. Upload hanya terjadi saat kamu memilih fitur cloud backup/sync.</p></div>
         </div>
         <div class="faq-item fade-up">
-          <button class="faq-q" aria-expanded="false">Apakah aman install APK di luar Play Store?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-          <div class="faq-a"><p>Aman jika diambil dari halaman resmi dan checksum SHA-256 cocok. Jangan install APK dari link tidak resmi.</p></div>
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.6.q">Apakah aman install APK di luar Play Store?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p data-i18n="faq.6.a">Aman jika diambil dari halaman resmi dan checksum SHA-256 cocok. Jangan install APK dari link tidak resmi.</p></div>
         </div>
         <div class="faq-item fade-up">
-          <button class="faq-q" aria-expanded="false">Kapan rilis Play Store?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-          <div class="faq-a"><p>Targetnya setelah early access stabil, feedback utama masuk, dan proses Play Console siap.</p></div>
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.7.q">Kapan rilis Play Store?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p data-i18n="faq.7.a">Targetnya setelah early access stabil, feedback utama masuk, dan proses Play Console siap.</p></div>
         </div>
       </div>
     </section>
@@ -708,23 +719,23 @@ import '../style.css';
     <!-- ===== FINAL CTA ===== -->
     <section class="final-cta">
       <div class="final-card fade-up">
-        <h2>Ambil kendali atas riwayat kendaraan kamu.</h2>
-        <p>Dari servis, trip, catatan bengkel, sampai backup — SteerIn membuat hidup kendaraan lebih rapi, berguna, dan privat.</p>
+        <h2 data-i18n="cta.h2">Ambil kendali atas riwayat kendaraan kamu.</h2>
+        <p data-i18n="cta.p">Dari servis, trip, catatan bengkel, sampai backup — SteerIn membuat hidup kendaraan lebih rapi, berguna, dan privat.</p>
 
         <!-- Waitlist Form -->
         <form data-form novalidate style="max-width:440px;margin:0 auto 20px;position:relative">
           <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <label for="cta-email" class="sr-only">Alamat email</label>
-            <input type="email" id="cta-email" class="form-input" placeholder="Masukkan email kamu" required autocomplete="email" aria-label="Alamat email" style="min-width:200px;flex:1">
+            <label for="cta-email" class="sr-only" data-i18n="hero.form.placeholder">Alamat email</label>
+            <input type="email" id="cta-email" class="form-input" placeholder="Masukkan email kamu" required autocomplete="email" aria-label="Alamat email" style="min-width:200px;flex:1" data-i18n-placeholder="cta.placeholder">
             <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <button type="submit" class="btn btn--primary form-btn">Ikut Early Access</button>
+            <button type="submit" class="btn btn--primary form-btn" data-i18n="cta.btn">Ikut Early Access</button>
           </div>
           <div class="form-error"></div>
           <div class="form-success"></div>
         </form>
 
         <div class="hero-actions" style="justify-content:center">
-          <a href="mailto:sudutkamar.co@gmail.com" class="btn btn--ghost">Hubungi Support</a>
+          <a href="mailto:sudutkamar.co@gmail.com" class="btn btn--ghost" data-i18n="cta.support">Hubungi Support</a>
         </div>
       </div>
     </section>
@@ -737,36 +748,37 @@ import '../style.css';
             <img src="logo.png" alt="SteerIn" class="nav-logo">
             SteerIn
           </a>
-          <p>Garasi digital privat untuk mobil dan motor. Dibuat untuk Android dengan local-first storage, cloud sync opsional, dan tanpa tracker.</p>
+          <p data-i18n="footer.brand.p">Garasi digital privat untuk mobil dan motor. Dibuat untuk Android dengan local-first storage, cloud sync opsional, dan tanpa tracker.</p>
         </div>
         <div class="footer-col">
-          <h5>Produk</h5>
-          <a href="#features">Fitur</a>
-          <a href="#how-it-works">Cara Kerja</a>
-          <a href="#download">Download</a>
-          <a href="#faq">FAQ</a>
+          <h5 data-i18n="footer.product">Produk</h5>
+          <a href="#features" data-i18n="nav.features">Fitur</a>
+          <a href="#how-it-works" data-i18n="nav.how">Cara Kerja</a>
+          <a href="#download" data-i18n="nav.download">Download</a>
+          <a href="#faq" data-i18n="nav.faq">FAQ</a>
+          <a href="/changelog">Changelog</a>
         </div>
         <div class="footer-col">
-          <h5>Legal</h5>
-          <a href="./privacy-policy/">Privacy Policy</a>
-          <a href="./terms/">Terms of Service</a>
+          <h5 data-i18n="footer.legal">Legal</h5>
+          <a href="./privacy-policy/" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="./terms/" data-i18n="footer.terms">Terms of Service</a>
         </div>
         <div class="footer-col">
-          <h5>Support</h5>
-          <a href="mailto:sudutkamar.co@gmail.com">Hubungi Support</a>
-          <a href="mailto:sudutkamar.co@gmail.com?subject=Bug%20Report">Laporkan Bug</a>
-          <a href="mailto:sudutkamar.co@gmail.com?subject=Feature%20Request">Request Fitur</a>
+          <h5 data-i18n="footer.support">Support</h5>
+          <a href="mailto:sudutkamar.co@gmail.com" data-i18n="footer.contact">Hubungi Support</a>
+          <a href="mailto:sudutkamar.co@gmail.com?subject=Bug%20Report" data-i18n="footer.bug">Laporkan Bug</a>
+          <a href="mailto:sudutkamar.co@gmail.com?subject=Feature%20Request" data-i18n="footer.feature">Request Fitur</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <div class="footer-copy">&copy; 2026 SteerIn. All rights reserved. Dibuat untuk Android.</div>
+        <div class="footer-copy">&copy; 2026 SteerIn. <span data-i18n="footer.copy">All rights reserved. Dibuat untuk Android.</span></div>
       </div>
     </footer>
   </div>
 
   <div class="mobile-sticky-cta" aria-label="Download SteerIn">
-    <span>Siap rapikan riwayat kendaraan?</span>
-    <a href="#download">Download APK</a>
+    <span data-i18n="sticky.text">Siap rapikan riwayat kendaraan?</span>
+    <a href="#download" data-i18n="sticky.btn">Download APK</a>
   </div>
 
   <script>import '../main.js';</script>

@@ -6,7 +6,7 @@
 
 ### Key Information
 - **Project Name:** steerin-site
-- **Version:** 2.0.0
+- **Version:** 2.1.0
 - **Type:** Static Astro landing page with vanilla JS islands
 - **Hosting:** Netlify (static + serverless functions)
 - **Live URL:** https://steerin.app
@@ -51,12 +51,16 @@ steerin-site/
 │
 ├── src/                        # Source code
 │   ├── pages/
-│   │   └── index.astro         # Main landing page
+│   │   ├── index.astro         # Main landing page
+│   │   └── changelog.astro     # Changelog page with filters
+│   ├── data/
+│   │   └── changelog.json      # Structured changelog data
 │   ├── main.js                 # Client entry — initializes all components
 │   ├── style.css               # Global styles
 │   └── components/             # Modular JS components
 │       ├── animate.js          # Intersection Observer fade-up animations
 │       ├── canvas3d.js         # Three.js 3D car scene (code-split)
+│       ├── changelog.js        # Changelog badge & filter system
 │       ├── counter.js          # Animated number counter
 │       ├── faq.js              # FAQ accordion logic
 │       ├── form.js             # Email subscription form handler
@@ -126,6 +130,7 @@ initForms()      → Email subscription
 initTilt()       → Card tilt effects
 initCounter()    → Number animation
 initMouseGlow()  → Cursor effects
+initChangelog()  → Changelog badge & filters
 init3DScene()    → Three.js scene (async, desktop only)
 ```
 
@@ -149,6 +154,7 @@ Each component is a self-contained ES module with:
 | **Counter** | `counter.js` | Counts up to target number when scrolled into view |
 | **Mouse** | `mouse.js` | Cursor glow effect + hero parallax (desktop only) |
 | **Canvas3D** | `canvas3d.js` | Three.js low-poly car scene, code-split, desktop only (≥900px) |
+| **Changelog** | `changelog.js` | Nav badge detection (7-day window) + filter system on `/changelog` |
 
 ---
 
@@ -339,7 +345,7 @@ export default defineConfig({
 
 The landing page includes these sections:
 
-1. **Navbar** — Logo, navigation links, theme toggle, mobile menu
+1. **Navbar** — Logo, navigation links, theme toggle, mobile menu, changelog link
 2. **Hero** — Headline, description, CTA buttons, email form, phone mockup
 3. **Trust Bar** — 4 trust cards (local-first, cloud sync, encrypted, no ads)
 4. **Problem** — 5 pain points + stat counter
@@ -350,7 +356,14 @@ The landing page includes these sections:
 9. **Availability** — Early access CTA
 10. **FAQ** — 7 accordion items
 11. **Final CTA** — Email form + contact link
-12. **Footer** — Brand, product links, legal, support
+12. **Footer** — Brand, product links (incl. changelog), legal, support
+
+### Changelog Page (`/changelog`)
+- Timeline-style layout with version badges
+- Filter system (All, Fitur Baru, Major Release, Peningkatan)
+- "Baru" badge on latest entry
+- CTA for early access subscription
+- Auto-marks entries as seen via `localStorage`
 
 ---
 
@@ -441,13 +454,15 @@ npm run preview  # Preview production build
 
 ### File Edit Priorities
 1. `src/pages/index.astro` — Content changes
-2. `src/style.css` — Styling changes
-3. `src/components/*.js` — Behavior changes
-4. `netlify/functions/subscribe.mjs` — API changes
-5. `vite.config.js` — Build config (rare)
-6. `netlify.toml` — Deployment config (rare)
+2. `src/pages/changelog.astro` — Changelog page structure
+3. `src/data/changelog.json` — Changelog entries (add new versions here)
+4. `src/style.css` — Styling changes
+5. `src/components/*.js` — Behavior changes
+6. `netlify/functions/subscribe.mjs` — API changes
+7. `vite.config.js` — Build config (rare)
+8. `netlify.toml` — Deployment config (rare)
 
 ---
 
-*Last updated: 2026-06-02*
+*Last updated: 2026-06-16*
 *Generated for pi coding agent*

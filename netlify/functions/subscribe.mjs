@@ -115,7 +115,7 @@ export const handler = async (event) => {
       headers,
       body: JSON.stringify({
         success: true,
-        message: "✓ You're on the list! We'll notify you when SteerIn launches.",
+        messageKey: 'form.success',
       }),
     };
   } catch (err) {

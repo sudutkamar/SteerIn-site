@@ -7,8 +7,11 @@ import { initTilt } from './components/tilt.js';
 import { initCounter } from './components/counter.js';
 import { initMouseGlow } from './components/mouse.js';
 import { init3DScene } from './components/canvas3d.js';
+import { initChangelog } from './components/changelog.js';
+import { initLang } from './components/lang.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  initLang();
   initTheme();
   initNav();
   initFAQ();
@@ -17,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTilt();
   initCounter();
   initMouseGlow();
+  initChangelog();
   // 3D scene loads asynchronously (code-split Three.js)
   init3DScene();
 });

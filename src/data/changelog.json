@@ -1,0 +1,195 @@
+[
+  {
+    "version": "1.1.0",
+    "date": "2026-06-16",
+    "type": "fix",
+    "title": "Bug Fixes & Accessibility",
+    "description": "Perbaikan stabilitas dan aksesibilitas menjelang rilis pertama.",
+    "changes": [
+      "Fix NaN crash dari .average() pada list kosong di perhitungan kesehatan",
+      "Fix banner odometer flash saat switch tab",
+      "Fix vehicle count di Account Data Center sekarang menampilkan data lokal aktual",
+      "Tambah contentDescription pada tombol ikon di AppLockScreen",
+      "Migrasi collectAsState() ke collectAsStateWithLifecycle() untuk lifecycle-aware",
+      "Hapus !! operator dan lokalisasi hardcoded strings di BackupDetailScreen"
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "date": "2026-06-14",
+    "type": "major",
+    "title": "Release Candidate — Fitur Lengkap",
+    "description": "Semua fitur inti selesai. Aplikasi siap untuk pengujian dan rilis Play Store.",
+    "changes": [
+      "Backup detail screen dengan premium sweep gradient gauge",
+      "Inspection status komponen kendaraan, DB v27, catalogKey, interval validasi",
+      "Security & Privacy section premium redesign",
+      "Navigasi label profesional, merge Data & Cloud di Settings",
+      "Crop dialog foto kendaraan dengan landscape help dan tab UX",
+      "Responsive layout landscape untuk semua tab dan dialog",
+      "Cloud sync: backup media via storage",
+      "Full-screen restore dengan rich preview dan metadata Supabase",
+      "Lokalisasi lengkap: semua UI strings via StringRepository"
+    ]
+  },
+  {
+    "version": "0.9.0",
+    "date": "2026-06-10",
+    "type": "feature",
+    "title": "Premium Subscription & Workshop Maps",
+    "description": "Sistem langganan premium dengan Midtrans dan peta bengkel yang diperbaiki.",
+    "changes": [
+      "Midtrans subscription checkout terintegrasi",
+      "Copyable promo codes dan nama role premium",
+      "Workshop maps: hapus zoom controls, tambah jam buka, status lokal, data Depok",
+      "Redesign Premium & Promo dan Cloud Backup di Settings",
+      "Thousand separator pada input odometer",
+      "Tombol back dan cancel pada odometer input sheet"
+    ]
+  },
+  {
+    "version": "0.8.0",
+    "date": "2026-06-01",
+    "type": "feature",
+    "title": "Diagnostic Engine & App Lock",
+    "description": "Mesin diagnosa kendaraan dengan 29 aturan dan keamanan biometrik.",
+    "changes": [
+      "Diagnostic rule engine dengan 29 tests, OBD coverage, JSON export",
+      "Visual verification guide dan share hasil diagnosa",
+      "Biometric-first app lock dengan UI profesional",
+      "App lock & advance reminder full-screen redesign",
+      "DesignTokens system untuk standarisasi UI",
+      "Server verification premium, feature gating, auto-sync",
+      "Hapus skip login — autentikasi wajib"
+    ]
+  },
+  {
+    "version": "0.7.0",
+    "date": "2026-05-29",
+    "type": "feature",
+    "title": "Vehicle Compare & Premium UI",
+    "description": "Perbandingan kendaraan full-screen dan redesign UI premium di seluruh app.",
+    "changes": [
+      "Full-screen vehicle compare dengan tema",
+      "Premium VehicleSelectBottomSheet dengan gauge dan hero image",
+      "Redesign 4 dialog menjadi premium bottom sheets",
+      "Web3-style premium dialog redesign",
+      "PartCard redesign ke layout horizontal compact",
+      "Redesign alur tambah kendaraan: foto, tipe riwayat, konfig bekas"
+    ]
+  },
+  {
+    "version": "0.6.0",
+    "date": "2026-05-27",
+    "type": "feature",
+    "title": "User Profile & Folder Restructure",
+    "description": "Tabel profil user, reset password, dan reorganisasi struktur project.",
+    "changes": [
+      "User profile data table dan Supabase user_profiles sync",
+      "Password reset flow",
+      "Reorganisasi folder: ui/components, data/model, data/repository",
+      "Widget strings lokal sebelum push",
+      "Highlight plus recommendation untuk premium"
+    ]
+  },
+  {
+    "version": "0.5.0",
+    "date": "2026-05-29",
+    "type": "improvement",
+    "title": "Odometer Sync & Premium Foundation",
+    "description": "Sistem sinkronisasi odometer lengkap dan fondasi fitur premium.",
+    "changes": [
+      "Odometer gap estimation dan periodic sync reminder",
+      "6 fitur odometer gap system",
+      "Premium reusable UI components",
+      "Auth: password toggle, mismatch validasi, notif permission, navbar fixes"
+    ]
+  },
+  {
+    "version": "0.4.0",
+    "date": "2026-05-08",
+    "type": "improvement",
+    "title": "Stabilitas & Offline Resilience",
+    "description": "Perkuat backup, offline storage, dan stabilitas startup.",
+    "changes": [
+      "Enkripsi backup lokal (PBKDF2-SHA256 API 26+)",
+      "Harden backup restore dan offline resilience",
+      "Harden offline storage dan startup stability",
+      "Fix garage empty state loading",
+      "Prediksi gambar kendaraan via ML Kit",
+      "Ikon brand kendaraan lokal"
+    ]
+  },
+  {
+    "version": "0.3.0",
+    "date": "2026-05-06",
+    "type": "improvement",
+    "title": "Arsitektur & Dependency Injection",
+    "description": "Migrasi ke Koin DI dan refactor god object untuk maintainability.",
+    "changes": [
+      "Migrasi Dependency Injection ke Koin",
+      "Pecah God Object (refactoring arsitektur)",
+      "Hapus unused database files .json",
+      "Ganti ke logo brand kendaraan lokal"
+    ]
+  },
+  {
+    "version": "0.2.0",
+    "date": "2026-05-03",
+    "type": "feature",
+    "title": "Core Screens & GPS Tracking",
+    "description": "Implementasi layar inti: History, Settings, Workshop Maps, dan GPS tracking.",
+    "changes": [
+      "GPS tracking service dengan foreground notification",
+      "HistoryScreen dengan tab navigation untuk maintenance tracking",
+      "Settings, Vehicle Details, Workshop Maps screens",
+      "Custom bottom navigation bar",
+      "Localization system dengan StringRepository",
+      "Database motor spareparts untuk Honda"
+    ]
+  },
+  {
+    "version": "0.1.0",
+    "date": "2026-04-29",
+    "type": "major",
+    "title": "Initial Development",
+    "description": "Fitur manajemen kendaraan inti pertama: garasi, odometer OCR, dan database.",
+    "changes": [
+      "WorkshopMapsScreen dengan integrasi Google Maps",
+      "TripDataStore, Room database, dan notification services",
+      "Odometer OCR scanning dengan CameraX dan ML Kit",
+      "Vehicle dan spare parts database JSON",
+      "AddVehicleManufacturerScreen dan i18n strings",
+      "Service locator booking dan map view components"
+    ]
+  },
+  {
+    "version": "site-2.0",
+    "date": "2026-06-02",
+    "type": "major",
+    "title": "Landing Page — Astro Migration",
+    "description": "Migrasi landing page ke Astro framework untuk performa dan SEO lebih baik.",
+    "changes": [
+      "Migrasi dari static HTML ke Astro framework",
+      "3D scene interaktif dengan Three.js (desktop only)",
+      "Animasi scroll dan efek parallax",
+      "Form early access dengan honeypot anti-spam",
+      "Dark/light theme toggle",
+      "SEO: structured data JSON-LD, Open Graph, Twitter Card",
+      "Responsive design mobile-first"
+    ]
+  },
+  {
+    "version": "site-1.0",
+    "date": "2026-05-21",
+    "type": "major",
+    "title": "Landing Page — First Launch",
+    "description": "Peluncuran pertama website SteerIn.",
+    "changes": [
+      "Landing page statis dengan Vite + vanilla JS",
+      "Netlify Functions untuk email subscription",
+      "Deploy ke Netlify",
+      "Privacy policy page"
+    ]
+  }
+]

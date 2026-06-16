@@ -170,6 +170,55 @@ nav {
   transform: translateY(-1px);
   box-shadow: 0 4px 20px rgba(34,197,94,0.35);
 }
+.lang-switch {
+  position: relative;
+}
+.lang-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 10px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--bg-card);
+  color: var(--text-secondary); cursor: pointer;
+  transition: all 0.2s; font-family: inherit;
+  font-size: 12px; font-weight: 600;
+}
+.lang-btn:hover { border-color: var(--border-hover); color: var(--text); background: var(--btn-ghost-hover); }
+.lang-chevron {
+  width: 14px; height: 14px;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.lang-switch.open .lang-chevron { transform: rotate(180deg); }
+.lang-dropdown {
+  position: absolute; top: calc(100% + 6px); right: 0;
+  min-width: 140px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 4px;
+  opacity: 0; visibility: hidden; transform: translateY(-4px);
+  transition: all 0.2s;
+  z-index: 500;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+.lang-switch.open .lang-dropdown {
+  opacity: 1; visibility: visible; transform: translateY(0);
+}
+.lang-option {
+  display: flex; align-items: center; gap: 8px;
+  width: 100%; padding: 8px 12px;
+  border: none; background: none;
+  border-radius: 8px;
+  font-size: 13px; font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer; transition: all 0.15s;
+  font-family: inherit;
+}
+.lang-option:hover { background: var(--card-hover); color: var(--text); }
+.lang-option.active { color: var(--green); font-weight: 700; }
+.lang-option.active::after {
+  content: '✓'; margin-left: auto; font-size: 12px;
+}
+
 .theme-toggle {
   width: 36px; height: 36px; border-radius: 10px;
   border: 1px solid var(--border); background: var(--bg-card);
@@ -951,6 +1000,554 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
     padding-right: max(24px, env(safe-area-inset-right));
   }
   footer { padding-bottom: env(safe-area-inset-bottom); }
+}
+
+/* ===== CHANGELOG ===== */
+:root {
+  --accent: #22c55e;
+  --accent-glow: rgba(34,197,94,0.3);
+  --card-bg: rgba(255,255,255,0.04);
+  --card-border: rgba(255,255,255,0.08);
+  --text-dim: var(--text-secondary);
+}
+
+[data-theme="light"] {
+  --card-bg: rgba(0,0,0,0.03);
+  --card-border: rgba(0,0,0,0.08);
+}
+
+.changelog-hero {
+  padding: 120px 0 48px;
+  text-align: center;
+}
+
+.changelog-hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.changelog-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+
+.changelog-back:hover {
+  color: var(--text);
+}
+
+.changelog-hero h1 {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--text) 0%, var(--text-dim) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.changelog-hero p {
+  color: var(--text-dim);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.changelog-timeline {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 0 120px;
+  position: relative;
+}
+
+.changelog-timeline::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  opacity: 0.3;
+}
+
+.changelog-entry {
+  position: relative;
+  padding-left: 64px;
+  margin-bottom: 48px;
+}
+
+.changelog-entry::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 3px solid var(--accent);
+  z-index: 1;
+}
+
+.changelog-entry--latest::before {
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.changelog-entry-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.changelog-version-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: color-mix(in srgb, var(--badge-color, var(--accent)) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--badge-color, var(--accent)) 30%, transparent);
+}
+
+.changelog-version {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--badge-color, var(--accent));
+  font-variant-numeric: tabular-nums;
+}
+
+.changelog-type {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-dim);
+}
+
+.changelog-date {
+  font-size: 13px;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.changelog-entry-body {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 28px;
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.changelog-entry-body:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  transform: translateY(-2px);
+}
+
+.changelog-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.changelog-description {
+  font-size: 15px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.changelog-changes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.changelog-changes li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.changelog-changes li svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent);
+}
+
+/* Nav changelog link */
+.nav-changelog {
+  position: relative;
+}
+
+.nav-changelog.has-new::after {
+  content: 'New';
+  position: absolute;
+  top: -8px;
+  right: -24px;
+  background: var(--accent);
+  color: #000;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* "Baru" badge on latest entry */
+.changelog-new-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--accent);
+  color: #000;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+.changelog-category {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--cat-color, #22c55e) 15%, transparent);
+  color: var(--cat-color, #22c55e);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Filter buttons */
+.changelog-filters {
+  max-width: 720px;
+  margin: 0 auto 40px;
+  padding: 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.changelog-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-dim);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.changelog-filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.changelog-filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000;
+  font-weight: 600;
+}
+
+/* CTA section */
+.changelog-cta {
+  max-width: 720px;
+  margin: 0 auto 120px;
+  padding: 0 24px;
+}
+
+.changelog-cta-card {
+  background: linear-gradient(135deg, rgba(34,197,94,0.08) 0%, rgba(34,197,94,0.02) 100%);
+  border: 1px solid rgba(34,197,94,0.2);
+  border-radius: 20px;
+  padding: 48px 32px;
+  text-align: center;
+}
+
+.changelog-cta-card h3 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.changelog-cta-card p {
+  color: var(--text-dim);
+  font-size: 15px;
+  margin-bottom: 24px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+  .changelog-hero {
+    padding: 100px 0 40px;
+  }
+  .changelog-timeline {
+    padding: 0 0 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .changelog-hero {
+    padding: 88px 0 32px;
+  }
+  .changelog-hero h1 {
+    font-size: 36px;
+    letter-spacing: -1.5px;
+  }
+  .changelog-hero p {
+    font-size: 15px;
+  }
+  .changelog-entry-header {
+    gap: 12px;
+  }
+  .changelog-version-badge {
+    padding: 5px 12px;
+    gap: 8px;
+  }
+  .changelog-version {
+    font-size: 13px;
+  }
+  .changelog-type {
+    font-size: 11px;
+  }
+  .changelog-date {
+    font-size: 12px;
+  }
+  .changelog-title {
+    font-size: 18px;
+  }
+  .changelog-description {
+    font-size: 14px;
+  }
+  .changelog-changes li {
+    font-size: 13px;
+  }
+  .changelog-cta-card h3 {
+    font-size: 22px;
+  }
+  .changelog-cta-card p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .changelog-hero {
+    padding: 80px 0 24px;
+  }
+  .changelog-hero h1 {
+    font-size: 32px;
+    letter-spacing: -1px;
+  }
+  .changelog-hero p br {
+    display: none;
+  }
+  .changelog-timeline::before {
+    left: 16px;
+  }
+  .changelog-entry {
+    padding-left: 48px;
+    margin-bottom: 32px;
+  }
+  .changelog-entry::before {
+    left: 10px;
+    width: 12px;
+    height: 12px;
+  }
+  .changelog-entry-body {
+    padding: 20px;
+    border-radius: 12px;
+  }
+  .changelog-entry-header {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .changelog-version-badge {
+    padding: 4px 10px;
+    gap: 6px;
+  }
+  .changelog-version {
+    font-size: 12px;
+  }
+  .changelog-type {
+    font-size: 10px;
+  }
+  .changelog-new-badge {
+    padding: 3px 8px;
+    font-size: 10px;
+  }
+  .changelog-category {
+    padding: 2px 6px;
+    font-size: 9px;
+  }
+  .changelog-date {
+    font-size: 11px;
+    width: 100%;
+    order: 3;
+  }
+  .changelog-filters {
+    padding: 0 16px;
+    gap: 6px;
+    margin-bottom: 32px;
+  }
+  .changelog-filter-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  .changelog-title {
+    font-size: 16px;
+  }
+  .changelog-description {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .changelog-changes {
+    gap: 8px;
+  }
+  .changelog-changes li {
+    font-size: 13px;
+    gap: 8px;
+  }
+  .changelog-changes li svg {
+    width: 14px;
+    height: 14px;
+  }
+  .changelog-cta {
+    padding: 0 16px;
+    margin-bottom: 80px;
+  }
+  .changelog-cta-card {
+    padding: 32px 20px;
+    border-radius: 16px;
+  }
+  .changelog-cta-card h3 {
+    font-size: 20px;
+  }
+  .changelog-cta-card p {
+    font-size: 13px;
+  }
+  .nav-changelog.has-new::after {
+    top: -6px;
+    right: -18px;
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .changelog-hero {
+    padding: 72px 0 20px;
+  }
+  .changelog-hero h1 {
+    font-size: 28px;
+  }
+  .changelog-hero p {
+    font-size: 14px;
+  }
+  .changelog-back {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .changelog-entry {
+    padding-left: 40px;
+    margin-bottom: 24px;
+  }
+  .changelog-timeline::before {
+    left: 12px;
+  }
+  .changelog-entry::before {
+    left: 6px;
+    width: 10px;
+    height: 10px;
+  }
+  .changelog-entry-body {
+    padding: 16px;
+  }
+  .changelog-entry-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .changelog-filter-btn {
+    padding: 5px 10px;
+    font-size: 11px;
+    gap: 4px;
+  }
+  .changelog-cta-card {
+    padding: 24px 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .changelog-hero h1 {
+    font-size: 24px;
+  }
+  .changelog-entry {
+    padding-left: 36px;
+  }
+  .changelog-timeline::before {
+    left: 10px;
+  }
+  .changelog-entry::before {
+    left: 4px;
+    width: 8px;
+    height: 8px;
+  }
+  .changelog-entry-body {
+    padding: 14px;
+  }
+  .changelog-version-badge {
+    padding: 3px 8px;
+  }
+  .changelog-version {
+    font-size: 11px;
+  }
+  .changelog-filters {
+    gap: 4px;
+  }
+  .changelog-filter-btn {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
 }
 
 /* ===== RESPONSIVE ===== */
