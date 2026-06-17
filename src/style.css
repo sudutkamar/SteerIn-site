@@ -1337,6 +1337,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
 .preview-grid .fade-up:nth-child(4) { transition-delay: 0.05s; }
 .preview-grid .fade-up:nth-child(5) { transition-delay: 0.10s; }
 .preview-grid .fade-up:nth-child(6) { transition-delay: 0.15s; }
+.preview-grid .fade-up:nth-child(6) { transition-delay: 0.15s; }
 
 .faq-list .fade-up:nth-child(1) { transition-delay: 0.00s; }
 .faq-list .fade-up:nth-child(2) { transition-delay: 0.04s; }

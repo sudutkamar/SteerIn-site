@@ -163,7 +163,7 @@ const translations = {
     // App preview
     'preview.badge': 'Preview',
     'preview.h2': 'Lihat SteerIn bekerja.',
-    'preview.p': 'Tiga area utama yang membantu kamu menjaga kendaraan tetap terpantau.',
+    'preview.p': 'Enam area utama yang membantu kamu menjaga kendaraan tetap terpantau.',
     'preview.1.title': 'Dashboard Garasi',
     'preview.1.label.1': 'Honda Civic',
     'preview.1.label.2': 'Yamaha NMAX',
@@ -199,6 +199,10 @@ const translations = {
     'preview.6.label.3': 'Penyimpanan',
     'preview.6.label.4': 'Auto Backup',
     'preview.6.value.4': 'Mati',
+
+    // Phone mockup
+    'phone.badge': 'Garage',
+    'phone.sub': '3 kendaraan · 2 pengingat',
 
     // Use cases
     'usecases.badge': 'Untuk Siapa',
@@ -494,7 +498,7 @@ const translations = {
     // App preview
     'preview.badge': 'Preview',
     'preview.h2': 'See SteerIn in action.',
-    'preview.p': 'Three core areas that help you keep vehicle ownership under control.',
+    'preview.p': 'Six core areas that help you keep vehicle ownership under control.',
     'preview.1.title': 'Garage Dashboard',
     'preview.1.label.1': 'Honda Civic',
     'preview.1.label.2': 'Yamaha NMAX',
@@ -530,6 +534,10 @@ const translations = {
     'preview.6.label.3': 'Storage Used',
     'preview.6.label.4': 'Auto Backup',
     'preview.6.value.4': 'Off',
+
+    // Phone mockup
+    'phone.badge': 'Garage',
+    'phone.sub': '3 vehicles · 2 reminders',
 
     // Use cases
     'usecases.badge': 'Who It\'s For',
