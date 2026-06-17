@@ -254,13 +254,13 @@ const translations = {
     // Download
     'download.badge': 'Download',
     'download.h2': 'Dapatkan SteerIn untuk Android.',
-    'download.p': 'Download APK early access dan mulai kelola kendaraanmu hari ini. Login diperlukan, privasi tetap jadi prioritas.',
+    'download.p': 'Download APK versi beta dan mulai kelola kendaraanmu hari ini. Aplikasi masih dalam tahap pengembangan — jika menemukan bug atau masalah, mohon laporkan kepada kami agar bisa segera diperbaiki. Login diperlukan, privasi tetap jadi prioritas.',
     'download.version': 'Versi',
     'download.size': 'Ukuran',
     'download.req': 'Butuh',
     'download.badge.1': 'App native Android',
     'download.badge.2': 'Login aman',
-    'download.badge.3': 'Release Candidate',
+    'download.badge.3': 'Versi Beta',
     'download.badge.4': 'Fokus privasi',
     'download.btn': 'Download APK',
     'download.verify': 'Verifikasi SHA-256',
@@ -268,6 +268,9 @@ const translations = {
     'download.and': 'dan',
     'download.troubleshoot': 'Ada kendala?',
     'download.support': 'Hubungi Support',
+    'download.beta.alert': 'Aplikasi masih dalam tahap beta',
+    'download.beta.note': 'SteerIn masih dalam pengembangan aktif. Kamu mungkin menemukan bug, crash, atau fitur yang belum sempurna. Jika mengalami masalah, mohon laporkan kepada kami agar bisa segera diperbaiki — masukanmu sangat berharga untuk penyempurnaan aplikasi ini.',
+    'download.beta.report': 'Laporkan Bug / Masukan',
 
     // Early testers
     'early.badge': 'Early Access',
@@ -577,13 +580,13 @@ const translations = {
     // Download
     'download.badge': 'Download',
     'download.h2': 'Get SteerIn for Android.',
-    'download.p': 'Download the early access APK and start managing your vehicle today. Login is required, privacy remains the priority.',
+    'download.p': 'Download the beta APK and start managing your vehicle today. The app is still in active development — if you encounter any bugs or issues, please report them to us so they can be fixed promptly. Login is required, privacy remains the priority.',
     'download.version': 'Version',
     'download.size': 'Size',
     'download.req': 'Requires',
     'download.badge.1': 'Native Android app',
     'download.badge.2': 'Secure login',
-    'download.badge.3': 'Release Candidate',
+    'download.badge.3': 'Beta Version',
     'download.badge.4': 'Privacy focused',
     'download.btn': 'Download APK',
     'download.verify': 'Verify SHA-256',
@@ -591,6 +594,9 @@ const translations = {
     'download.and': 'and',
     'download.troubleshoot': 'Having issues?',
     'download.support': 'Contact Support',
+    'download.beta.alert': 'App is still in beta',
+    'download.beta.note': 'SteerIn is still in active development. You may encounter bugs, crashes, or unfinished features. If you experience any issues, please report them to us so we can fix them promptly — your feedback is invaluable for improving the app.',
+    'download.beta.report': 'Report Bug / Feedback',
 
     // Early testers
     'early.badge': 'Early Access',

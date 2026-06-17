@@ -1094,6 +1094,56 @@ nav.nav-scrolled {
   margin-top: 8px;
 }
 
+/* ===== DOWNLOAD BETA NOTICE ===== */
+.download-beta-notice {
+  position: relative; z-index: 1;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(245, 158, 11, 0.03) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin: 0 auto 28px;
+  max-width: 520px;
+  text-align: center;
+}
+.download-beta-notice .download-beta-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+.download-beta-notice h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f59e0b;
+  margin: 0 0 10px;
+}
+[data-theme="light"] .download-beta-notice h4 {
+  color: #b45309;
+}
+.download-beta-notice p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0 0 16px;
+  max-width: 100%;
+}
+.btn--bug-report {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #f59e0b;
+  border-color: rgba(245, 158, 11, 0.3);
+  background: rgba(245, 158, 11, 0.06);
+}
+.btn--bug-report:hover {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.5);
+}
+[data-theme="light"] .btn--bug-report {
+  color: #b45309;
+}
+
 /* ===== USE CASES / COMPARISON / SAFE INSTALL ===== */
 .use-cases, .comparison, .safe-install, .early-testers { padding: 72px 0; }
 .use-case-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -1863,6 +1913,10 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
   .nav-links { gap: 8px; }
   .nav-links .lang-btn { font-size: 11px; padding: 5px 8px; }
   .orb { display: none; }
+  .download-beta-notice { padding: 22px 20px; margin-bottom: 26px; }
+  .download-beta-notice .download-beta-icon { font-size: 26px; margin-bottom: 7px; }
+  .download-beta-notice h4 { font-size: 14px; }
+  .download-beta-notice p { font-size: 12px; }
 }
 
 @media (max-width: 640px) {
@@ -2127,6 +2181,11 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
   .download-buttons { flex-direction: column; align-items: center; gap: 10px; }
   .btn--download { width: 100%; max-width: 100%; justify-content: center; min-height: 48px; }
   .btn--verify { width: 100%; max-width: 100%; justify-content: center; min-height: 48px; }
+  .download-beta-notice { padding: 20px 16px; margin-bottom: 24px; }
+  .download-beta-notice .download-beta-icon { font-size: 24px; margin-bottom: 6px; }
+  .download-beta-notice h4 { font-size: 14px; }
+  .download-beta-notice p { font-size: 12px; }
+  .btn--bug-report { width: 100%; justify-content: center; min-height: 44px; }
   .final-card { padding: 28px 18px; }
   .section-header { margin-bottom: 24px; }
   .section-header h2 { font-size: 24px; letter-spacing: -0.8px; }
@@ -2266,6 +2325,11 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
   .download-buttons { gap: 10px; }
   .btn--download { max-width: 100%; min-height: 48px; }
   .btn--verify { max-width: 100%; min-height: 48px; }
+  .download-beta-notice { padding: 18px 14px; margin-bottom: 20px; max-width: 100%; }
+  .download-beta-notice .download-beta-icon { font-size: 22px; margin-bottom: 4px; }
+  .download-beta-notice h4 { font-size: 13px; }
+  .download-beta-notice p { font-size: 11px; line-height: 1.6; }
+  .btn--bug-report { width: 100%; justify-content: center; min-height: 44px; font-size: 12px; }
   .final-card { padding: 28px 16px; }
   .faq-q { padding: 14px 16px; font-size: 13px; }
   .faq-a p { font-size: 12px; }
