@@ -12,6 +12,23 @@ import { initLang } from './components/lang.js';
 import { initStickyCta } from './components/stickyCta.js';
 import { initSHA256 } from './components/sha256.js';
 
+/* ── Phone clock — WIB (UTC+7) ── */
+function initPhoneClock() {
+  const el = document.getElementById('phone-clock');
+  if (!el) return;
+
+  function updateWIB() {
+    const now = new Date();
+    const wib = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }));
+    const h = wib.getHours();
+    const m = wib.getMinutes();
+    el.textContent = `${h}:${m.toString().padStart(2, '0')}`;
+  }
+
+  updateWIB();
+  setInterval(updateWIB, 10_000); // update every 10 seconds
+}
+
 function hideLoadingScreen() {
   const screen = document.getElementById('loading-screen');
   if (!screen) return;
@@ -35,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLang();
   initTheme();
   initNav();
+  initPhoneClock();
   initFAQ();
   initAnimations();
   initForms();
