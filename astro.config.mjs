@@ -1,15 +1,20 @@
 import { defineConfig } from 'astro/config';
 
+import cloudflare from '@astrojs/cloudflare';
+
 export default defineConfig({
   site: 'https://steerin.app',
   output: 'static',
+
   server: {
     host: '0.0.0.0',
     port: 4321,
   },
+
   build: {
     assets: 'assets',
   },
+
   vite: {
     server: {
       host: '0.0.0.0',
@@ -21,4 +26,6 @@ export default defineConfig({
       chunkSizeWarningLimit: 800,
     },
   },
+
+  adapter: cloudflare(),
 });
