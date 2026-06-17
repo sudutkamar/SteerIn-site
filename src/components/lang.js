@@ -271,6 +271,7 @@ const translations = {
     'download.beta.alert': 'Aplikasi masih dalam tahap beta',
     'download.beta.note': 'SteerIn masih dalam pengembangan aktif. Kamu mungkin menemukan bug, crash, atau fitur yang belum sempurna. Jika mengalami masalah, mohon laporkan kepada kami agar bisa segera diperbaiki — masukanmu sangat berharga untuk penyempurnaan aplikasi ini.',
     'download.beta.report': 'Laporkan Bug / Masukan',
+    'download.beta.wa': 'Laporkan via WhatsApp',
 
     // Early testers
     'early.badge': 'Early Access',
@@ -327,10 +328,14 @@ const translations = {
     'footer.contact': 'Hubungi Support',
     'footer.bug': 'Laporkan Bug',
     'footer.feature': 'Request Fitur',
+    'footer.whatsapp': 'WhatsApp Support',
     'footer.copy': 'All rights reserved. Dibuat untuk Android.',
 
     // Lang toggle
     'lang.label': 'EN',
+
+    // WhatsApp FAB
+    'wa.fab.label': 'Laporkan Bug',
   },
 
   en: {
@@ -597,6 +602,7 @@ const translations = {
     'download.beta.alert': 'App is still in beta',
     'download.beta.note': 'SteerIn is still in active development. You may encounter bugs, crashes, or unfinished features. If you experience any issues, please report them to us so we can fix them promptly — your feedback is invaluable for improving the app.',
     'download.beta.report': 'Report Bug / Feedback',
+    'download.beta.wa': 'Report via WhatsApp',
 
     // Early testers
     'early.badge': 'Early Access',
@@ -653,10 +659,14 @@ const translations = {
     'footer.contact': 'Contact Support',
     'footer.bug': 'Report Bug',
     'footer.feature': 'Request Feature',
+    'footer.whatsapp': 'WhatsApp Support',
     'footer.copy': 'All rights reserved. Built for Android.',
 
     // Lang toggle
     'lang.label': 'ID',
+
+    // WhatsApp FAB
+    'wa.fab.label': 'Report Bug',
   }
 };
 

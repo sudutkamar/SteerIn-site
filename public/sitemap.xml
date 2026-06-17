@@ -5,7 +5,7 @@
   <!-- Main landing page -->
   <url>
     <loc>https://steerin.app/</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="id" href="https://steerin.app/" />
@@ -13,12 +13,37 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://steerin.app/" />
   </url>
 
+  <!-- Changelog -->
+  <url>
+    <loc>https://steerin.app/changelog</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://steerin.app/changelog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://steerin.app/changelog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://steerin.app/changelog" />
+  </url>
+
   <!-- Privacy Policy -->
   <url>
     <loc>https://steerin.app/privacy-policy/</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://steerin.app/privacy-policy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://steerin.app/privacy-policy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://steerin.app/privacy-policy/" />
+  </url>
+
+  <!-- Terms of Service -->
+  <url>
+    <loc>https://steerin.app/terms/</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://steerin.app/terms/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://steerin.app/terms/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://steerin.app/terms/" />
   </url>
 
 </urlset>

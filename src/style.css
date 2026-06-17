@@ -1352,6 +1352,16 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
 .problem-list .fade-up:nth-child(4) { transition-delay: 0.18s; }
 .problem-list .fade-up:nth-child(5) { transition-delay: 0.24s; }
 
+.use-case-grid .fade-up:nth-child(1) { transition-delay: 0.00s; }
+.use-case-grid .fade-up:nth-child(2) { transition-delay: 0.06s; }
+.use-case-grid .fade-up:nth-child(3) { transition-delay: 0.12s; }
+.use-case-grid .fade-up:nth-child(4) { transition-delay: 0.18s; }
+
+.safe-steps .fade-up:nth-child(1) { transition-delay: 0.00s; }
+.safe-steps .fade-up:nth-child(2) { transition-delay: 0.06s; }
+.safe-steps .fade-up:nth-child(3) { transition-delay: 0.12s; }
+.safe-steps .fade-up:nth-child(4) { transition-delay: 0.18s; }
+
 /* ===== MOTION & ACCESSIBILITY ===== */
 @media (prefers-reduced-motion: reduce) {
   .orb, .hero h1 .gradient, .hero-badge-dot { animation: none !important; }
