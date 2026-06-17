@@ -3,10 +3,7 @@
   "version": "2.1.0",
   "private": true,
   "type": "module",
-  "engines": {
-    "node": ">=18.x <=20.x"
-  },
-  "scripts": {
+    "scripts": {
     "dev": "node scripts/dev-lan.mjs",
     "dev:lan": "node scripts/dev-lan.mjs",
     "dev:5173": "node -e \"process.env.PORT='5173'; import('./scripts/dev-lan.mjs')\"",
