@@ -18,15 +18,12 @@
     "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^13.7.0",
     "@netlify/blobs": "^8.0.0"
   },
   "devDependencies": {
+    "@astrojs/cloudflare": "^13.7.0",
     "astro": "^6.4.2",
     "three": "^0.172.0",
     "wrangler": "^4.101.0"
-  },
-  "overrides": {
-    "vite": "^7"
   }
 }
