@@ -6,7 +6,7 @@ import { initForms } from './components/form.js';
 import { initTilt } from './components/tilt.js';
 import { initCounter } from './components/counter.js';
 import { initMouseGlow } from './components/mouse.js';
-import { init3DScene } from './components/canvas3d.js';
+import { initPhoneDemo } from './components/phone-demo.js';
 import { initChangelog } from './components/changelog.js';
 import { initLang } from './components/lang.js';
 import { initStickyCta } from './components/stickyCta.js';
@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initChangelog();
   initStickyCta();
   initSHA256();
-  // 3D scene loads asynchronously (code-split Three.js)
-  init3DScene();
+  // Interactive phone demo (hero)
+  initPhoneDemo();
 
   // Dismiss loading screen after all components are ready
   hideLoadingScreen();

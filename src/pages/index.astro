@@ -8,6 +8,7 @@ const mobileLinks = [
   { href: '#features', label: 'Fitur', i18n: 'nav.features', icon: 'car' },
   { href: '#download', label: 'Download', i18n: 'nav.download', icon: 'download' },
   { href: '#how-it-works', label: 'Cara Kerja', i18n: 'nav.how', icon: 'activity' },
+  { href: '#pricing', label: 'Harga', i18n: 'nav.pricing', icon: 'clipboard' },
   { href: '#privacy', label: 'Privasi', i18n: 'nav.privacy', icon: 'lock' },
   { href: '#faq', label: 'FAQ', i18n: 'nav.faq', icon: 'help' },
   { href: '/changelog', label: 'Changelog', icon: 'clipboard', class: 'nav-changelog' },
@@ -16,12 +17,13 @@ const mobileLinks = [
 const navLinks = [
   { href: '#features', label: 'Fitur', i18n: 'nav.features' },
   { href: '#how-it-works', label: 'Cara Kerja', i18n: 'nav.how' },
+  { href: '#pricing', label: 'Harga', i18n: 'nav.pricing' },
   { href: '#privacy', label: 'Privasi', i18n: 'nav.privacy' },
   { href: '#faq', label: 'FAQ', i18n: 'nav.faq' },
   { href: '/changelog', label: 'Changelog', class: 'nav-changelog' },
 ];
 ---
-<BaseLayout showCursor={true} showThree={true} orbs={3}>
+<BaseLayout showCursor={true} showThree={false} orbs={2}>
   <Fragment slot="head">
   <script type="application/ld+json">
   {
@@ -53,7 +55,7 @@ const navLinks = [
         "name": "Apakah SteerIn gratis?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Versi early access bisa dicoba tanpa biaya. Jika ada paket berbayar nanti, fitur inti tetap dijelaskan dengan transparan."
+          "text": "Fitur dasar SteerIn gratis selamanya. Untuk fitur lanjutan, tersedia paket berlangganan mulai Rp9.000/bulan — semua harga dan fiturnya transparan di halaman Harga & Paket."
         }
       },
       {
@@ -150,9 +152,13 @@ const navLinks = [
         </div>
       </div>
 
-      <!-- Phone Mockup -->
-      <div class="hero-visual" role="img" aria-label="SteerIn app dashboard showing vehicle garage with Honda Civic, Yamaha NMAX, and Toyota Avanza">
-        <div class="phone">
+      <!-- Phone Demo (interactive) -->
+      <div class="hero-visual">
+        <div class="hero-float hero-float--left fade-up">
+          <span class="hero-float-dot"></span>
+          <div><strong data-i18n="demo.float.1.title">Ganti oli jatuh tempo</strong><small data-i18n="demo.float.1.sub">Honda Civic · 230 km terlambat</small></div>
+        </div>
+        <div class="phone" id="phone-demo" data-active-screen="dash">
           <div class="phone-punch"></div>
           <div class="phone-st-bar">
             <div class="phone-st-left"><span class="phone-st-time" id="phone-clock">9:41</span></div>
@@ -165,65 +171,94 @@ const navLinks = [
               </div>
             </div>
           </div>
-          <div class="phone-app">
-            <div class="ph-head">
-              <span class="ph-head-text">SteerIn</span>
-              <span class="ph-head-badge" data-i18n="phone.badge">Garage</span>
-            </div>
-            <span class="ph-sub" data-i18n="phone.sub">3 kendaraan · 2 pengingat</span>
-            <div class="ph-card">
-              <div class="ph-card-top">
-                <div class="ph-card-left">
-                  <div class="ph-avatar ph-avatar--blue">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M5 17h14M5 17a2 2 0 0 1-2-2v-4l2.5-5A2 2 0 0 1 7.5 5h9a2 2 0 0 1 2 2l2.5 5v4a2 2 0 0 1-2 2M5 17a2 2 0 1 0 4 0M19 17a2 2 0 1 0-4 0"/><circle cx="7" cy="15" r="1"/><circle cx="17" cy="15" r="1"/></svg>
-                  </div>
-                  <div><div class="ph-name">Honda Civic</div><div class="ph-detail">Sedan · 2021 · 45,230 km</div></div>
-                </div>
-                <div class="ph-score ph-score--good">92%</div>
+          <!-- App screens stay in Indonesian (original app language, like store screenshots).
+               Demo chrome (tabs, hint, toasts) uses data-i18n / t(). -->
+          <div class="phone-app" id="phone-app">
+            <!-- Dasbor -->
+            <div class="demo-screen is-active" data-demo-screen="dash" role="tabpanel" aria-label="Dasbor">
+              <div class="demo-topbar"><span class="demo-avatar">👤</span><div class="demo-head"><span class="demo-title">Dasbor</span><span class="demo-sub" data-i18n="demo.dash.updated">1 Kendaraan • Diperbarui 19:21</span></div><span class="demo-avatar">🕘</span></div>
+              <div class="demo-chips" role="group" aria-label="Rentang waktu">
+                <button type="button" data-chip="Hari ini">Hari ini</button>
+                <button type="button" data-chip="7 hari">7 hari</button>
+                <button type="button" class="on" data-chip="30 hari">30 hari</button>
+                <button type="button" data-chip="Semua">Semua</button>
               </div>
-              <div class="ph-bar"><div class="ph-bar-fill ph-bar-fill--green" style="width:92%"></div></div>
-            </div>
-            <div class="ph-card">
-              <div class="ph-card-top">
-                <div class="ph-card-left">
-                  <div class="ph-avatar ph-avatar--red">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><path d="M5 17h14M5 17a2 2 0 0 1-2-2v-4l2.5-5A2 2 0 0 1 7.5 5h9a2 2 0 0 1 2 2l2.5 5v4a2 2 0 0 1-2 2M5 17a2 2 0 1 0 4 0M19 17a2 2 0 1 0-4 0"/></svg>
-                  </div>
-                  <div><div class="ph-name">Yamaha NMAX</div><div class="ph-detail">Scooter · 2023 · 12,800 km</div></div>
-                </div>
-                <div class="ph-score ph-score--good">87%</div>
+              <div class="demo-filterrow"><span class="demo-range">30 hari</span><button type="button" class="demo-link" data-act-toast="custom">Kustom</button></div>
+              <div class="demo-card">
+                <div class="demo-card-top"><span class="demo-kicker">● <span data-i18n="demo.dash.total">TOTAL PENGELUARAN</span></span><span class="demo-pill">0 catatan</span></div>
+                <div class="demo-big">Rp 0</div>
+                <div class="demo-sub2">Biaya per km: —</div>
+                <div class="demo-meta"><span>—<br>Efisiensi</span><span><b>Rp 0</b><br>Rata-rata per bulan</span><span>—<br><span class="demo-range2">Jarak (30 hari)</span></span></div>
+                <div class="demo-links"><button type="button" data-act-toast="fuel">📄 Harga BBM</button><button type="button" data-act-toast="csv">⬇ Ekspor CSV</button></div>
               </div>
-              <div class="ph-bar"><div class="ph-bar-fill ph-bar-fill--green" style="width:87%"></div></div>
-            </div>
-            <div class="ph-card">
-              <div class="ph-card-top">
-                <div class="ph-card-left">
-                  <div class="ph-avatar ph-avatar--gray">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><path d="M5 17h14M5 17a2 2 0 0 1-2-2v-4l2.5-5A2 2 0 0 1 7.5 5h9a2 2 0 0 1 2 2l2.5 5v4a2 2 0 0 1-2 2M5 17a2 2 0 1 0 4 0M19 17a2 2 0 1 0-4 0"/></svg>
-                  </div>
-                  <div><div class="ph-name">Toyota Avanza</div><div class="ph-detail">MPV · 2019 · 78,100 km</div></div>
-                </div>
-                <div class="ph-score ph-score--ok">76%</div>
+              <div class="demo-card">
+                <div class="demo-card-title" data-i18n="demo.dash.next">Aksi Berikutnya</div>
+                <div class="demo-action"><span class="demo-ico">🔧</span><div><strong>Oli Mesin Matic (JASO MB)</strong><small>Honda Genio Generasi 1 (Velg 14 inci) • sisa 3.000 km</small></div><button type="button" class="demo-link" data-act-toast="history">Riwayat</button></div>
+                <div class="demo-fuel"><span>🟢 Pertamina Pertamax Rp 15.950</span><span>🟢 BP-AKR BP Ultim…</span></div>
               </div>
-              <div class="ph-bar"><div class="ph-bar-fill ph-bar-fill--amber" style="width:76%"></div></div>
+              <button type="button" class="demo-card demo-rowbtn" data-act-toast="health"><div><strong data-i18n="demo.dash.health">Kesehatan Kendaraan</strong><small>Rata-rata semua kendaraan</small></div><span>→</span></button>
             </div>
-            <div class="ph-reminder">
-              <div class="ph-rem-icon"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
-              <div class="ph-rem-text"><strong>Ganti oli jatuh tempo</strong> — Honda Civic<br>Setiap 5.000 km · 230 km terlambat</div>
+            <!-- Garasi -->
+            <div class="demo-screen" data-demo-screen="garage" role="tabpanel" aria-label="Garasi" hidden>
+              <div class="demo-topbar"><span class="demo-avatar">👤</span><div class="demo-head"><span class="demo-title" data-i18n="demo.tab.garage">Garasi Saya</span><span class="demo-sub">1 Kendaraan • Diperbarui 19:23</span></div><span class="demo-avatar">🕘</span></div>
+              <div class="demo-eyebrow">STATUS KENDARAAN</div>
+              <div class="demo-h1">1 Kendaraan Aktif</div>
+              <div class="demo-banner" id="demo-odo-banner"><span class="demo-ico">⏱</span><div><strong>Odometer Belum Pernah Di-sync</strong><small>Update odometer dari dashboard kendaraan untuk perhitungan kesehatan yang akurat.</small></div></div>
+              <div class="demo-banner-actions" id="demo-odo-actions"><button type="button" class="demo-textbtn" data-odo="later">Nanti</button><button type="button" class="demo-btn" data-odo="sync">Update Odometer</button></div>
+              <div class="demo-searchrow"><button type="button" class="demo-search" data-act-toast="search">🔍 <span data-i18n="demo.garage.search">Cari</span></button><button type="button" class="demo-search" data-act-toast="filter">☰ Terbaru</button></div>
+              <div class="demo-card">
+                <div class="demo-tags"><span class="demo-tag">Roda 2</span><span class="demo-ok">● Kendaraan Aman</span></div>
+                <div class="demo-vbrand"><span class="demo-radio"></span><strong>HONDA</strong></div>
+                <div class="demo-vrow">
+                  <div><span class="demo-vname">Genio Generasi 1 (Velg 14 inci)</span><span class="demo-km">🛵 0.0 km</span></div>
+                  <span class="demo-thumb">🛵</span>
+                </div>
+                <div class="demo-more" id="demo-vehicle-more" hidden>
+                  <div class="demo-spec"><span>Mesin</span><span>110cc eSP</span></div>
+                  <div class="demo-spec"><span>BBM</span><span>Bensin</span></div>
+                  <div class="demo-spec"><span>Servis terakhir</span><span>—</span></div>
+                </div>
+                <button type="button" class="demo-btn demo-btn--ghost" data-detail="demo-vehicle-more" aria-expanded="false"><span data-i18n="demo.garage.detail">Lihat Detail</span></button>
+              </div>
+              <span class="demo-fab" aria-hidden="true">🧾</span>
             </div>
-            <div class="ph-reminder">
-              <div class="ph-rem-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-              <div class="ph-rem-text"><strong>Cek rem</strong> — Toyota Avanza<br>Servis berikutnya dalam 1.200 km</div>
+            <!-- Lokasi -->
+            <div class="demo-screen" data-demo-screen="maps" role="tabpanel" aria-label="Lokasi" hidden>
+              <div class="demo-mapwrap">
+                <div class="demo-mapbar">
+                  <button type="button" class="demo-mapsearch" data-act-toast="search"><span class="demo-mapsearch-ico">🔍</span><span data-i18n="demo.maps.search">Cari bengkel, ban, oli…</span></button>
+                  <button type="button" class="demo-mapfilter" data-act-toast="filter" aria-label="Filter">☰</button>
+                  <button type="button" class="demo-maptarget" data-act-toast="recenter" aria-label="Lokasiku">◎</button>
+                </div>
+                <div class="demo-map" aria-hidden="true"><span class="demo-street s1">Jl. Pramuka Raya</span><span class="demo-street s2">Jl. Mangga</span><span class="demo-street s3">Cipayung</span><span class="demo-street s4">Depok Jaya</span><span class="demo-street s5">Ratu Jaya</span><span class="pin p1">🔧</span><span class="pin p2">🔧</span><span class="pin p3">🔧</span><span class="pin p4">🔧</span><span class="pin p5">🔧</span><span class="pin p6">🔧</span><span class="pin p7">🔧</span><span class="pin p8">🔧</span><span class="pin p9">🔧</span><span class="pin p10">🔧</span><span class="pin p11">🔧</span><span class="pin p12">🔧</span><span class="pin p13">🔧</span><span class="pin p14">🔧</span><span class="me">◎</span></div>
+                <button type="button" class="demo-compass" data-act-toast="compass" aria-label="Kompas">➤</button>
+              </div>
             </div>
+            <!-- Pengaturan -->
+            <div class="demo-screen" data-demo-screen="settings" role="tabpanel" aria-label="Pengaturan" hidden>
+              <div class="demo-topbar"><span class="demo-avatar">👤</span><div class="demo-head"><span class="demo-title" data-i18n="demo.tab.settings">Pengaturan</span><span class="demo-sub">PREMIUM &amp; PROMO</span></div><span class="demo-avatar">🕘</span></div>
+              <div class="demo-card demo-premium"><span class="demo-ico">🏆</span><div><strong data-i18n="demo.set.premium">SteerIn Premium &amp; Promo</strong><small class="demo-ok">Aktif</small></div></div>
+              <div class="demo-grid4"><button type="button" data-act-toast="vehicles">🚗<small>Kendaraan</small></button><button type="button" data-act-toast="reports">📊<small>Laporan</small></button><button type="button" data-act-toast="export">⬇<small>Export</small></button><button type="button" data-act-toast="backup">☁<small>Backup</small></button></div>
+              <div class="demo-card"><div class="demo-statusrow"><span>Status paket</span><strong>Premium</strong></div><button type="button" class="demo-btn demo-btn--ghost" data-act-toast="manage"><span data-i18n="demo.set.manage">Kelola</span></button></div>
+              <div class="demo-eyebrow">TAMPILAN</div>
+              <div class="demo-card"><div class="demo-card-title">Tampilan</div><small class="demo-note">Mode gelap, bahasa, dan satuan pengukuran.</small><div class="demo-theme" role="group" aria-label="Tema aplikasi"><button type="button" data-demo-theme="light">☀ TERANG</button><button type="button" class="on" data-demo-theme="system">🖥 SISTEM</button><button type="button" data-demo-theme="dark">🌙 GELAP</button></div></div>
+              <div class="demo-card demo-row"><div><strong>BAHASA</strong></div><span>›</span></div>
+            </div>
+            <div class="demo-toast" id="demo-toast" role="status" aria-live="polite"></div>
           </div>
-          <div class="ph-nav">
-            <div class="ph-nav-item active"><svg viewBox="0 0 24 24"><path d="M5 17h14M5 17a2 2 0 0 1-2-2v-4l2.5-5A2 2 0 0 1 7.5 5h9a2 2 0 0 1 2 2l2.5 5v4a2 2 0 0 1-2 2M5 17a2 2 0 1 0 4 0M19 17a2 2 0 1 0-4 0"/><circle cx="7" cy="15" r="1"/><circle cx="17" cy="15" r="1"/></svg><span class="ph-nav-label">Garage</span></div>
-            <div class="ph-nav-item"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 3 3 9 9 9"/><path d="M12 7v5l3 2"/></svg><span class="ph-nav-label">History</span></div>
-            <div class="ph-nav-item ph-nav-add"><svg viewBox="0 0 24 24"><line x1="12" y1="7" x2="12" y2="17"/><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="ph-nav-label sr-only">Add</span></div>
-            <div class="ph-nav-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="ph-nav-label">Maps</span></div>
-            <div class="ph-nav-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 8.6 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 8.6a1.65 1.65 0 0 0-.33-1.82l-.06-.06A2 2 0 0 1 7.04 3.9l.06.06A1.65 1.65 0 0 0 8.6 4.6 1.65 1.65 0 0 0 10 3.09V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 8.6a1.65 1.65 0 0 0 1.51 1.4H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="ph-nav-label">Settings</span></div>
+          <div class="ph-nav" role="tablist" aria-label="Navigasi demo aplikasi">
+            <button class="ph-nav-item is-active" data-demo-tab="dash" role="tab" aria-selected="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span class="ph-nav-label" data-i18n="demo.tab.dash">Dasbor</span></button>
+            <button class="ph-nav-item" data-demo-tab="garage" role="tab" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M5 17h14M5 17a2 2 0 0 1-2-2v-4l2.5-5A2 2 0 0 1 7.5 5h9a2 2 0 0 1 2 2l2.5 5v4a2 2 0 0 1-2 2M5 17a2 2 0 1 0 4 0M19 17a2 2 0 1 0-4 0"/></svg><span class="ph-nav-label" data-i18n="demo.tab.garage">Garasi</span></button>
+            <button type="button" class="ph-nav-item ph-nav-add" data-act-toast="add" aria-label="Tambah"><svg viewBox="0 0 24 24"><line x1="12" y1="7" x2="12" y2="17"/><line x1="7" y1="12" x2="17" y2="12"/></svg></button>
+            <button class="ph-nav-item" data-demo-tab="maps" role="tab" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="ph-nav-label" data-i18n="demo.tab.maps">Lokasi</span></button>
+            <button class="ph-nav-item" data-demo-tab="settings" role="tab" aria-selected="false"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 8.6 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 8.6a1.65 1.65 0 0 0-.33-1.82l-.06-.06A2 2 0 0 1 7.04 3.9l.06.06A1.65 1.65 0 0 0 8.6 4.6 1.65 1.65 0 0 0 10 3.09V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 8.6a1.65 1.65 0 0 0 1.51 1.4H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="ph-nav-label" data-i18n="demo.tab.settings">Pengaturan</span></button>
           </div>
         </div>
+        <div class="hero-float hero-float--right fade-up">
+          <span class="hero-float-score">92%</span>
+          <div><strong data-i18n="demo.float.2.title">Kesehatan kendaraan</strong><small data-i18n="demo.float.2.sub">Honda Civic · Baik</small></div>
+        </div>
+        <p class="demo-hint" data-i18n="demo.hint">Ketuk tab di HP untuk jelajahi aplikasi 👆</p>
       </div>
     </section>
 
@@ -642,6 +677,42 @@ const navLinks = [
       </div>
     </section>
 
+    <!-- ===== PRICING ===== -->
+    <section class="pricing" id="pricing">
+      <div class="section-header fade-up">
+        <div class="section-badge" data-i18n="pricing.badge">Harga &amp; Paket</div>
+        <h2 data-i18n="pricing.h2">Harga transparan untuk semua kebutuhan.</h2>
+        <p data-i18n="pricing.p">Mulai gratis selamanya, upgrade saat butuh fitur lanjutan. Tanpa biaya tersembunyi.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card fade-up">
+          <h3 data-i18n="pricing.1.name">Free</h3>
+          <div class="pricing-price"><span data-i18n="pricing.1.price">Rp0</span> <small data-i18n="pricing.1.period">/ selamanya</small></div>
+          <p data-i18n="pricing.1.desc">Untuk pengguna baru, ojol &amp; komuter.</p>
+        </div>
+        <div class="pricing-card fade-up">
+          <h3 data-i18n="pricing.2.name">Driver Hemat</h3>
+          <div class="pricing-price"><span data-i18n="pricing.2.price">Rp9.000/bulan</span></div>
+          <div class="pricing-yearly" data-i18n="pricing.2.yearly">(Rp89.000/tahun)</div>
+          <p data-i18n="pricing.2.desc">Untuk kendaraan harian.</p>
+        </div>
+        <div class="pricing-card pricing-card--featured fade-up">
+          <div class="pricing-flag" data-i18n="pricing.3.flag">REKOMENDASI</div>
+          <h3 data-i18n="pricing.3.name">Plus</h3>
+          <div class="pricing-price"><span data-i18n="pricing.3.price">Rp25.000/bulan</span></div>
+          <div class="pricing-yearly" data-i18n="pricing.3.yearly">(Rp249.000/tahun)</div>
+          <p data-i18n="pricing.3.desc">Untuk keluarga &amp; rumah tangga.</p>
+        </div>
+        <div class="pricing-card fade-up">
+          <h3 data-i18n="pricing.4.name">Premium</h3>
+          <div class="pricing-price"><span data-i18n="pricing.4.price">Rp49.000/bulan</span></div>
+          <div class="pricing-yearly" data-i18n="pricing.4.yearly">(Rp499.000/tahun)</div>
+          <p data-i18n="pricing.4.desc">Untuk power user, banyak kendaraan.</p>
+        </div>
+      </div>
+      <p class="pricing-note fade-up" data-i18n="pricing.note">Pembayaran diproses aman melalui Midtrans — QRIS, Virtual Account, e-wallet, hingga kartu kredit/debit.</p>
+    </section>
+
     <!-- ===== DOWNLOAD ===== -->
     <section class="download" id="download">
       <div class="download-card fade-up">
@@ -760,7 +831,7 @@ const navLinks = [
         </div>
         <div class="faq-item fade-up">
           <button class="faq-q" aria-expanded="false" data-i18n="faq.2.q">Apakah SteerIn gratis?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-          <div class="faq-a"><p data-i18n="faq.2.a">Versi early access bisa dicoba tanpa biaya. Jika ada paket berbayar nanti, fitur inti tetap dijelaskan dengan transparan.</p></div>
+          <div class="faq-a"><p data-i18n="faq.2.a">Fitur dasar SteerIn gratis selamanya. Untuk fitur lanjutan, tersedia paket berlangganan mulai Rp9.000/bulan — semua harga dan fiturnya transparan di halaman Harga &amp; Paket.</p></div>
         </div>
         <div class="faq-item fade-up">
           <button class="faq-q" aria-expanded="false" data-i18n="faq.3.q">Apakah lokasi dilacak terus-menerus?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
@@ -816,7 +887,7 @@ const navLinks = [
   <MobileSidebar
     links={mobileLinks}
     showLanguage={true}
-    description="Akses cepat ke fitur, privasi, FAQ, dan update terbaru SteerIn."
+    description="Akses cepat ke fitur, harga, privasi, FAQ, dan update terbaru SteerIn."
     descriptionI18n="sidebar.home.desc"
   />
 

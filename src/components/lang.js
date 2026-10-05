@@ -21,6 +21,7 @@ const translations = {
     'nav.features': 'Fitur',
     'nav.advantage': 'Kenapa SteerIn',
     'nav.how': 'Cara Kerja',
+    'nav.pricing': 'Harga',
     'nav.privacy': 'Privasi',
     'nav.faq': 'FAQ',
     'nav.download': 'Download',
@@ -204,6 +205,43 @@ const translations = {
     'phone.badge': 'Garage',
     'phone.sub': '3 kendaraan · 2 pengingat',
 
+    // Phone demo (interactive)
+    'demo.hint': 'Ketuk tab di HP untuk jelajahi aplikasi 👆',
+    'demo.tab.dash': 'Dasbor',
+    'demo.tab.garage': 'Garasi',
+    'demo.tab.maps': 'Lokasi',
+    'demo.tab.settings': 'Pengaturan',
+    'demo.float.1.title': 'Ganti oli jatuh tempo',
+    'demo.float.1.sub': 'Honda Civic · 230 km terlambat',
+    'demo.float.2.title': 'Kesehatan kendaraan',
+    'demo.float.2.sub': 'Honda Civic · Baik',
+    'demo.dash.updated': '1 Kendaraan • Diperbarui 19:21',
+    'demo.dash.total': 'TOTAL PENGELUARAN',
+    'demo.dash.next': 'Aksi Berikutnya',
+    'demo.dash.health': 'Kesehatan Kendaraan',
+    'demo.garage.search': 'Cari',
+    'demo.garage.detail': 'Lihat Detail',
+    'demo.maps.search': 'Cari bengkel, ban, oli…',
+    'demo.set.premium': 'SteerIn Premium & Promo',
+    'demo.set.manage': 'Kelola',
+    'demo.toast.odo': 'Odometer tersinkron • 0.0 km',
+    'demo.toast.route': 'Membuka rute ke AutoPro Bengkel…',
+    'demo.toast.manage': 'Demo: ini pratinjau paket Premium',
+    'demo.toast.add': 'Demo: tambah kendaraan baru',
+    'demo.toast.fuel': 'Demo: daftar harga BBM terkini',
+    'demo.toast.csv': 'Demo: ekspor riwayat ke CSV',
+    'demo.toast.history': 'Demo: riwayat servis oli',
+    'demo.toast.custom': 'Demo: pilih rentang kustom',
+    'demo.toast.health': 'Demo: detail kesehatan kendaraan',
+    'demo.toast.search': 'Demo: pencarian bengkel',
+    'demo.toast.filter': 'Demo: opsi filter',
+    'demo.toast.compass': 'Demo: mode kompas',
+    'demo.toast.recenter': 'Demo: kembali ke lokasimu',
+    'demo.toast.vehicles': 'Demo: daftar kendaraan',
+    'demo.toast.reports': 'Demo: laporan kendaraan',
+    'demo.toast.export': 'Demo: ekspor data',
+    'demo.toast.backup': 'Demo: backup cloud',
+
     // Use cases
     'usecases.badge': 'Untuk Siapa',
     'usecases.h2': 'Dibuat untuk cara orang Indonesia merawat kendaraan.',
@@ -283,6 +321,29 @@ const translations = {
     'early.p': 'SteerIn tidak memakai review palsu. Feedback dari pengguna awal akan dipakai untuk menyempurnakan onboarding, reminder, maps, OCR, dan premium flow sebelum rilis publik penuh.',
     'early.btn': 'Coba Sekarang',
 
+    // Pricing
+    'pricing.badge': 'Harga & Paket',
+    'pricing.h2': 'Harga transparan untuk semua kebutuhan.',
+    'pricing.p': 'Mulai gratis selamanya, upgrade saat butuh fitur lanjutan. Tanpa biaya tersembunyi.',
+    'pricing.1.name': 'Free',
+    'pricing.1.price': 'Rp0',
+    'pricing.1.period': '/ selamanya',
+    'pricing.1.desc': 'Untuk pengguna baru, ojol & komuter.',
+    'pricing.2.name': 'Driver Hemat',
+    'pricing.2.price': 'Rp9.000/bulan',
+    'pricing.2.yearly': '(Rp89.000/tahun)',
+    'pricing.2.desc': 'Untuk kendaraan harian.',
+    'pricing.3.flag': 'REKOMENDASI',
+    'pricing.3.name': 'Plus',
+    'pricing.3.price': 'Rp25.000/bulan',
+    'pricing.3.yearly': '(Rp249.000/tahun)',
+    'pricing.3.desc': 'Untuk keluarga & rumah tangga.',
+    'pricing.4.name': 'Premium',
+    'pricing.4.price': 'Rp49.000/bulan',
+    'pricing.4.yearly': '(Rp499.000/tahun)',
+    'pricing.4.desc': 'Untuk power user, banyak kendaraan.',
+    'pricing.note': 'Pembayaran diproses aman melalui Midtrans — QRIS, Virtual Account, e-wallet, hingga kartu kredit/debit.',
+
     // FAQ
     'faq.badge': 'FAQ',
     'faq.h2': 'Pertanyaan yang sering muncul.',
@@ -290,7 +351,7 @@ const translations = {
     'faq.1.q': 'Apakah SteerIn tersedia di Android?',
     'faq.1.a': 'Ya. SteerIn dibuat sebagai aplikasi native Android untuk perangkat modern.',
     'faq.2.q': 'Apakah SteerIn gratis?',
-    'faq.2.a': 'Versi early access bisa dicoba tanpa biaya. Jika ada paket berbayar nanti, fitur inti tetap dijelaskan dengan transparan.',
+    'faq.2.a': 'Fitur dasar SteerIn gratis selamanya. Untuk fitur lanjutan, tersedia paket berlangganan mulai Rp9.000/bulan — semua harga dan fiturnya transparan di halaman Harga & Paket.',
     'faq.3.q': 'Apakah lokasi dilacak terus-menerus?',
     'faq.3.a': 'Tidak. GPS dipakai saat kamu menjalankan fitur trip tracking. Data lokasi tetap berada dalam kontrol pengguna.',
     'faq.4.q': 'Apakah wajib login atau cloud sync?',
@@ -320,7 +381,7 @@ const translations = {
     'sidebar.nav': 'Navigasi',
     'sidebar.theme': 'Tema',
     'sidebar.language': 'Bahasa',
-    'sidebar.home.desc': 'Akses cepat ke fitur, privasi, FAQ, dan update terbaru SteerIn.',
+    'sidebar.home.desc': 'Akses cepat ke fitur, harga, privasi, FAQ, dan update terbaru SteerIn.',
 
     // Footer
     'footer.brand.p': 'Garasi digital privat untuk mobil dan motor. Dibuat untuk Android dengan local-first storage, cloud sync opsional, dan tanpa tracker.',
@@ -356,6 +417,7 @@ const translations = {
     'nav.features': 'Features',
     'nav.advantage': 'Why SteerIn',
     'nav.how': 'How It Works',
+    'nav.pricing': 'Pricing',
     'nav.privacy': 'Privacy',
     'nav.faq': 'FAQ',
     'nav.download': 'Download',
@@ -539,6 +601,43 @@ const translations = {
     'phone.badge': 'Garage',
     'phone.sub': '3 vehicles · 2 reminders',
 
+    // Phone demo (interactive)
+    'demo.hint': 'Tap the phone tabs to explore the app 👆',
+    'demo.tab.dash': 'Dashboard',
+    'demo.tab.garage': 'Garage',
+    'demo.tab.maps': 'Maps',
+    'demo.tab.settings': 'Settings',
+    'demo.float.1.title': 'Oil change due',
+    'demo.float.1.sub': 'Honda Civic · 230 km overdue',
+    'demo.float.2.title': 'Vehicle health',
+    'demo.float.2.sub': 'Honda Civic · Good',
+    'demo.dash.updated': '1 Vehicle • Updated 19:21',
+    'demo.dash.total': 'TOTAL EXPENSES',
+    'demo.dash.next': 'Next Actions',
+    'demo.dash.health': 'Vehicle Health',
+    'demo.garage.search': 'Search',
+    'demo.garage.detail': 'View Details',
+    'demo.maps.search': 'Search workshops, tires, oil…',
+    'demo.set.premium': 'SteerIn Premium & Promo',
+    'demo.set.manage': 'Manage',
+    'demo.toast.odo': 'Odometer synced • 0.0 km',
+    'demo.toast.route': 'Opening route to AutoPro Workshop…',
+    'demo.toast.manage': 'Demo: this is a Premium plan preview',
+    'demo.toast.add': 'Demo: add a new vehicle',
+    'demo.toast.fuel': 'Demo: latest fuel price list',
+    'demo.toast.csv': 'Demo: export history to CSV',
+    'demo.toast.history': 'Demo: oil service history',
+    'demo.toast.custom': 'Demo: pick a custom range',
+    'demo.toast.health': 'Demo: vehicle health details',
+    'demo.toast.search': 'Demo: workshop search',
+    'demo.toast.filter': 'Demo: filter options',
+    'demo.toast.compass': 'Demo: compass mode',
+    'demo.toast.recenter': 'Demo: back to your location',
+    'demo.toast.vehicles': 'Demo: vehicle list',
+    'demo.toast.reports': 'Demo: vehicle reports',
+    'demo.toast.export': 'Demo: export data',
+    'demo.toast.backup': 'Demo: cloud backup',
+
     // Use cases
     'usecases.badge': 'Who It\'s For',
     'usecases.h2': 'Built for how Indonesians care for vehicles.',
@@ -618,6 +717,29 @@ const translations = {
     'early.p': 'SteerIn doesn\'t use fake reviews. Feedback from early users will be used to perfect onboarding, reminders, maps, OCR, and premium flow before full public release.',
     'early.btn': 'Try Now',
 
+    // Pricing
+    'pricing.badge': 'Pricing & Plans',
+    'pricing.h2': 'Transparent pricing for every need.',
+    'pricing.p': 'Start free forever, upgrade when you need advanced features. No hidden fees.',
+    'pricing.1.name': 'Free',
+    'pricing.1.price': 'Rp0',
+    'pricing.1.period': '/ forever',
+    'pricing.1.desc': 'For new users, ride-hailing drivers & commuters.',
+    'pricing.2.name': 'Driver Hemat',
+    'pricing.2.price': 'Rp9.000/bulan',
+    'pricing.2.yearly': '(Rp89.000/tahun)',
+    'pricing.2.desc': 'For daily vehicles.',
+    'pricing.3.flag': 'RECOMMENDED',
+    'pricing.3.name': 'Plus',
+    'pricing.3.price': 'Rp25.000/bulan',
+    'pricing.3.yearly': '(Rp249.000/tahun)',
+    'pricing.3.desc': 'For families & households.',
+    'pricing.4.name': 'Premium',
+    'pricing.4.price': 'Rp49.000/bulan',
+    'pricing.4.yearly': '(Rp499.000/tahun)',
+    'pricing.4.desc': 'For power users with multiple vehicles.',
+    'pricing.note': 'Payments are securely processed via Midtrans — QRIS, Virtual Accounts, e-wallets, and credit/debit cards.',
+
     // FAQ
     'faq.badge': 'FAQ',
     'faq.h2': 'Frequently asked questions.',
@@ -625,7 +747,7 @@ const translations = {
     'faq.1.q': 'Is SteerIn available on Android?',
     'faq.1.a': 'Yes. SteerIn is built as a native Android application for modern devices.',
     'faq.2.q': 'Is SteerIn free?',
-    'faq.2.a': 'The early access version can be tried at no cost. If paid plans arrive later, core feature access will be explained transparently.',
+    'faq.2.a': 'SteerIn core features are free forever. For advanced features, subscription plans start from Rp9.000/month — all prices and features are transparent on the Pricing & Plans section.',
     'faq.3.q': 'Is my location tracked continuously?',
     'faq.3.a': 'No. GPS is used when you run the trip tracking feature. Location data remains under user control.',
     'faq.4.q': 'Is login or cloud sync required?',
@@ -655,7 +777,7 @@ const translations = {
     'sidebar.nav': 'Navigation',
     'sidebar.theme': 'Theme',
     'sidebar.language': 'Language',
-    'sidebar.home.desc': 'Quick access to features, privacy, FAQ, and the latest SteerIn updates.',
+    'sidebar.home.desc': 'Quick access to features, pricing, privacy, FAQ, and the latest SteerIn updates.',
 
     // Footer
     'footer.brand.p': 'Private digital garage for cars and motorcycles. Built for Android with local-first storage, optional cloud sync, and no trackers.',
@@ -746,6 +868,17 @@ function applyTranslations(lang) {
  */
 function getCurrentLang() {
   return localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
+}
+
+/**
+ * Get a single translation for the current language.
+ * Used by dynamic UI (e.g. phone demo toasts) that can't use data-i18n.
+ */
+export function t(key) {
+  const lang = getCurrentLang();
+  return (translations[lang] && translations[lang][key])
+    || translations[DEFAULT_LANG][key]
+    || key;
 }
 
 /**
