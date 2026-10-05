@@ -897,7 +897,7 @@ button.demo-search { font-family: inherit; cursor: pointer; text-align: left; }
 .demo-mapwrap { position: relative; display: flex; flex-direction: column; gap: 0; }
 .demo-mapbar {
   display: flex; align-items: center; gap: 8px;
-  background: rgba(13,20,28,0.78); border: 1px solid rgba(255,255,255,0.08);
+  background: var(--phone-nav-bg); border: 1px solid var(--phone-card-border);
   border-radius: 20px; padding: 8px; margin: 10px 10px 0;
   position: relative; z-index: 2;
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
@@ -905,15 +905,15 @@ button.demo-search { font-family: inherit; cursor: pointer; text-align: left; }
 .demo-mapsearch {
   flex: 1; display: flex; align-items: center; gap: 8px;
   font-family: inherit; cursor: pointer; text-align: left;
-  font-size: 10px; color: rgba(255,255,255,0.4);
-  background: #0b141f; border: 1px solid rgba(255,255,255,0.06);
+  font-size: 10px; color: var(--phone-text-dim);
+  background: var(--phone-bg); border: 1px solid var(--phone-card-border);
   border-radius: 999px; padding: 10px 14px;
 }
 .demo-mapsearch-ico { color: var(--green); font-size: 12px; }
 .demo-mapfilter {
   width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0;
-  font-family: inherit; cursor: pointer; font-size: 14px; color: #fff;
-  background: #0b141f; border: 1px solid rgba(255,255,255,0.06);
+  font-family: inherit; cursor: pointer; font-size: 14px; color: var(--phone-text);
+  background: var(--phone-bg); border: 1px solid var(--phone-card-border);
 }
 .demo-maptarget {
   width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0;
@@ -923,7 +923,7 @@ button.demo-search { font-family: inherit; cursor: pointer; text-align: left; }
 }
 .demo-target { width: 28px; height: 28px; border-radius: 50%; background: var(--green); color: #052e16; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; }
 .demo-map { height: 340px; margin-top: -18px; border-radius: 0 0 14px 14px; }
-.demo-compass { position: absolute; right: 12px; top: 44%; width: 32px; height: 32px; border-radius: 10px; background: rgba(13,20,28,0.92); border: 1px solid rgba(255,255,255,0.1); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 15px; z-index: 2; font-family: inherit; cursor: pointer; }
+.demo-compass { position: absolute; right: 12px; top: 44%; width: 32px; height: 32px; border-radius: 10px; background: var(--phone-nav-bg); border: 1px solid var(--phone-card-border); color: var(--phone-text); display: flex; align-items: center; justify-content: center; font-size: 15px; z-index: 2; font-family: inherit; cursor: pointer; }
 .demo-compass { transform: rotate(-45deg); }
 
 /* Maps tab: map fills the phone, bottom nav floats over it (like the real app) */
