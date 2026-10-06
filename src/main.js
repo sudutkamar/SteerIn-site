@@ -29,21 +29,6 @@ function initPhoneClock() {
   setInterval(updateWIB, 10_000); // update every 10 seconds
 }
 
-function hideLoadingScreen() {
-  const screen = document.getElementById('loading-screen');
-  if (!screen) return;
-
-  // Ensure the progress bar animation has time to finish
-  const MIN_DISPLAY_MS = 600;
-  setTimeout(() => {
-    screen.classList.add('loaded');
-    // Remove from DOM after transition completes
-    screen.addEventListener('transitionend', () => screen.remove(), { once: true });
-    // Fallback removal in case transitionend doesn't fire
-    setTimeout(() => screen.remove(), 600);
-  }, MIN_DISPLAY_MS);
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   initLang();
   initTheme();
@@ -61,6 +46,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // Interactive phone demo (hero)
   initPhoneDemo();
 
-  // Dismiss loading screen after all components are ready
-  hideLoadingScreen();
 });

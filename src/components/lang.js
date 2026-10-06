@@ -6,7 +6,7 @@
 const STORAGE_KEY = 'steerin-lang';
 const DEFAULT_LANG = 'id';
 
-const translations = {
+export const translations = {
   id: {
     // Meta
     'meta.title': 'SteerIn — Garasi Digital Privat untuk Mobil & Motor',
@@ -32,6 +32,7 @@ const translations = {
     'hero.h1.gradient': 'rapikan semua riwayat kendaraan.',
     'hero.p': 'SteerIn membantu kamu mengelola servis, odometer, trip, bengkel, dan riwayat kendaraan dalam satu garasi digital yang rapi, privat, dan mudah dipakai.',
     'hero.cta.download': 'Download APK Android',
+    'hero.download.note': 'Beta Android 8.0+ · login diperlukan · lihat detail keamanan di bagian Download.',
     'hero.cta.advantage': 'Lihat fitur',
     'hero.form.placeholder': 'Masukkan email kamu',
     'hero.form.btn': 'Ikut Early Access',
@@ -49,7 +50,7 @@ const translations = {
     'trust.3.title': 'Backup terenkripsi AES',
     'trust.3.p': 'Backup dienkripsi dengan kriptografi kuat sebelum keluar dari perangkat kamu.',
     'trust.4.title': 'Tanpa iklan atau tracker',
-    'trust.4.p': 'Tanpa iklan, tanpa SDK analitik, tanpa pelacakan pihak ketiga. Selamanya.',
+    'trust.4.p': 'Tanpa iklan di aplikasi. Layanan pihak ketiga untuk fitur tertentu dijelaskan dalam Kebijakan Privasi.',
 
     // Problem
     'problem.badge': 'Masalah',
@@ -65,7 +66,7 @@ const translations = {
     'problem.4.p': 'Menemukan bengkel terpercaya seharusnya bukan tebak-tebakan.',
     'problem.5.title': 'Banyak kendaraan, satu sakit kepala',
     'problem.5.p': 'Mengelola dua kendaraan atau lebih berarti double catatan dan double stres.',
-    'problem.stat.label': 'kendaraan per rumah tangga rata-rata di Indonesia',
+    'problem.stat.label': 'Catatan kendaraan lebih mudah dicari ketika tersimpan dalam satu tempat.',
     'problem.quote': 'SteerIn menggabungkan semuanya dalam satu <strong>hub kendaraan yang privat, terstruktur, dan terpercaya</strong>.',
 
     // Features
@@ -87,7 +88,7 @@ const translations = {
     'features.7.title': 'Cloud Sync & Backup',
     'features.7.p': 'Backup catatan kendaraan kamu dengan aman dan restore saat ganti perangkat — opsional, tidak pernah dipaksa.',
     'features.8.title': 'Kontrol Privasi',
-    'features.8.p': 'Tanpa iklan, tanpa tracker, tanpa pengumpulan data tersembunyi. Data kendaraan tetap milik kamu.',
+    'features.8.p': 'Catatan utama tetap lokal; lihat kebijakan privasi untuk penggunaan layanan pihak ketiga.',
     'features.9.title': 'Diagnostik Pintar',
     'features.9.p': 'Gunakan cek gejala terpandu, level risiko, aksi aman, dan catatan siap bengkel sebelum masalah membesar.',
     'features.10.title': 'OCR Struk & Odometer',
@@ -149,7 +150,7 @@ const translations = {
     'privacy.h2': 'Dibangun untuk privasi sejak awal.',
     'privacy.intro': 'Catatan kendaraan, riwayat servis, dan data trip kamu bersifat pribadi. <strong>SteerIn didesain dengan kontrol pengguna</strong>, penyimpanan local-first, backup terenkripsi opsional, dan tanpa tracker iklan.',
     'privacy.1.title': 'Data lokal terlebih dahulu',
-    'privacy.1.p': 'Semua data tersimpan di perangkat kamu secara default. Tidak ada server remote yang terlibat.',
+    'privacy.1.p': 'Catatan utama disimpan lokal. Login dan fitur tertentu dapat memakai layanan pihak ketiga; lihat Kebijakan Privasi.',
     'privacy.2.title': 'Cloud sync opsional',
     'privacy.2.p': 'Sinkronisasi ke cloud hanya saat kamu putuskan. Tidak pernah otomatis atau dipaksa.',
     'privacy.3.title': 'Backup terenkripsi',
@@ -159,12 +160,12 @@ const translations = {
     'privacy.5.title': 'Ekspor & hapus data',
     'privacy.5.p': 'Ekspor data kamu, hapus catatan lokal, atau bersihkan backup cloud kapan saja.',
     'privacy.6.title': 'Tanpa iklan/tracker',
-    'privacy.6.p': 'Tanpa SDK iklan, tanpa analitik, tanpa pelacakan pihak ketiga. Bersih dan privat.',
+    'privacy.6.p': 'Tidak menjual data pribadi; layanan pihak ketiga yang digunakan dijelaskan dalam Kebijakan Privasi.',
 
     // App preview
     'preview.badge': 'Preview',
     'preview.h2': 'Lihat SteerIn bekerja.',
-    'preview.p': 'Enam area utama yang membantu kamu menjaga kendaraan tetap terpantau.',
+    'preview.p': 'Ilustrasi fitur SteerIn. Tampilan dan data contoh dapat berbeda dari aplikasi.',
     'preview.1.title': 'Dashboard Garasi',
     'preview.1.label.1': 'Honda Civic',
     'preview.1.label.2': 'Yamaha NMAX',
@@ -189,9 +190,9 @@ const translations = {
     'preview.4.label.3': 'Bulan Ini',
     'preview.4.label.4': 'Total Dilacak',
     'preview.5.title': 'Peta Bengkel',
-    'preview.5.label.1': 'AutoPro Bengkel',
-    'preview.5.label.2': 'Mandiri Motor',
-    'preview.5.label.3': 'SpeedFix Garage',
+    'preview.5.label.1': 'Cari bengkel',
+    'preview.5.label.2': 'Lihat lokasi',
+    'preview.5.label.3': 'Pilih layanan',
     'preview.5.label.4': 'Rata-rata Rating',
     'preview.6.title': 'Cloud Backup',
     'preview.6.label.1': 'Backup Terakhir',
@@ -288,7 +289,7 @@ const translations = {
     'safe.h2': 'Install APK dengan aman.',
     'safe.p': 'SteerIn sedang disiapkan untuk launch. Kalau kamu memakai APK early access, selalu download dari halaman resmi ini dan cocokkan checksum SHA-256.',
     'safe.step.1': 'Download APK dari tombol resmi SteerIn.',
-    'safe.step.2': 'Download file SHA-256 lalu cocokkan checksum bila perlu.',
+    'safe.step.2': 'Hitung SHA-256 APK dan cocokkan dengan checksum resmi yang ditampilkan di atas.',
     'safe.step.3': 'Izinkan install dari browser/file manager yang kamu pakai.',
     'safe.step.4': 'Buka SteerIn, cek izin lokasi/notifikasi hanya saat fitur terkait dipakai.',
     'safe.note': 'Jangan install APK dari link tidak resmi. SteerIn tidak memakai iklan, tracker, atau upload data wajib.',
@@ -305,7 +306,8 @@ const translations = {
     'download.badge.3': 'Versi Beta',
     'download.badge.4': 'Fokus privasi',
     'download.btn': 'Download APK',
-    'download.verify': 'Verifikasi SHA-256',
+    'download.verify': 'Lihat SHA-256',
+    'download.checksum.help': 'Hitung SHA-256 file APK yang diunduh, lalu bandingkan dengan nilai di atas. Di Windows: Get-FileHash nama-file.apk -Algorithm SHA256.',
     'download.terms': 'Dengan download APK, kamu menyetujui',
     'download.and': 'dan',
     'download.troubleshoot': 'Ada kendala?',
@@ -323,8 +325,8 @@ const translations = {
 
     // Pricing
     'pricing.badge': 'Harga & Paket',
-    'pricing.h2': 'Harga transparan untuk semua kebutuhan.',
-    'pricing.p': 'Mulai gratis selamanya, upgrade saat butuh fitur lanjutan. Tanpa biaya tersembunyi.',
+    'pricing.h2': 'Pratinjau paket selama beta.',
+    'pricing.p': 'Versi dasar gratis. Fitur dan harga paket lain perlu dicek di aplikasi sebelum berlangganan.',
     'pricing.1.name': 'Free',
     'pricing.1.price': 'Rp0',
     'pricing.1.period': '/ selamanya',
@@ -342,7 +344,7 @@ const translations = {
     'pricing.4.price': 'Rp49.000/bulan',
     'pricing.4.yearly': '(Rp499.000/tahun)',
     'pricing.4.desc': 'Untuk power user, banyak kendaraan.',
-    'pricing.note': 'Pembayaran diproses aman melalui Midtrans — QRIS, Virtual Account, e-wallet, hingga kartu kredit/debit.',
+    'pricing.note': 'Harga dan ketersediaan paket dapat berubah selama beta. Periksa detail fitur dan metode pembayaran di aplikasi sebelum berlangganan.',
 
     // FAQ
     'faq.badge': 'FAQ',
@@ -351,15 +353,40 @@ const translations = {
     'faq.1.q': 'Apakah SteerIn tersedia di Android?',
     'faq.1.a': 'Ya. SteerIn dibuat sebagai aplikasi native Android untuk perangkat modern.',
     'faq.2.q': 'Apakah SteerIn gratis?',
-    'faq.2.a': 'Fitur dasar SteerIn gratis selamanya. Untuk fitur lanjutan, tersedia paket berlangganan mulai Rp9.000/bulan — semua harga dan fiturnya transparan di halaman Harga & Paket.',
+    'faq.2.a': 'Versi dasar tersedia gratis. Harga dan cakupan paket berbayar yang ditampilkan dapat berubah selama beta; cek detail di aplikasi.',
     'faq.3.q': 'Apakah lokasi dilacak terus-menerus?',
     'faq.3.a': 'Tidak. GPS dipakai saat kamu menjalankan fitur trip tracking. Data lokasi tetap berada dalam kontrol pengguna.',
     'faq.4.q': 'Apakah wajib login atau cloud sync?',
     'faq.4.a': 'Login wajib untuk memakai SteerIn. Cloud sync tetap opsional untuk backup dan restore.',
     'faq.5.q': 'Apakah data servis saya diupload?',
-    'faq.5.a': 'Tidak otomatis. Data tersimpan lokal secara default. Upload hanya terjadi saat kamu memilih fitur cloud backup/sync.',
+    'faq.5.a': 'Catatan kendaraan disimpan lokal secara default. Login dan beberapa fitur memakai layanan pihak ketiga; detailnya ada di Kebijakan Privasi.',
+    'form.success': 'Terima kasih! Pendaftaranmu telah terkirim.',
+    'form.error': 'Pendaftaran gagal dikirim. Coba lagi nanti atau hubungi support.',
+    'legal.home': 'Beranda',
+    'legal.back': '← Kembali ke Beranda',
+    'policy.title': 'Kebijakan Privasi',
+    'policy.meta.description': 'Bagaimana SteerIn menyimpan dan memproses data kendaraan, akun, lokasi, dan backup.',
+    'policy.intro': 'SteerIn membantu mengelola kendaraan. Berikut cara data kamu digunakan dan disimpan.',
+    'policy.updated': 'Terakhir diperbarui: 6 Oktober 2026',
+    'policy.beta': 'Berlaku untuk versi beta',
+    'policy.data.title': 'Data yang dikumpulkan',
+    'policy.data.body': 'Kamu memasukkan profil kendaraan, catatan servis, biaya, dan perjalanan. Lokasi dipakai saat trip tracking aktif; kamera dipakai saat fitur scan atau foto kendaraan dipilih. Login memproses identitas akun melalui layanan yang digunakan aplikasi.',
+    'policy.usage.title': 'Penggunaan data',
+    'policy.usage.body': 'Data digunakan untuk menampilkan kesehatan kendaraan, pengingat, riwayat, dan laporan. Log kesalahan lokal dan diagnostik crash jarak jauh opsional dapat dipakai jika dikonfigurasi.',
+    'policy.location.title': 'Lokasi dan kamera',
+    'policy.location.body': 'Lokasi foreground digunakan untuk perjalanan aktif. Izin lokasi background dapat diminta setelah kamu memulai trip dan memilih pelacakan saat aplikasi tidak terlihat. Kamu bisa menghentikan trip kapan saja. Kamera hanya digunakan untuk scan odometer dan foto opsional.',
+    'policy.notifications.title': 'Notifikasi dan laporan',
+    'policy.notifications.body': 'Notifikasi dapat digunakan untuk pengingat servis, pembaruan sistem, dan trip aktif. Laporan mingguan bersifat opsional; pengiriman email dapat menggunakan penyedia email transaksional tanpa koordinat rute GPS mentah.',
+    'policy.storage.title': 'Penyimpanan dan backup',
+    'policy.storage.body': 'Data inti disimpan lokal melalui Room dan DataStore. Backup file dipilih pengguna. Jika backup cloud diaktifkan, pengenal akun dan data backup disimpan melalui Supabase; preferensi laporan dapat disinkronkan jika fitur pengiriman diaktifkan.',
+    'policy.sharing.title': 'Layanan pihak ketiga',
+    'policy.sharing.body': 'SteerIn tidak bermaksud menjual data pribadi. Fitur tertentu dapat memakai Supabase, layanan lokasi/peta Google, Logo.dev, dan penyedia diagnostik crash opsional. Ketersediaannya bergantung pada konfigurasi aplikasi.',
+    'policy.control.title': 'Kontrol pengguna',
+    'policy.control.body': 'Kamu dapat mengedit atau menghapus data kendaraan, mengekspor dan memulihkan backup lokal, menghapus backup cloud, keluar dari cloud sync, dan menonaktifkan laporan mingguan. Untuk penghapusan akun cloud, hubungi pengelola aplikasi sampai fitur mandiri tersedia.',
+    'policy.contact.title': 'Kontak',
+    'policy.contact.body': 'Pertanyaan tentang data pribadi:',
     'faq.6.q': 'Apakah aman install APK di luar Play Store?',
-    'faq.6.a': 'Aman jika diambil dari halaman resmi dan checksum SHA-256 cocok. Jangan install APK dari link tidak resmi.',
+    'faq.6.a': 'Unduh hanya dari tautan rilis resmi dan cocokkan SHA-256. Kecocokan hash memastikan file sesuai rilis, bukan menjamin aplikasi bebas risiko.',
     'faq.7.q': 'Kapan rilis Play Store?',
     'faq.7.a': 'Targetnya setelah early access stabil, feedback utama masuk, dan proses Play Console siap.',
 
@@ -384,7 +411,7 @@ const translations = {
     'sidebar.home.desc': 'Akses cepat ke fitur, harga, privasi, FAQ, dan update terbaru SteerIn.',
 
     // Footer
-    'footer.brand.p': 'Garasi digital privat untuk mobil dan motor. Dibuat untuk Android dengan local-first storage, cloud sync opsional, dan tanpa tracker.',
+    'footer.brand.p': 'Garasi digital untuk mobil dan motor, dengan catatan local-first dan backup cloud opsional.',
     'footer.product': 'Produk',
     'footer.legal': 'Legal',
     'footer.support': 'Support',
@@ -428,6 +455,7 @@ const translations = {
     'hero.h1.gradient': 'organize all your vehicle records.',
     'hero.p': 'SteerIn helps you manage service records, odometer, trips, workshops, and vehicle history in one tidy, private, easy-to-use digital garage.',
     'hero.cta.download': 'Download Android APK',
+    'hero.download.note': 'Beta for Android 8.0+ · login required · see the Download section for safety details.',
     'hero.cta.advantage': 'See features',
     'hero.form.placeholder': 'Enter your email',
     'hero.form.btn': 'Join Early Access',
@@ -445,7 +473,7 @@ const translations = {
     'trust.3.title': 'AES encrypted backups',
     'trust.3.p': 'Backups are encrypted with strong cryptography before leaving your device.',
     'trust.4.title': 'Zero ads or trackers',
-    'trust.4.p': 'No advertising, no analytics SDKs, no third-party tracking. Ever.',
+    'trust.4.p': 'No in-app ads. Third-party services used by certain features are described in the Privacy Policy.',
 
     // Problem
     'problem.badge': 'The Problem',
@@ -461,7 +489,7 @@ const translations = {
     'problem.4.p': 'Finding a reliable workshop nearby should not be a guessing game.',
     'problem.5.title': 'Multiple vehicles, one headache',
     'problem.5.p': 'Managing two or more vehicles means double the records and double the stress.',
-    'problem.stat.label': 'vehicles per average household in Indonesia',
+    'problem.stat.label': 'Vehicle records are easier to find when kept in one place.',
     'problem.quote': 'SteerIn brings everything into one <strong>private, structured, and reliable</strong> vehicle hub.',
 
     // Features
@@ -483,7 +511,7 @@ const translations = {
     'features.7.title': 'Cloud Sync & Backup',
     'features.7.p': 'Backup your vehicle records securely and restore them when switching devices — optional, never forced.',
     'features.8.title': 'Privacy Controls',
-    'features.8.p': 'No ads, no trackers, no hidden data collection. Your vehicle data stays yours.',
+    'features.8.p': 'Core records stay local; see the Privacy Policy for third-party services.',
     'features.9.title': 'Smart Diagnostics',
     'features.9.p': 'Use guided symptom checks, risk levels, safe actions, and workshop-ready notes before issues grow.',
     'features.10.title': 'Receipt & Odometer OCR',
@@ -545,7 +573,7 @@ const translations = {
     'privacy.h2': 'Built for privacy from the start.',
     'privacy.intro': 'Your vehicle records, service history, and trip data are personal. <strong>SteerIn is designed around user control</strong>, local-first storage, optional encrypted backup, and zero advertising trackers.',
     'privacy.1.title': 'Local data first',
-    'privacy.1.p': 'All data is stored on your device by default. No remote servers involved.',
+    'privacy.1.p': 'Core records are stored locally. Login and some features may use third-party services; see the Privacy Policy.',
     'privacy.2.title': 'Optional cloud sync',
     'privacy.2.p': 'Sync to the cloud only when you decide. Never automatic or forced.',
     'privacy.3.title': 'Encrypted backup',
@@ -555,12 +583,12 @@ const translations = {
     'privacy.5.title': 'Export & delete control',
     'privacy.5.p': 'Export your data, delete local records, or clear cloud backups anytime.',
     'privacy.6.title': 'No ads/trackers',
-    'privacy.6.p': 'No advertising SDKs, no analytics, no third-party tracking. Clean and private.',
+    'privacy.6.p': 'We do not sell personal data; third-party services are disclosed in the Privacy Policy.',
 
     // App preview
     'preview.badge': 'Preview',
     'preview.h2': 'See SteerIn in action.',
-    'preview.p': 'Six core areas that help you keep vehicle ownership under control.',
+    'preview.p': 'Illustrations of SteerIn features. Appearance and example data may differ from the app.',
     'preview.1.title': 'Garage Dashboard',
     'preview.1.label.1': 'Honda Civic',
     'preview.1.label.2': 'Yamaha NMAX',
@@ -585,9 +613,9 @@ const translations = {
     'preview.4.label.3': 'This Month',
     'preview.4.label.4': 'Total Tracked',
     'preview.5.title': 'Workshop Map',
-    'preview.5.label.1': 'AutoPro Bengkel',
-    'preview.5.label.2': 'Mandiri Motor',
-    'preview.5.label.3': 'SpeedFix Garage',
+    'preview.5.label.1': 'Find workshops',
+    'preview.5.label.2': 'See locations',
+    'preview.5.label.3': 'Choose a service',
     'preview.5.label.4': 'Avg. Rating',
     'preview.6.title': 'Cloud Backup',
     'preview.6.label.1': 'Last Backup',
@@ -684,7 +712,7 @@ const translations = {
     'safe.h2': 'Install APKs safely.',
     'safe.p': 'SteerIn is being prepared for launch. If you\'re using the early access APK, always download from this official page and verify the SHA-256 checksum.',
     'safe.step.1': 'Download APK from the official SteerIn button.',
-    'safe.step.2': 'Download the SHA-256 file and verify the checksum if needed.',
+    'safe.step.2': 'Calculate the APK SHA-256 and compare it with the official checksum shown above.',
     'safe.step.3': 'Allow installation from the browser/file manager you\'re using.',
     'safe.step.4': 'Open SteerIn, check location/notification permissions only when related features are used.',
     'safe.note': 'Don\'t install APKs from unofficial links. SteerIn uses no ads, trackers, or mandatory data uploads.',
@@ -701,7 +729,8 @@ const translations = {
     'download.badge.3': 'Beta Version',
     'download.badge.4': 'Privacy focused',
     'download.btn': 'Download APK',
-    'download.verify': 'Verify SHA-256',
+    'download.verify': 'Show SHA-256',
+    'download.checksum.help': 'Calculate the downloaded APK file’s SHA-256 and compare it with the value above. On Windows: Get-FileHash filename.apk -Algorithm SHA256.',
     'download.terms': 'By downloading the APK, you agree to the',
     'download.and': 'and',
     'download.troubleshoot': 'Having issues?',
@@ -719,8 +748,8 @@ const translations = {
 
     // Pricing
     'pricing.badge': 'Pricing & Plans',
-    'pricing.h2': 'Transparent pricing for every need.',
-    'pricing.p': 'Start free forever, upgrade when you need advanced features. No hidden fees.',
+    'pricing.h2': 'Beta pricing preview.',
+    'pricing.p': 'A basic version is free. Check other plan features and prices in the app before subscribing.',
     'pricing.1.name': 'Free',
     'pricing.1.price': 'Rp0',
     'pricing.1.period': '/ forever',
@@ -738,7 +767,7 @@ const translations = {
     'pricing.4.price': 'Rp49.000/bulan',
     'pricing.4.yearly': '(Rp499.000/tahun)',
     'pricing.4.desc': 'For power users with multiple vehicles.',
-    'pricing.note': 'Payments are securely processed via Midtrans — QRIS, Virtual Accounts, e-wallets, and credit/debit cards.',
+    'pricing.note': 'Prices and plan availability may change during beta. Check features and payment methods in the app before subscribing.',
 
     // FAQ
     'faq.badge': 'FAQ',
@@ -747,15 +776,40 @@ const translations = {
     'faq.1.q': 'Is SteerIn available on Android?',
     'faq.1.a': 'Yes. SteerIn is built as a native Android application for modern devices.',
     'faq.2.q': 'Is SteerIn free?',
-    'faq.2.a': 'SteerIn core features are free forever. For advanced features, subscription plans start from Rp9.000/month — all prices and features are transparent on the Pricing & Plans section.',
+    'faq.2.a': 'A basic version is available for free. Paid plan prices and features shown here may change during beta; check details in the app.',
     'faq.3.q': 'Is my location tracked continuously?',
     'faq.3.a': 'No. GPS is used when you run the trip tracking feature. Location data remains under user control.',
     'faq.4.q': 'Is login or cloud sync required?',
     'faq.4.a': 'Login is required to use SteerIn. Cloud sync remains optional for backup and restore.',
     'faq.5.q': 'Is my service data uploaded?',
-    'faq.5.a': 'Not automatically. Data is stored locally by default. Upload only happens when you choose cloud backup/sync.',
+    'faq.5.a': 'Vehicle records are stored locally by default. Login and some features use third-party services; see the Privacy Policy.',
+    'form.success': 'Thank you! Your signup has been submitted.',
+    'form.error': 'Signup could not be submitted. Try again later or contact support.',
+    'legal.home': 'Home',
+    'legal.back': '← Back to Home',
+    'policy.title': 'Privacy Policy',
+    'policy.meta.description': 'How SteerIn stores and processes vehicle, account, location, and backup data.',
+    'policy.intro': 'SteerIn helps you manage vehicles. This explains how your data is used and stored.',
+    'policy.updated': 'Last updated: October 6, 2026',
+    'policy.beta': 'Applies to the beta version',
+    'policy.data.title': 'Data collected',
+    'policy.data.body': 'You enter vehicle profiles, service records, expenses, and trips. Location is used during active trip tracking; camera access is used when you choose scanning or vehicle photos. Login processes account identity through the services used by the app.',
+    'policy.usage.title': 'How data is used',
+    'policy.usage.body': 'Data is used to show vehicle health, reminders, history, and reports. Local error logs and optional remote crash diagnostics may be used when configured.',
+    'policy.location.title': 'Location and camera',
+    'policy.location.body': 'Foreground location is used for active trips. Background location permission may be requested after you start a trip and choose tracking while the app is not visible. You can stop a trip at any time. Camera access is limited to odometer scans and optional photos.',
+    'policy.notifications.title': 'Notifications and reports',
+    'policy.notifications.body': 'Notifications may be used for service reminders, system updates, and active trips. Weekly reports are optional; email delivery may use a transactional email provider without raw GPS route coordinates.',
+    'policy.storage.title': 'Storage and backup',
+    'policy.storage.body': 'Core data is stored locally using Room and DataStore. Backup files are chosen by the user. If cloud backup is enabled, account identifiers and backup data are stored through Supabase; report preferences may sync if delivery features are enabled.',
+    'policy.sharing.title': 'Third-party services',
+    'policy.sharing.body': 'SteerIn does not intentionally sell personal data. Certain features may use Supabase, Google location/maps services, Logo.dev, and an optional crash diagnostics provider. Availability depends on app configuration.',
+    'policy.control.title': 'Your control',
+    'policy.control.body': 'You can edit or delete vehicle data, export and restore local backups, delete cloud backups, sign out of cloud sync, and disable weekly reports. Contact the app operator for cloud account deletion until self-service deletion is available.',
+    'policy.contact.title': 'Contact',
+    'policy.contact.body': 'Questions about personal data:',
     'faq.6.q': 'Is it safe to install APK outside the Play Store?',
-    'faq.6.a': 'Safe if downloaded from the official page and the SHA-256 checksum matches. Don\'t install APKs from unofficial links.',
+    'faq.6.a': 'Download only from the official release link and compare SHA-256. Matching the hash confirms the release file, not that the app is risk-free.',
     'faq.7.q': 'When is the Play Store release?',
     'faq.7.a': 'Targeted after early access is stable, key feedback is in, and Play Console process is ready.',
 
@@ -780,7 +834,7 @@ const translations = {
     'sidebar.home.desc': 'Quick access to features, pricing, privacy, FAQ, and the latest SteerIn updates.',
 
     // Footer
-    'footer.brand.p': 'Private digital garage for cars and motorcycles. Built for Android with local-first storage, optional cloud sync, and no trackers.',
+    'footer.brand.p': 'A digital garage for cars and motorcycles with local-first records and optional cloud backup.',
     'footer.product': 'Product',
     'footer.legal': 'Legal',
     'footer.support': 'Support',
@@ -835,21 +889,30 @@ function applyTranslations(lang) {
     }
   });
 
-  // Update document title
-  if (t['meta.title']) document.title = t['meta.title'];
+  // Homepage metadata only; legal and changelog pages own their page-specific titles.
+  const home = location.pathname === '/';
+  const policy = location.pathname.startsWith('/privacy-policy');
+  if (home && t['meta.title']) document.title = t['meta.title'];
+  if (policy) document.title = `${t['policy.title']} — SteerIn`;
 
   // Update meta description
   const metaDesc = document.querySelector('meta[name="description"]');
-  if (metaDesc && t['meta.description']) metaDesc.content = t['meta.description'];
+  if (home && metaDesc) metaDesc.content = t['meta.description'];
+  if (policy && metaDesc) metaDesc.content = t['policy.meta.description'];
 
   // Update OG tags
   const ogTitle = document.querySelector('meta[property="og:title"]');
-  if (ogTitle && t['meta.og.title']) ogTitle.content = t['meta.og.title'];
+  if (home && ogTitle) ogTitle.content = t['meta.og.title'];
+  if (policy && ogTitle) ogTitle.content = document.title;
   const ogDesc = document.querySelector('meta[property="og:description"]');
-  if (ogDesc && t['meta.og.description']) ogDesc.content = t['meta.og.description'];
+  if (home && ogDesc) ogDesc.content = t['meta.og.description'];
+  if (policy && ogDesc) ogDesc.content = t['policy.meta.description'];
 
   // Update lang attribute on <html>
   document.documentElement.lang = lang;
+  document.querySelectorAll('a[href="/terms/"], a[href="/terms/en/"]').forEach(link => {
+    link.href = lang === 'en' ? '/terms/en/' : '/terms/';
+  });
 
   // Update all language switch UIs (desktop + sidebar)
   document.querySelectorAll('.lang-switch').forEach(switcher => {
@@ -867,7 +930,12 @@ function applyTranslations(lang) {
  * Get current language from localStorage or default.
  */
 function getCurrentLang() {
-  return localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
+  try {
+    const lang = localStorage.getItem(STORAGE_KEY);
+    return translations[lang] ? lang : DEFAULT_LANG;
+  } catch {
+    return DEFAULT_LANG;
+  }
 }
 
 /**
@@ -909,7 +977,7 @@ export function initLang() {
       if (!option) return;
       const lang = option.dataset.lang;
       if (!lang) return;
-      localStorage.setItem(STORAGE_KEY, lang);
+      try { localStorage.setItem(STORAGE_KEY, lang); } catch { /* storage unavailable */ }
       applyTranslations(lang);
       switchers.forEach(item => {
         item.classList.remove('open');

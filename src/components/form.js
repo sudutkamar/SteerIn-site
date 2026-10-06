@@ -1,64 +1,52 @@
-function sanitize(str) {
-  if (!str) return '';
-  const el = document.createElement('div');
-  el.textContent = str;
-  return el.innerHTML;
+import { t } from './lang.js';
+
+export async function submitWaitlist(action, email) {
+  const payload = new URLSearchParams({
+    'form-name': 'early-access',
+    email: email.trim(),
+    website: '',
+  });
+  const response = await fetch(action, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: payload.toString(),
+  });
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
 }
 
 export function initForms() {
   document.querySelectorAll('[data-form]').forEach(form => {
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-
-      // --- Honeypot check ---
-      const honeypot = form.querySelector('.honeypot');
-      if (honeypot && honeypot.value.trim() !== '') return;
-
-      const input = form.querySelector('.form-input');
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      const input = form.querySelector('[name="email"]');
+      const button = form.querySelector('[type="submit"]');
       const success = form.querySelector('.form-success');
       const error = form.querySelector('.form-error');
-      const btn = form.querySelector('.form-btn');
-      const email = input?.value.trim();
+      if (form.querySelector('[name="website"]')?.value) return;
+      if (!input?.checkValidity()) {
+        input?.reportValidity();
+        return;
+      }
 
-      if (!email) return;
-
-      // Disable
+      button.disabled = true;
       input.disabled = true;
-      if (btn) btn.disabled = true;
-      if (error) error.classList.remove('visible');
-      if (success) success.classList.remove('visible');
-
+      error.classList.remove('visible');
+      success.classList.remove('visible');
+      button.setAttribute('aria-busy', 'true');
       try {
-        const res = await fetch('/api/subscribe', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email }),
-        });
-
-        const data = await res.json();
-
-        if (res.ok && data.success) {
-          if (success) {
-            success.classList.add('visible');
-            success.innerHTML = sanitize(data.message || "✓ You're on the list! We'll notify you when SteerIn launches.");
-          }
-          if (input) input.style.display = 'none';
-          if (btn) btn.style.display = 'none';
-        } else {
-          if (error) {
-            error.innerHTML = sanitize(data.error || 'Something went wrong. Try again.');
-            error.classList.add('visible');
-          }
-          input.disabled = false;
-          if (btn) btn.disabled = false;
-        }
+        await submitWaitlist(form.action, input.value);
+        success.textContent = t('form.success');
+        success.classList.add('visible');
+        button.hidden = true;
+        input.hidden = true;
       } catch {
-        if (error) {
-          error.textContent = 'Connection error. Please try again.';
-          error.classList.add('visible');
-        }
+        error.textContent = t('form.error');
+        error.classList.add('visible');
         input.disabled = false;
-        if (btn) btn.disabled = false;
+        button.disabled = false;
+        input.focus();
+      } finally {
+        button.removeAttribute('aria-busy');
       }
     });
   });

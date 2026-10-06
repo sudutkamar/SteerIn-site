@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import MobileSidebar from '../components/MobileSidebar.astro';
+import release from '../data/release.json';
 
 const mobileLinks = [
   { href: '#features', label: 'Fitur', i18n: 'nav.features', icon: 'car' },
@@ -55,7 +56,7 @@ const navLinks = [
         "name": "Apakah SteerIn gratis?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Fitur dasar SteerIn gratis selamanya. Untuk fitur lanjutan, tersedia paket berlangganan mulai Rp9.000/bulan — semua harga dan fiturnya transparan di halaman Harga & Paket."
+          "text": "Versi dasar tersedia gratis. Harga dan cakupan paket berbayar dapat berubah selama beta; cek detail di aplikasi."
         }
       },
       {
@@ -79,7 +80,7 @@ const navLinks = [
         "name": "Apakah data servis saya diupload?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tidak otomatis. Data tersimpan lokal secara default. Upload hanya terjadi saat kamu memilih fitur cloud backup/sync."
+          "text": "Catatan kendaraan disimpan lokal secara default. Login dan beberapa fitur memakai layanan pihak ketiga; detailnya ada di Kebijakan Privasi."
         }
       },
       {
@@ -87,7 +88,7 @@ const navLinks = [
         "name": "Apakah aman install APK di luar Play Store?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Aman jika diambil dari halaman resmi dan checksum SHA-256 cocok. Jangan install APK dari link tidak resmi."
+          "text": "Unduh hanya dari tautan rilis resmi dan cocokkan SHA-256. Kecocokan hash memastikan file sesuai rilis, bukan menjamin aplikasi bebas risiko."
         }
       },
       {
@@ -120,10 +121,11 @@ const navLinks = [
     <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
   </svg>
 
-  <div class="container" id="main">
+  <div class="container">
     <!-- ===== NAVBAR ===== -->
     <Navbar links={navLinks} ctaHref="#download" showLanguage={true} />
 
+    <main id="main" tabindex="-1">
     <!-- ===== HERO ===== -->
     <section class="hero">
       <div class="hero-content">
@@ -134,12 +136,13 @@ const navLinks = [
         <h1><span data-i18n="hero.h1.before">Ingat servis sebelum telat,</span><br><span class="gradient" data-i18n="hero.h1.gradient">rapikan semua riwayat kendaraan.</span></h1>
         <p data-i18n="hero.p">SteerIn membantu kamu mengelola servis, odometer, trip, bengkel, dan riwayat kendaraan dalam satu garasi digital yang rapi, privat, dan mudah dipakai.</p>
         <div class="hero-actions">
-          <a href="#download" class="btn btn--primary">
+          <a href={release.url} class="btn btn--primary">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><use href="#i-download"/></svg>
             <span data-i18n="hero.cta.download">Download APK Android</span>
           </a>
           <a href="#features" class="btn btn--ghost" data-i18n="hero.cta.advantage">Lihat fitur</a>
         </div>
+        <p class="demo-hint" data-i18n="hero.download.note">Beta Android 8.0+ · login diperlukan · lihat detail keamanan di bagian Download.</p>
 
         <div class="hero-trust">
           <span data-i18n="hero.trust.1">Local-first</span>
@@ -175,7 +178,7 @@ const navLinks = [
                Demo chrome (tabs, hint, toasts) uses data-i18n / t(). -->
           <div class="phone-app" id="phone-app">
             <!-- Dasbor -->
-            <div class="demo-screen is-active" data-demo-screen="dash" role="tabpanel" aria-label="Dasbor">
+            <div class="demo-screen is-active" data-demo-screen="dash" role="tabpanel" id="demo-panel-dash" aria-labelledby="demo-tab-dash">
               <div class="demo-topbar"><span class="demo-avatar">👤</span><div class="demo-head"><span class="demo-title">Dasbor</span><span class="demo-sub" data-i18n="demo.dash.updated">1 Kendaraan • Diperbarui 19:21</span></div><span class="demo-avatar">🕘</span></div>
               <div class="demo-chips" role="group" aria-label="Rentang waktu">
                 <button type="button" data-chip="Hari ini">Hari ini</button>
@@ -199,7 +202,7 @@ const navLinks = [
               <button type="button" class="demo-card demo-rowbtn" data-act-toast="health"><div><strong data-i18n="demo.dash.health">Kesehatan Kendaraan</strong><small>Rata-rata semua kendaraan</small></div><span>→</span></button>
             </div>
             <!-- Garasi -->
-            <div class="demo-screen" data-demo-screen="garage" role="tabpanel" aria-label="Garasi" hidden>
+            <div class="demo-screen" data-demo-screen="garage" role="tabpanel" id="demo-panel-garage" aria-labelledby="demo-tab-garage" hidden>
               <div class="demo-topbar"><span class="demo-avatar">👤</span><div class="demo-head"><span class="demo-title" data-i18n="demo.tab.garage">Garasi Saya</span><span class="demo-sub">1 Kendaraan • Diperbarui 19:23</span></div><span class="demo-avatar">🕘</span></div>
               <div class="demo-eyebrow">STATUS KENDARAAN</div>
               <div class="demo-h1">1 Kendaraan Aktif</div>
@@ -223,7 +226,7 @@ const navLinks = [
               <span class="demo-fab" aria-hidden="true">🧾</span>
             </div>
             <!-- Lokasi -->
-            <div class="demo-screen" data-demo-screen="maps" role="tabpanel" aria-label="Lokasi" hidden>
+            <div class="demo-screen" data-demo-screen="maps" role="tabpanel" id="demo-panel-maps" aria-labelledby="demo-tab-maps" hidden>
               <div class="demo-mapwrap">
                 <div class="demo-mapbar">
                   <button type="button" class="demo-mapsearch" data-act-toast="search"><span class="demo-mapsearch-ico">🔍</span><span data-i18n="demo.maps.search">Cari bengkel, ban, oli…</span></button>
@@ -235,7 +238,7 @@ const navLinks = [
               </div>
             </div>
             <!-- Pengaturan -->
-            <div class="demo-screen" data-demo-screen="settings" role="tabpanel" aria-label="Pengaturan" hidden>
+            <div class="demo-screen" data-demo-screen="settings" role="tabpanel" id="demo-panel-settings" aria-labelledby="demo-tab-settings" hidden>
               <div class="demo-topbar"><span class="demo-avatar">👤</span><div class="demo-head"><span class="demo-title" data-i18n="demo.tab.settings">Pengaturan</span><span class="demo-sub">PREMIUM &amp; PROMO</span></div><span class="demo-avatar">🕘</span></div>
               <div class="demo-card demo-premium"><span class="demo-ico">🏆</span><div><strong data-i18n="demo.set.premium">SteerIn Premium &amp; Promo</strong><small class="demo-ok">Aktif</small></div></div>
               <div class="demo-grid4"><button type="button" data-act-toast="vehicles">🚗<small>Kendaraan</small></button><button type="button" data-act-toast="reports">📊<small>Laporan</small></button><button type="button" data-act-toast="export">⬇<small>Export</small></button><button type="button" data-act-toast="backup">☁<small>Backup</small></button></div>
@@ -283,7 +286,7 @@ const navLinks = [
         <div class="trust-card fade-up">
           <div class="trust-card-icon"><svg><use href="#i-xcircle"/></svg></div>
           <h4 data-i18n="trust.4.title">Tanpa iklan atau tracker</h4>
-          <p data-i18n="trust.4.p">Tanpa iklan, tanpa SDK analitik, tanpa pelacakan pihak ketiga. Selamanya.</p>
+          <p data-i18n="trust.4.p">Tanpa iklan di aplikasi. Layanan pihak ketiga untuk fitur tertentu dijelaskan dalam Kebijakan Privasi.</p>
         </div>
       </div>
     </section>
@@ -335,8 +338,7 @@ const navLinks = [
         </div>
         <div class="problem-right fade-up">
           <div class="problem-stat">
-            <div class="problem-stat-num" data-target="3">0</div>
-            <div class="problem-stat-label" data-i18n="problem.stat.label">kendaraan per rumah tangga rata-rata di Indonesia</div>
+            <div class="problem-stat-label" data-i18n="problem.stat.label">Catatan kendaraan lebih mudah dicari ketika tersimpan dalam satu tempat.</div>
           </div>
           <div class="problem-quote" data-i18n-html="problem.quote">
             "SteerIn menggabungkan semuanya dalam satu <strong>hub kendaraan yang privat, terstruktur, dan terpercaya</strong>."
@@ -391,7 +393,7 @@ const navLinks = [
         <div class="feature-card fade-up">
           <div class="feature-icon fi-emerald"><svg><use href="#i-shield"/></svg></div>
           <h3 data-i18n="features.8.title">Kontrol Privasi</h3>
-          <p data-i18n="features.8.p">Tanpa iklan, tanpa tracker, tanpa pengumpulan data tersembunyi. Data kendaraan tetap milik kamu.</p>
+          <p data-i18n="features.8.p">Catatan utama tetap lokal; lihat kebijakan privasi untuk penggunaan layanan pihak ketiga.</p>
         </div>
         <div class="feature-card fade-up">
           <div class="feature-icon fi-blue"><svg><use href="#i-activity"/></svg></div>
@@ -439,73 +441,6 @@ const navLinks = [
         <div class="use-case-card fade-up">
           <h3 data-i18n="usecases.4.title">Driver & pekerja mobile</h3>
           <p data-i18n="usecases.4.p">Catat jarak trip, aktivitas kendaraan, biaya servis, dan kondisi kendaraan untuk keputusan lebih rapi.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== COMPARISON ===== -->
-    <section class="comparison">
-      <div class="section-header fade-up">
-        <div class="section-badge" data-i18n="comparison.badge">Perbandingan</div>
-        <h2 data-i18n="comparison.h2">Kenapa lebih menarik dari catatan manual atau app biasa?</h2>
-        <p data-i18n="comparison.p">SteerIn menggabungkan hal yang biasanya terpisah: reminder, health, trip, bengkel, OCR, backup, dan privasi.</p>
-      </div>
-      <div class="comparison-table fade-up">
-        <div class="comparison-row comparison-head">
-          <div data-i18n="comparison.head.1">Kemampuan</div>
-          <div data-i18n="comparison.head.2">SteerIn</div>
-          <div data-i18n="comparison.head.3">App reminder biasa</div>
-          <div data-i18n="comparison.head.4">Spreadsheet</div>
-          <div data-i18n="comparison.head.5">Catatan manual</div>
-        </div>
-        <div class="comparison-row">
-          <div data-i18n="comparison.row.1">Multi kendaraan</div>
-          <div class="yes">✓</div>
-          <div class="maybe" data-i18n="comparison.row.1.maybe">Sebagian</div>
-          <div class="no" data-i18n="comparison.row.1.no">Sulit</div>
-          <div class="no">✗</div>
-        </div>
-        <div class="comparison-row">
-          <div data-i18n="comparison.row.2">Health komponen berbasis km</div>
-          <div class="yes">✓</div>
-          <div class="maybe" data-i18n="comparison.row.2.maybe">Terbatas</div>
-          <div class="no" data-i18n="comparison.row.2.no.1">Tidak otomatis</div>
-          <div class="no" data-i18n="comparison.row.2.no.2">Tidak</div>
-        </div>
-        <div class="comparison-row">
-          <div data-i18n="comparison.row.3">GPS trip logging</div>
-          <div class="yes">✓</div>
-          <div class="no" data-i18n="comparison.row.3.no">Jarang</div>
-          <div class="no">✗</div>
-          <div class="no" data-i18n="comparison.row.3.no.2">Tidak</div>
-        </div>
-        <div class="comparison-row">
-          <div data-i18n="comparison.row.4">Workshop maps</div>
-          <div class="yes">✓</div>
-          <div class="no" data-i18n="comparison.row.4.no">Jarang</div>
-          <div class="no">✗</div>
-          <div class="no">✗</div>
-        </div>
-        <div class="comparison-row">
-          <div data-i18n="comparison.row.5">OCR struk & odometer</div>
-          <div class="yes">✓</div>
-          <div class="no" data-i18n="comparison.row.5.no">Jarang</div>
-          <div class="no">✗</div>
-          <div class="no">✗</div>
-        </div>
-        <div class="comparison-row">
-          <div data-i18n="comparison.row.6">Local-first privacy</div>
-          <div class="yes">✓</div>
-          <div class="maybe" data-i18n="comparison.row.6.maybe">Tergantung</div>
-          <div class="no">✗</div>
-          <div class="no">✗</div>
-        </div>
-        <div class="comparison-row">
-          <div data-i18n="comparison.row.7">No ads / trackers</div>
-          <div class="yes">✓</div>
-          <div class="maybe" data-i18n="comparison.row.7.maybe">Tergantung</div>
-          <div class="yes">✓</div>
-          <div class="yes">✓</div>
         </div>
       </div>
     </section>
@@ -564,7 +499,7 @@ const navLinks = [
         <div class="privacy-card fade-up">
           <div class="privacy-card-icon"><svg><use href="#i-phone"/></svg></div>
           <h4 data-i18n="privacy.1.title">Data lokal terlebih dahulu</h4>
-          <p data-i18n="privacy.1.p">Semua data tersimpan di perangkat kamu secara default. Tidak ada server remote yang terlibat.</p>
+          <p data-i18n="privacy.1.p">Catatan utama disimpan lokal. Login dan fitur tertentu dapat memakai layanan pihak ketiga; lihat Kebijakan Privasi.</p>
         </div>
         <div class="privacy-card fade-up">
           <div class="privacy-card-icon"><svg><use href="#i-cloud"/></svg></div>
@@ -589,7 +524,7 @@ const navLinks = [
         <div class="privacy-card fade-up">
           <div class="privacy-card-icon"><svg><use href="#i-xcircle"/></svg></div>
           <h4 data-i18n="privacy.6.title">Tanpa iklan/tracker</h4>
-          <p data-i18n="privacy.6.p">Tanpa SDK iklan, tanpa analitik, tanpa pelacakan pihak ketiga. Bersih dan privat.</p>
+          <p data-i18n="privacy.6.p">Tidak menjual data pribadi; layanan pihak ketiga yang digunakan dijelaskan dalam Kebijakan Privasi.</p>
         </div>
       </div>
     </section>
@@ -599,7 +534,7 @@ const navLinks = [
       <div class="section-header fade-up">
         <div class="section-badge" data-i18n="preview.badge">Preview</div>
         <h2 data-i18n="preview.h2">Lihat SteerIn bekerja.</h2>
-        <p data-i18n="preview.p">Layar app nyata yang menunjukkan bagaimana SteerIn membantu kamu mengelola kendaraan.</p>
+        <p data-i18n="preview.p">Ilustrasi fitur SteerIn. Tampilan dan data contoh dapat berbeda dari aplikasi.</p>
       </div>
       <div class="preview-grid">
         <div class="preview-card fade-up">
@@ -655,10 +590,9 @@ const navLinks = [
             <h4 data-i18n="preview.5.title">Peta Bengkel</h4>
           </div>
           <div class="preview-body">
-            <div class="pv-row"><span class="pv-label" data-i18n="preview.5.label.1">AutoPro Bengkel</span><span class="pv-green">4.8 ★</span></div>
-            <div class="pv-row"><span class="pv-label" data-i18n="preview.5.label.2">Mandiri Motor</span><span class="pv-green">4.6 ★</span></div>
-            <div class="pv-row"><span class="pv-label" data-i18n="preview.5.label.3">SpeedFix Garage</span><span class="pv-amber">4.3 ★</span></div>
-            <div class="pv-row"><span class="pv-label" data-i18n="preview.5.label.4">Rata-rata Rating</span><span class="pv-value">4.6 ★</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.5.label.1">Cari bengkel</span><span class="pv-green">📍</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.5.label.2">Lihat lokasi</span><span class="pv-green">↗</span></div>
+            <div class="pv-row"><span class="pv-label" data-i18n="preview.5.label.3">Pilih layanan</span><span class="pv-amber">🔧</span></div>
           </div>
         </div>
         <div class="preview-card fade-up">
@@ -681,8 +615,8 @@ const navLinks = [
     <section class="pricing" id="pricing">
       <div class="section-header fade-up">
         <div class="section-badge" data-i18n="pricing.badge">Harga &amp; Paket</div>
-        <h2 data-i18n="pricing.h2">Harga transparan untuk semua kebutuhan.</h2>
-        <p data-i18n="pricing.p">Mulai gratis selamanya, upgrade saat butuh fitur lanjutan. Tanpa biaya tersembunyi.</p>
+        <h2 data-i18n="pricing.h2">Pratinjau paket selama beta.</h2>
+        <p data-i18n="pricing.p">Versi dasar gratis. Fitur dan harga paket lain perlu dicek di aplikasi sebelum berlangganan.</p>
       </div>
       <div class="pricing-grid">
         <div class="pricing-card fade-up">
@@ -710,7 +644,7 @@ const navLinks = [
           <p data-i18n="pricing.4.desc">Untuk power user, banyak kendaraan.</p>
         </div>
       </div>
-      <p class="pricing-note fade-up" data-i18n="pricing.note">Pembayaran diproses aman melalui Midtrans — QRIS, Virtual Account, e-wallet, hingga kartu kredit/debit.</p>
+        <p class="pricing-note fade-up" data-i18n="pricing.note">Harga dan ketersediaan paket dapat berubah selama beta. Periksa detail fitur dan metode pembayaran di aplikasi sebelum berlangganan.</p>
     </section>
 
     <!-- ===== DOWNLOAD ===== -->
@@ -723,15 +657,15 @@ const navLinks = [
         <div class="download-info">
           <div class="download-version">
             <span class="download-label" data-i18n="download.version">Versi</span>
-            <span class="download-value">1.0</span>
+            <span class="download-value">{release.version}</span>
           </div>
           <div class="download-size">
             <span class="download-label" data-i18n="download.size">Ukuran</span>
-            <span class="download-value">~54 MB</span>
+            <span class="download-value">{(release.sizeBytes / 1048576).toFixed(1)} MB</span>
           </div>
           <div class="download-req">
             <span class="download-label" data-i18n="download.req">Butuh</span>
-            <span class="download-value">Android 8.0+</span>
+            <span class="download-value">Android {release.minAndroid}</span>
           </div>
         </div>
 
@@ -743,16 +677,17 @@ const navLinks = [
         </div>
 
         <div class="download-buttons">
-          <a href="https://github.com/sudutkamar/SteerIn-site/releases/download/v1.0/steerin-latest.apk" class="btn btn--primary btn--download" download>
+          <a href={release.url} class="btn btn--primary btn--download">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><use href="#i-download"/></svg>
             <span data-i18n="download.btn">Download APK</span>
           </a>
-          <button type="button" class="btn btn--ghost btn--verify" data-sha256-hash="e83d556f10046729e208b793166faeb9fa7006223e4dbe1ba453ed7b108f24ac">
+          <button type="button" class="btn btn--ghost btn--verify" data-sha256-hash={release.sha256} aria-expanded="false">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-shield"/></svg>
-            <span data-i18n="download.verify">Verifikasi SHA-256</span>
+            <span data-i18n="download.verify">Lihat SHA-256</span>
             <span class="sha256-tooltip" aria-hidden="true"></span>
           </button>
         </div>
+        <p class="download-troubleshoot" data-i18n="download.checksum.help">Hitung SHA-256 file APK yang diunduh, lalu bandingkan dengan nilai di atas. Di Windows: Get-FileHash nama-file.apk -Algorithm SHA256.</p>
 
         <div class="download-beta-notice fade-up">
           <div class="download-beta-icon">⚠️</div>
@@ -790,7 +725,7 @@ const navLinks = [
           </div>
           <div class="fade-up">
             <strong>2</strong>
-            <span data-i18n="safe.step.2">Download file SHA-256 lalu cocokkan checksum bila perlu.</span>
+            <span data-i18n="safe.step.2">Hitung SHA-256 APK dan cocokkan dengan checksum resmi yang ditampilkan di atas.</span>
           </div>
           <div class="fade-up">
             <strong>3</strong>
@@ -826,31 +761,31 @@ const navLinks = [
       </div>
       <div class="faq-list">
         <div class="faq-item fade-up">
-          <button class="faq-q" aria-expanded="false" data-i18n="faq.1.q">Apakah SteerIn tersedia di Android?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.1.q">Apakah SteerIn tersedia di Android?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           <div class="faq-a"><p data-i18n="faq.1.a">Ya. SteerIn dibuat sebagai aplikasi native Android untuk perangkat modern.</p></div>
         </div>
         <div class="faq-item fade-up">
-          <button class="faq-q" aria-expanded="false" data-i18n="faq.2.q">Apakah SteerIn gratis?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.2.q">Apakah SteerIn gratis?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           <div class="faq-a"><p data-i18n="faq.2.a">Fitur dasar SteerIn gratis selamanya. Untuk fitur lanjutan, tersedia paket berlangganan mulai Rp9.000/bulan — semua harga dan fiturnya transparan di halaman Harga &amp; Paket.</p></div>
         </div>
         <div class="faq-item fade-up">
-          <button class="faq-q" aria-expanded="false" data-i18n="faq.3.q">Apakah lokasi dilacak terus-menerus?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.3.q">Apakah lokasi dilacak terus-menerus?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           <div class="faq-a"><p data-i18n="faq.3.a">Tidak. GPS dipakai saat kamu menjalankan fitur trip tracking. Data lokasi tetap berada dalam kontrol pengguna.</p></div>
         </div>
         <div class="faq-item fade-up">
-          <button class="faq-q" aria-expanded="false" data-i18n="faq.4.q">Apakah wajib login atau cloud sync?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.4.q">Apakah wajib login atau cloud sync?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           <div class="faq-a"><p data-i18n="faq.4.a">Login wajib untuk memakai SteerIn. Cloud sync tetap opsional untuk backup dan restore.</p></div>
         </div>
         <div class="faq-item fade-up">
-          <button class="faq-q" aria-expanded="false" data-i18n="faq.5.q">Apakah data servis saya diupload?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.5.q">Apakah data servis saya diupload?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           <div class="faq-a"><p data-i18n="faq.5.a">Tidak otomatis. Data tersimpan lokal secara default. Upload hanya terjadi saat kamu memilih fitur cloud backup/sync.</p></div>
         </div>
         <div class="faq-item fade-up">
-          <button class="faq-q" aria-expanded="false" data-i18n="faq.6.q">Apakah aman install APK di luar Play Store?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-          <div class="faq-a"><p data-i18n="faq.6.a">Aman jika diambil dari halaman resmi dan checksum SHA-256 cocok. Jangan install APK dari link tidak resmi.</p></div>
+          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.6.q">Apakah aman install APK di luar Play Store?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a"><p data-i18n="faq.6.a">Unduh hanya dari tautan rilis resmi dan cocokkan SHA-256. Kecocokan hash memastikan file sesuai rilis, bukan menjamin aplikasi bebas risiko.</p></div>
         </div>
         <div class="faq-item fade-up">
-          <button class="faq-q" aria-expanded="false" data-i18n="faq.7.q">Kapan rilis Play Store?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.7.q">Kapan rilis Play Store?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
           <div class="faq-a"><p data-i18n="faq.7.a">Targetnya setelah early access stabil, feedback utama masuk, dan proses Play Console siap.</p></div>
         </div>
       </div>
@@ -863,15 +798,16 @@ const navLinks = [
         <p data-i18n="cta.p">Dari servis, trip, catatan bengkel, sampai backup — SteerIn membuat hidup kendaraan lebih rapi, berguna, dan privat.</p>
 
         <!-- Waitlist Form -->
-        <form data-form novalidate style="max-width:440px;margin:0 auto 20px;position:relative">
+        <form data-form name="early-access" method="POST" action="/" data-netlify="true" netlify-honeypot="website" style="max-width:440px;margin:0 auto 20px;position:relative">
+          <input type="hidden" name="form-name" value="early-access">
           <div style="display:flex;gap:8px;flex-wrap:wrap">
             <label for="cta-email" class="sr-only" data-i18n="hero.form.placeholder">Alamat email</label>
-            <input type="email" id="cta-email" class="form-input" placeholder="Masukkan email kamu" required autocomplete="email" aria-label="Alamat email" style="min-width:200px;flex:1" data-i18n-placeholder="cta.placeholder">
+            <input type="email" id="cta-email" name="email" class="form-input" placeholder="Masukkan email kamu" required autocomplete="email" style="min-width:200px;flex:1" data-i18n-placeholder="cta.placeholder">
             <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
             <button type="submit" class="btn btn--primary form-btn" data-i18n="cta.btn">Ikut Early Access</button>
           </div>
-          <div class="form-error"></div>
-          <div class="form-success"></div>
+          <div class="form-error" role="alert"></div>
+          <div class="form-success" role="status" aria-live="polite"></div>
         </form>
 
         <div class="hero-actions" style="justify-content:center">
@@ -880,6 +816,7 @@ const navLinks = [
       </div>
     </section>
 
+    </main>
     <!-- ===== FOOTER ===== -->
     <Footer i18n={true} />
   </div>

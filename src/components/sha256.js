@@ -18,6 +18,7 @@ export function initSHA256() {
     const isVisible = tooltip.classList.contains('visible')
     tooltip.classList.toggle('visible', !isVisible)
     tooltip.setAttribute('aria-hidden', String(isVisible))
+    verifyBtn.setAttribute('aria-expanded', String(!isVisible))
     tooltip.textContent = hashData
   })
 
@@ -25,6 +26,7 @@ export function initSHA256() {
     if (!verifyBtn.contains(e.target) && tooltip.classList.contains('visible')) {
       tooltip.classList.remove('visible')
       tooltip.setAttribute('aria-hidden', 'true')
+      verifyBtn.setAttribute('aria-expanded', 'false')
     }
   })
 
@@ -32,6 +34,7 @@ export function initSHA256() {
     if (e.key === 'Escape' && tooltip.classList.contains('visible')) {
       tooltip.classList.remove('visible')
       tooltip.setAttribute('aria-hidden', 'true')
+      verifyBtn.setAttribute('aria-expanded', 'false')
     }
   })
 }

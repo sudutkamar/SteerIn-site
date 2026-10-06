@@ -15,6 +15,12 @@ export function initPhoneDemo() {
   const tabs = Array.from(phone.querySelectorAll('[data-demo-tab]'));
   const screens = Array.from(phone.querySelectorAll('[data-demo-screen]'));
   if (!tabs.length || !screens.length) return;
+  tabs.forEach(tab => {
+    const name = tab.dataset.demoTab;
+    tab.id = `demo-tab-${name}`;
+    tab.setAttribute('aria-controls', `demo-panel-${name}`);
+    tab.tabIndex = name === 'dash' ? 0 : -1;
+  });
 
   // Graceful fallback if screenshot files are not added yet
   screens.forEach((s) => {
@@ -41,6 +47,7 @@ export function initPhoneDemo() {
       const on = t.dataset.demoTab === name;
       t.classList.toggle('is-active', on);
       t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
     });
   }
 
@@ -66,28 +73,15 @@ export function initPhoneDemo() {
     if (dx > 0 && i > 0) show(ORDER[i - 1]);
   }, { passive: true });
 
-  // Keyboard when phone focused
-  phone.setAttribute('tabindex', '0');
-  phone.addEventListener('keydown', (e) => {
+  phone.querySelector('[role="tablist"]')?.addEventListener('keydown', e => {
+    if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(e.key)) return;
+    e.preventDefault();
     const i = ORDER.indexOf(current);
-    if (e.key === 'ArrowRight' && i < ORDER.length - 1) show(ORDER[i + 1]);
-    if (e.key === 'ArrowLeft' && i > 0) show(ORDER[i - 1]);
+    const next = e.key === 'Home' ? 0 : e.key === 'End' ? ORDER.length - 1
+      : (i + (e.key === 'ArrowRight' ? 1 : -1) + ORDER.length) % ORDER.length;
+    show(ORDER[next]);
+    tabs.find(tab => tab.dataset.demoTab === ORDER[next])?.focus();
   });
-
-  // ── Auto-play until first interaction (skipped for reduced motion) ──
-  let autoTimer = null;
-  function disengageAuto() {
-    if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
-  }
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    autoTimer = setInterval(() => {
-      if (document.hidden) return;
-      const i = ORDER.indexOf(current);
-      show(ORDER[(i + 1) % ORDER.length]);
-    }, 4000);
-    phone.addEventListener('pointerdown', disengageAuto);
-    phone.addEventListener('keydown', disengageAuto);
-  }
 
   // ── Toast ──
   const toast = phone.querySelector('#demo-toast');

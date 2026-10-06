@@ -1,9 +1,3 @@
 [build]
-  command = "npm run build"
+  command = "npm run deploy:check"
   publish = "dist"
-  functions = "netlify/functions"
-
-[[redirects]]
-  from = "/api/subscribe"
-  to = "/.netlify/functions/subscribe"
-  status = 200

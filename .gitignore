@@ -21,7 +21,6 @@ Thumbs.db
 
 # Large files (APK)
 public/downloads/*.apk
-public/downloads/*.apk.sha256
 *.apk
 
 # Logs
